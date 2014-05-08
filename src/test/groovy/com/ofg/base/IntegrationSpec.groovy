@@ -7,8 +7,10 @@ import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
 import spock.lang.Specification
 
+import static com.ofg.conf.Profiles.TEST
+
 @ContextConfiguration(classes = [Application], loader = SpringApplicationContextLoader)
 @WebAppConfiguration
-@ActiveProfiles(["test"]) //WARNING: cannot use Profiles class here, thought this has to equal to Profiles.TEST, because: http://jira.codehaus.org/browse/GROOVY-3278
+@ActiveProfiles(TEST)
 abstract class IntegrationSpec extends Specification {
 }
