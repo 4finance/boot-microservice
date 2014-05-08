@@ -1,13 +1,3 @@
-//String springVersion = '4.0.1.RELEASE'
-//
-//configurations.all {
-//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-//        if (details.requested.group == 'org.springframework') {
-//            details.useVersion springVersion
-//        }
-//    }
-//}
-
 buildscript {
     repositories {	
 	maven { url "http://repo.spring.io/libs-snapshot" }
@@ -75,7 +65,7 @@ repositories {
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
-    compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    compile "org.codehaus.groovy:groovy-all:$groovyVersion:indy"
     compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
     compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapper"
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
@@ -101,6 +91,9 @@ dependencies {
     testRuntime "org.objenesis:objenesis:1.2" // allows mocking of classes without default constructor (together with CGLIB)
 }
 
+tasks.withType(GroovyCompile) {
+    groovyOptions.optimizationOptions.indy = true
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
