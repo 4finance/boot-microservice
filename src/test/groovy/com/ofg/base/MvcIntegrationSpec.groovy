@@ -29,7 +29,7 @@ abstract class MvcIntegrationSpec extends Specification {
     }
 
     def cleanup() {
-        clearDatabase()
+        // clearDatabase()
     }
 
     def clearDatabase() {
