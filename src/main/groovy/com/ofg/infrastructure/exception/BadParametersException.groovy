@@ -1,4 +1,4 @@
-package com.ofg.api.exception
+package com.ofg.infrastructure.exception
 
 import groovy.transform.TypeChecked
 import org.springframework.validation.ObjectError

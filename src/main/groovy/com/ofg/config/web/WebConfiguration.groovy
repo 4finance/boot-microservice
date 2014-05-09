@@ -1,4 +1,4 @@
-package com.ofg.conf.web
+package com.ofg.config.web
 
 import groovy.transform.TypeChecked
 import org.springframework.beans.factory.annotation.Value

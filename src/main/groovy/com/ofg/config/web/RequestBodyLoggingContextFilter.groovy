@@ -1,4 +1,4 @@
-package com.ofg.conf.web
+package com.ofg.config.web
 import groovy.transform.PackageScope
 import groovy.transform.TypeChecked
 import org.springframework.web.filter.Log4jNestedDiagnosticContextFilter
