@@ -3,7 +3,6 @@ import com.ofg.config.Application
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.context.ApplicationContext
-import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
@@ -21,7 +20,6 @@ abstract class MvcIntegrationSpec extends Specification {
     
     @Autowired private WebApplicationContext webApplicationContext
     @Autowired private ApplicationContext applicationContext
-    @Autowired MongoTemplate mongoTemplate
     protected MockMvc mockMvc
 
     void setup() {
@@ -29,10 +27,6 @@ abstract class MvcIntegrationSpec extends Specification {
     }
 
     def cleanup() {
-        // clearDatabase()
     }
 
-    def clearDatabase() {
-        mongoTemplate.db.dropDatabase()
-    }
 }

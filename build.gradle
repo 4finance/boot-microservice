@@ -79,7 +79,6 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.0.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile 'org.springframework.data:spring-data-mongodb:1.4.2.RELEASE'
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
