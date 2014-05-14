@@ -1,11 +1,13 @@
 buildscript {
     repositories {	
 	maven { url "http://repo.spring.io/libs-snapshot" }
-        mavenLocal()
+	maven { url "http://dl.bintray.com/4finance/uptodate-gradle-plugin" }
+    mavenLocal()
 	mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
+        classpath("com.ofg:uptodate-gradle-plugin:0.0.1")
     }
 }
 
@@ -16,10 +18,13 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'sonar-runner'
 apply plugin: 'jacoco'
+apply plugin: 'uptodate'
 
 ext.versionPrefix = "CD"
 ext.buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
 ext.currentVersion = "${versionPrefix}-${buildNrLoc}"
+
+build.dependsOn 'uptodate'
 
 uploadArchives {
     repositories.mavenDeployer {
