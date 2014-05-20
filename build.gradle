@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
-        classpath("com.ofg:uptodate-gradle-plugin:0.0.1")
+        classpath("com.ofg:uptodate-gradle-plugin:0.0.2")
     }
 }
 
@@ -39,7 +39,7 @@ uploadArchives {
 }
 
 ext {
-    groovyVersion = '2.3.0'
+    groovyVersion = '2.3.1'
     spockVersion = '0.7-groovy-2.0'
     springBootVersion = '1.0.2.RELEASE'
     jacksonMapper = '1.9.13'
