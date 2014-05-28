@@ -7,3 +7,4 @@ build
 .settings
 .classpath
 commitHash.txt
+logs
