@@ -1,14 +1,14 @@
 package com.ofg.infrastructure.discovery
 import groovy.transform.PackageScope
-import groovy.transform.TypeChecked
 import org.apache.curator.framework.CuratorFramework
 import org.apache.curator.framework.state.ConnectionState
 import org.apache.curator.x.discovery.ServiceCache
 import org.apache.curator.x.discovery.ServiceDiscovery
 import org.apache.curator.x.discovery.details.ServiceCacheListener
-import static com.ofg.infrastructure.discovery.DependencyState.*
 
-@TypeChecked
+import static com.ofg.infrastructure.discovery.DependencyState.CONNECTED
+import static com.ofg.infrastructure.discovery.DependencyState.DISCONNECTED
+
 class DependencyWatcher {
     
     private final Map<String, String> dependencies

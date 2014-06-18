@@ -7,10 +7,11 @@ import org.apache.curator.retry.RetryNTimes
 import org.apache.curator.x.discovery.ServiceDiscovery
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder
 import org.apache.curator.x.discovery.ServiceInstance
+import org.apache.curator.x.discovery.UriSpec
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.Resource
+import org.springframework.core.io.ClassPathResource
 
 @TypeChecked
 @Configuration
@@ -24,14 +25,14 @@ class ServiceResolverConfiguration {
     
     @PackageScope
     @Bean
-    ServiceConfigurationResolver serviceConfigurationResolver(@Value('${microservice.config.file:microservice.json}') Resource microserviceConfig) {
+    ServiceConfigurationResolver serviceConfigurationResolver(@Value('${microservice.config.file:microservice.json}') ClassPathResource microserviceConfig) {
         return new ServiceConfigurationResolver(microserviceConfig.file.text)
     }
     
     
     @PackageScope
     @Bean(initMethod = 'start', destroyMethod = 'close')
-    CuratorFramework curatorFramework(@Value('${service.resolver.url:http://localhost:2181}') String serviceResolverUrl,
+    CuratorFramework curatorFramework(@Value('${service.resolver.url:localhost:2181}') String serviceResolverUrl,
                                       @Value('${service.resolver.connection.retries:5}') int numberOfRetries,
                                       @Value('${service.resolver.connection.timeout:1000}') int timeout) {
         return CuratorFrameworkFactory.newClient(serviceResolverUrl, new RetryNTimes(numberOfRetries, timeout))
@@ -39,11 +40,13 @@ class ServiceResolverConfiguration {
     
     
     @PackageScope
-    @Bean(initMethod = 'start', destroyMethod = 'close')
+    @Bean
     ServiceInstance serviceInstance(@Value('${microservice.url:localhost}') String microserviceUrl,
                                     @Value('${microservice.port:8080}') int microservicePort,
+                                    @Value('${microservice.context:rest}') String microserviceContext,
                                     ServiceConfigurationResolver serviceConfigurationResolver) {
-        return ServiceInstance.builder().address(microserviceUrl)
+        return ServiceInstance.builder().uriSpec(new UriSpec("{scheme}://{address}:{port}/$microserviceContext"))
+                                        .address(microserviceUrl)
                                         .port(microservicePort)
                                         .name(serviceConfigurationResolver.microserviceName)
                                         .build()
@@ -58,7 +61,7 @@ class ServiceResolverConfiguration {
     }    
     
 
-    @Bean
+    @Bean(initMethod = 'startServiceProviders', destroyMethod = 'stopServiceProviders')
     ServiceResolver serviceResolver(ServiceConfigurationResolver serviceConfigurationResolver, ServiceDiscovery serviceDiscovery) {
         return new ServiceResolver(serviceConfigurationResolver, serviceDiscovery)
     }

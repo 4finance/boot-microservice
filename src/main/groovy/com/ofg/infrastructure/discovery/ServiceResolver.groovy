@@ -19,7 +19,7 @@ class ServiceResolver {
         serviceConfigurationResolver.dependencies.each { String serviceName, String dependencyConfig ->
             ServiceProvider serviceProvider = serviceDiscovery.serviceProviderBuilder().serviceName(dependencyConfig).build()
             serviceProvider.start()
-            services[serviceName] = ServiceProvider
+            services[serviceName] = serviceProvider
         }
     }
     
@@ -36,8 +36,8 @@ class ServiceResolver {
     }
 
     private void checkIfDependencyNotMissing(ServiceProvider serviceProvider, String dependency) {
-        if (serviceProvider) {
-            throw new DependencyNotDefinedException("$dependency not found")
+        if (!serviceProvider) {
+            throw new DependencyNotDefinedException("$dependency dependency not found")
         }
     }
 

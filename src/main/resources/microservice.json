@@ -3,7 +3,8 @@
         "this": "pl/payments/20",
         "dependencies": {
             "clients": "pl/clients/10",
-            "loans": "pl/loans/15"
+            "loans": "pl/loans/15",
+            "payments": "pl/payments/20"
         }
     }
 }
