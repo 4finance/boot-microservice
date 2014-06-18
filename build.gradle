@@ -70,6 +70,8 @@ repositories {
 }
 
 dependencies {
+    curatorVersion = '2.5.0'
+    
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     compile "org.codehaus.groovy:groovy-all:$groovyVersion:indy"
@@ -86,7 +88,7 @@ dependencies {
     compile "org.aspectj:aspectjrt:$aspectjVersion"
     compile 'net.floatingsun:jetcd:0.2.0'
 
-    compile('org.apache.curator:curator-x-discovery:2.5.0') {
+    compile("org.apache.curator:curator-x-discovery:$curatorVersion") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
@@ -103,6 +105,10 @@ dependencies {
     testRuntime "cglib:cglib-nodep:3.1"
     testRuntime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
     testCompile 'com.github.tomakehurst:wiremock:1.46'
+    testCompile("org.apache.curator:curator-test:$curatorVersion") {
+        exclude group: 'org.slf4j'
+        exclude group: 'log4j'
+    }
 }
 
 tasks.withType(GroovyCompile) {

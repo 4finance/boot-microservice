@@ -15,6 +15,7 @@ import org.springframework.core.io.ClassPathResource
 
 @TypeChecked
 @Configuration
+@PackageScope
 class ServiceResolverConfiguration {
         
     @PackageScope
