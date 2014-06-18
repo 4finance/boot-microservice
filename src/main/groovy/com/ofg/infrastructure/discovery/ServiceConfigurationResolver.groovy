@@ -1,6 +1,5 @@
 package com.ofg.infrastructure.discovery
 
-import com.ofg.infrastructure.exception.BadConfigurationException
 import groovy.json.JsonSlurper
 
 class ServiceConfigurationResolver {
@@ -40,4 +39,9 @@ class ServiceConfigurationResolver {
     Map<String, String> getDependencies() {
         return parsedConfiguration.dependencies
     }
+    
+    String getDependencyConfigByName(String dependencyName) {
+        return parsedConfiguration[dependencyName]
+    }
+    
 } 

@@ -16,6 +16,18 @@ import org.springframework.core.io.Resource
 @Configuration
 class ServiceResolverConfiguration {
         
+    @PackageScope
+    @Bean(initMethod = 'registerDependencies', destroyMethod = 'unregisterDependencies')
+    DependencyWatcher dependencyWatcher(ServiceConfigurationResolver serviceConfigurationResolver, ServiceDiscovery serviceDiscovery) {
+        return new DependencyWatcher(serviceConfigurationResolver.dependencies, serviceDiscovery)
+    }
+    
+    @PackageScope
+    @Bean
+    ServiceConfigurationResolver serviceConfigurationResolver(@Value('${microservice.config.file:microservice.json}') Resource microserviceConfig) {
+        return new ServiceConfigurationResolver(microserviceConfig.file.text)
+    }
+    
     
     @PackageScope
     @Bean(initMethod = 'start', destroyMethod = 'close')
@@ -23,10 +35,7 @@ class ServiceResolverConfiguration {
                                       @Value('${service.resolver.connection.retries:5}') int numberOfRetries,
                                       @Value('${service.resolver.connection.timeout:1000}') int timeout) {
         return CuratorFrameworkFactory.newClient(serviceResolverUrl, new RetryNTimes(numberOfRetries, timeout))
-    }
-
-    // per dependency
-//    ServiceCache serviceCache = client.serviceCacheBuilder().name('sth').build()
+    }    
     
     
     @PackageScope
@@ -46,14 +55,12 @@ class ServiceResolverConfiguration {
                                       ServiceInstance serviceInstance,
                                       ServiceConfigurationResolver serviceConfigurationResolver) {
         return ServiceDiscoveryBuilder.builder(Void).basePath(serviceConfigurationResolver.basePath).client(curatorFramework).thisInstance(serviceInstance).build()
-    }
-    
+    }    
     
 
     @Bean
-    ServiceResolver serviceResolver(CuratorFramework curatorFramework, @Value('${microservice.config.file:microservice.json}') Resource microserviceConfig) {
-        ServiceConfigurationResolver serviceConfigurationResolver = new ServiceConfigurationResolver(microserviceConfig.file.text)
-        return new ServiceResolver(curatorFramework, serviceConfigurationResolver)
+    ServiceResolver serviceResolver(ServiceConfigurationResolver serviceConfigurationResolver, ServiceDiscovery serviceDiscovery) {
+        return new ServiceResolver(serviceConfigurationResolver, serviceDiscovery)
     }
     
 }

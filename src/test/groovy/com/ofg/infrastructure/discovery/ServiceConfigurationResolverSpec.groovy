@@ -1,6 +1,5 @@
 package com.ofg.infrastructure.discovery
 
-import com.ofg.infrastructure.exception.BadConfigurationException
 import spock.lang.Specification
 
 class ServiceConfigurationResolverSpec extends Specification {
@@ -10,10 +9,10 @@ class ServiceConfigurationResolverSpec extends Specification {
             String json = """
                             {
                                 "microservice": {
-                                    "this": "pl:payments:20",
+                                    "this": "pl/payments/20",
                                     "dependencies": {
-                                        "clients": "pl:clients:10",
-                                        "loans": "pl:loans:15"
+                                        "clients": "pl/clients/10",
+                                        "loans": "pl/loans/15"
                                     }
                                 }
                             }
@@ -22,9 +21,9 @@ class ServiceConfigurationResolverSpec extends Specification {
             def resolver = new ServiceConfigurationResolver(json)    
         then:
             resolver.basePath == "microservice"
-            resolver.microserviceName == "pl:payments:20"
-            resolver.dependencies == ["clients": "pl:clients:10",
-                                      "loans": "pl:loans:15"]
+            resolver.microserviceName == "pl/payments/20"
+            resolver.dependencies == ["clients": "pl/clients/10",
+                                      "loans": "pl/loans/15"]
     }
     
     def "should fail when 'this' element is not present "() {
@@ -33,8 +32,8 @@ class ServiceConfigurationResolverSpec extends Specification {
                             {
                                 "microservice": {
                                     "dependencies": {
-                                        "clients": "pl:clients:10",
-                                        "loans": "pl:loans:15"
+                                        "clients": "pl/clients/10",
+                                        "loans": "pl/loans/15"
                                     }
                                 }
                             }
@@ -50,7 +49,7 @@ class ServiceConfigurationResolverSpec extends Specification {
             String json = """
                             {
                                 "microservice": {
-                                    "this": "pl:payments:20"
+                                    "this": "pl/payments/20"
                                 }
                             }
                             """
@@ -65,10 +64,10 @@ class ServiceConfigurationResolverSpec extends Specification {
             String json = """
                             {
                                 "microservice": {
-                                    "this": "pl:payments:20",
+                                    "this": "pl/payments/20",
                                     "dependencies": {
-                                        "clients": "pl:clients:10",
-                                        "loans": "pl:loans:15"
+                                        "clients": "pl/clients/10",
+                                        "loans": "pl/loans/15"
                                     }
                                 },
                                 "everything": 1
