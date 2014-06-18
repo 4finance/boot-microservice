@@ -27,6 +27,39 @@ class ServiceConfigurationResolverSpec extends Specification {
                                       "loans": "pl:loans:15"]
     }
     
+    def "should fail when 'this' element is not present "() {
+        given:
+            String json = """
+                            {
+                                "microservice": {
+                                    "dependencies": {
+                                        "clients": "pl:clients:10",
+                                        "loans": "pl:loans:15"
+                                    }
+                                }
+                            }
+                            """
+        when:
+            new ServiceConfigurationResolver(json)
+        then:
+            thrown(BadConfigurationException)
+    }
+    
+    def "should fail when 'dependencies' element is not present "() {
+        given:
+            String json = """
+                            {
+                                "microservice": {
+                                    "this": "pl:payments:20"
+                                }
+                            }
+                            """
+        when:
+            new ServiceConfigurationResolver(json)
+        then:
+            thrown(BadConfigurationException)
+    }
+    
     def "should fail on multiple root elements"() {
         given:
             String json = """

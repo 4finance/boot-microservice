@@ -14,11 +14,23 @@ class ServiceConfigurationResolver {
 
     private static List parseConfig(String config) {
         Map json = new JsonSlurper().parseText(config)
+        checkThatJsonHasOneRootElement(json)
+        String basePath = json.keySet().first()
+        def root = json[basePath]
+        checkThatObligatoryElementsArePresent(root)
+        return [basePath, json[basePath]]
+    }
+
+    private static void checkThatJsonHasOneRootElement(Map json) {
         if (json.size() != 1) {
             throw new BadConfigurationException('Microservice configuration should have exactly one root element')
         }
-        String basePath = json.keySet().first()
-        return [basePath, json[basePath]]
+    }
+
+    private static void checkThatObligatoryElementsArePresent(root) {
+        if (!(root.this instanceof String && root.dependencies instanceof Map)) {
+            throw new BadConfigurationException('Microservice configuration must contain "this" and "dependencies" elements')
+        }
     }
 
     String getMicroserviceName() {
