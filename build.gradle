@@ -67,6 +67,7 @@ repositories {
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
