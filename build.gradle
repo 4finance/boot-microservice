@@ -1,7 +1,7 @@
 import java.lang.management.ManagementFactory
 
 buildscript {
-    repositories {	
+    repositories {
         maven { url "http://repo.spring.io/libs-snapshot" }
         mavenLocal()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
         classpath("com.ofg:uptodate-gradle-plugin:0.0.2")
-        classpath("com.ofg:micro-deps:0.0.3:fatJar")
+        classpath("com.ofg:micro-deps:0.0.4:fatJar")
     }
 }
 
@@ -32,7 +32,7 @@ build.dependsOn 'uptodate'
 uploadArchives {
     repositories.mavenDeployer {
         repository(url: "http://nexus.4finance.net/content/repositories/Pipeline") {
-    	    //TODO: fill this in
+            //TODO: fill this in
             authentication(userName: '', password: '')
         }
         pom.version = "${currentVersion}"
@@ -47,24 +47,20 @@ ext {
     springBootVersion = '1.1.1.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.0'
-    microDepsVersion = '0.0.3'
+    microDepsVersion = '0.0.4'
+
+    zookeeperPort = 2181
+    zookeeperMockPort = 18081
 }
 
 task addHashFile << {
-	String gitCmd = "git log --pretty=format:'%H' -n 1"
-	def proc = gitCmd.execute()
-	proc.waitFor()
-	new File("commitHash.txt").withWriter { it << proc.in.text }
+    String gitCmd = "git log --pretty=format:'%H' -n 1"
+    def proc = gitCmd.execute()
+    proc.waitFor()
+    new File("commitHash.txt").withWriter { it << proc.in.text }
 }
 
 build.dependsOn 'uptodate'
-
-jar {
-	dependsOn addHashFile
-	baseName = '' //TODO: fill this in
-	version =  '0.1.0'
-	from "commitHash.txt"
-}
 
 repositories {
     mavenLocal()
@@ -88,7 +84,7 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile("com.ofg:micro-deps:$microDepsVersion"){
+    compile("com.ofg:micro-deps:$microDepsVersion") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
@@ -103,7 +99,8 @@ dependencies {
     }
     testCompile 'org.springframework:spring-test:4.0.5.RELEASE'
     testRuntime "cglib:cglib-nodep:3.1"
-    testRuntime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
+    testRuntime "org.objenesis:objenesis:2.1"
+    // allows mocking of classes without default constructor (together with CGLIB)
     testCompile 'com.github.tomakehurst:wiremock:1.46'
 }
 
@@ -125,7 +122,7 @@ sourceSets {
 
 sonarRunner {
     sonarProperties {
-	//TODO: fill this
+        //TODO: fill this
         property "sonar.host.url", ""
         property "sonar.junit.reportsPath", "build/test-results"
     }
@@ -142,7 +139,7 @@ buildscript {
 }
 
 
-if(project.hasProperty("coverage")) {
+if (project.hasProperty("coverage")) {
     apply plugin: 'cobertura'
     apply plugin: 'codenarc'
 
@@ -154,23 +151,27 @@ if(project.hasProperty("coverage")) {
         reportFormat = 'xml'
         ignoreFailures = true
     }
-    
+
     dependencies {
         codenarc 'org.codenarc:CodeNarc:0.20'
     }
-    
+
     test {
         ignoreFailures = true
     }
-    
+
     cobertura {
         coverageFormats = ['html', 'xml']
     }
-   
+
 }
 
-task runMocks() {
+task runMocks << {
     String microDepsFatJar = buildscript.configurations.classpath.find { it.name.startsWith("micro-deps") }
-    String microDepCMD = "java -jar $microDepsFatJar"
+    String microDepCMD = "java -jar $microDepsFatJar $zookeeperPort $zookeeperMockPort"
     Process process = microDepCMD.execute()
+}
+
+task stopMocks << {
+    "http://localhost:$zookeeperMockPort/stop".toURL().readLines()
 }
