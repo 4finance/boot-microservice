@@ -27,7 +27,7 @@ class ServiceResolverConfiguration {
     @PackageScope
     @Bean
     ServiceConfigurationResolver serviceConfigurationResolver(@Value('${microservice.config.file:microservice.json}') ClassPathResource microserviceConfig) {
-        return new ServiceConfigurationResolver(microserviceConfig.file.text)
+        return new ServiceConfigurationResolver(microserviceConfig.inputStream.text)
     }
     
     
