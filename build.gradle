@@ -87,7 +87,6 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile 'net.floatingsun:jetcd:0.2.0'
     compile("com.ofg:micro-deps:$microDepsVersion"){
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
