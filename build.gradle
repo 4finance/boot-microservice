@@ -67,8 +67,8 @@ repositories {
     mavenLocal()
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
-    //TODO remove below, when micro-deps are added into 4finance repo on bintray
-    maven { url 'http://dl.bintray.com/szimano/maven' }
+    //TODO remove below, when micro-deps are added into root bintray repo
+    maven { url 'http://dl.bintray.com/4finance/micro-deps' }
     mavenCentral()
 }
 
