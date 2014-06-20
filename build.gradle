@@ -1,3 +1,5 @@
+import java.lang.management.ManagementFactory
+
 buildscript {
     repositories {	
         maven { url "http://repo.spring.io/libs-snapshot" }
@@ -8,6 +10,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
         classpath("com.ofg:uptodate-gradle-plugin:0.0.2")
+        classpath("com.ofg:micro-deps:0.0.3:fatJar")
     }
 }
 
@@ -44,7 +47,7 @@ ext {
     springBootVersion = '1.1.1.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.0'
-    microDepsVersion = '0.0.2'
+    microDepsVersion = '0.0.3'
 }
 
 task addHashFile << {
@@ -67,8 +70,6 @@ repositories {
     mavenLocal()
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
-    //TODO remove below, when micro-deps are added into root bintray repo
-    maven { url 'http://dl.bintray.com/4finance/micro-deps' }
     mavenCentral()
 }
 
@@ -166,4 +167,10 @@ if(project.hasProperty("coverage")) {
         coverageFormats = ['html', 'xml']
     }
    
+}
+
+task runMocks() {
+    String microDepsFatJar = buildscript.configurations.classpath.find { it.name.startsWith("micro-deps") }
+    String microDepCMD = "java -jar $microDepsFatJar"
+    Process process = microDepCMD.execute()
 }
