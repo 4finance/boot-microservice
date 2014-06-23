@@ -1,10 +1,11 @@
-package com.ofg.base
+package com.ofg.base.dsl
 
 import groovy.json.JsonSlurper
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
+//TODO: this needs a usage example (preferably as tests)
 class Matchers {
     
     static Matcher<String> equalsReferenceJson(String referenceJson) {

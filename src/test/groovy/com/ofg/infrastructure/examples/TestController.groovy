@@ -1,5 +1,6 @@
-package com.ofg.infrastructure.exception
+package com.ofg.infrastructure.examples
 
+import com.ofg.infrastructure.exception.BadParametersException
 import groovy.transform.TypeChecked
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,7 +17,7 @@ class TestController {
     @RequestMapping(value = "/test", produces="application/json", method = RequestMethod.POST)
     String test(@RequestBody @Valid TestRequest request, BindingResult result) {
         checkIfResultHasErrors(result)
-        return "Not OK"
+        return "OK"
     }
 
     private void checkIfResultHasErrors(BindingResult result) {

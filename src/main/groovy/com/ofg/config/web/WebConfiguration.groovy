@@ -1,7 +1,8 @@
 package com.ofg.config.web
-
+import com.ofg.infrastructure.filter.CorrelationIdFilter
 import groovy.transform.TypeChecked
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.embedded.FilterRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -13,5 +14,10 @@ class WebConfiguration {
     @Bean
     Filter requestBodyLoggingContextFilter(@Value('${request.payload.logging.maxlength:2000}') int maxPayloadLength) {
         return new RequestBodyLoggingContextFilter(maxPayloadLength)
+    }
+
+    @Bean
+    FilterRegistrationBean correlationHeaderFilter() {
+        return new FilterRegistrationBean(new CorrelationIdFilter())
     }
 }

@@ -1,8 +1,9 @@
-package com.ofg.base
+package com.ofg.base.dsl
 import com.github.tomakehurst.wiremock.client.MappingBuilder
 import com.github.tomakehurst.wiremock.client.WireMock
 import groovy.transform.TypeChecked
 
+//TODO: this needs a usage example (preferably as tests)
 @TypeChecked
 class WireMockHttpRequestMapper {
 

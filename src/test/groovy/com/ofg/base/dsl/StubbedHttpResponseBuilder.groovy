@@ -1,9 +1,10 @@
-package com.ofg.base
+package com.ofg.base.dsl
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder
 import groovy.transform.TypeChecked
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 
+//TODO: this needs a usage example (preferably as tests)
 @TypeChecked
 class StubbedHttpResponseBuilder {
 

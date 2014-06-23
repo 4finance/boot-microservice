@@ -1,5 +1,6 @@
 package com.ofg.base
 import com.ofg.config.Application
+import com.ofg.infrastructure.filter.CorrelationIdFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.context.ApplicationContext
@@ -23,7 +24,10 @@ abstract class MvcIntegrationSpec extends Specification {
     protected MockMvc mockMvc
 
     void setup() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build()
+        mockMvc = MockMvcBuilders.
+                webAppContextSetup(webApplicationContext).
+                addFilter(new CorrelationIdFilter()).
+                build()
     }
 
     def cleanup() {
