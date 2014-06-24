@@ -53,8 +53,6 @@ task addHashFile << {
 	new File("commitHash.txt").withWriter { it << proc.in.text }
 }
 
-build.dependsOn 'uptodate'
-
 jar {
 	dependsOn addHashFile
 	baseName = '' //TODO: fill this in
