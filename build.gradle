@@ -1,8 +1,7 @@
 buildscript {
-    repositories {	
-        maven { url "http://repo.spring.io/libs-snapshot" }
+    repositories {
         mavenLocal()
-        mavenCentral()
+        maven { url "http://repo.spring.io/libs-snapshot" }
         jcenter()
     }
     dependencies {
@@ -11,9 +10,7 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
 apply plugin: 'groovy'
-apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'sonar-runner'
@@ -23,8 +20,6 @@ apply plugin: 'uptodate'
 ext.versionPrefix = "CD"
 ext.buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
 ext.currentVersion = "${versionPrefix}-${buildNrLoc}"
-
-build.dependsOn 'uptodate'
 
 uploadArchives {
     repositories.mavenDeployer {
@@ -103,7 +98,7 @@ tasks.withType(GroovyCompile) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '1.12'
 }
 
 sourceSets {
