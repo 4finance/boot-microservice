@@ -1,4 +1,4 @@
-package com.ofg.infrastructure.filter
+package com.ofg.infrastructure.correlationid
 
 import groovy.transform.PackageScope
 import groovy.transform.TypeChecked
@@ -9,11 +9,15 @@ class CorrelationIdHolder {
     static final String CORRELATION_ID_HEADER = "correlationId"
     private static final ThreadLocal<String> id = new ThreadLocal<String>()
 
-    @PackageScope static void setId(String correlationId) {
+    @PackageScope static void set(String correlationId) {
         id.set(correlationId)
     }
 
-    static String getId() {
+    static String get() {
         return id.get()
+    }
+
+    @PackageScope static void remove() {
+        id.remove()
     }
 }

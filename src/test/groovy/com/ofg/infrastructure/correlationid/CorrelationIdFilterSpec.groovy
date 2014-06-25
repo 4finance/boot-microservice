@@ -1,11 +1,11 @@
-package com.ofg.infrastructure.filter
+package com.ofg.infrastructure.correlationid
 import com.ofg.base.MvcIntegrationSpec
 import groovy.transform.TypeChecked
 import org.slf4j.MDC
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MvcResult
 
-import static com.ofg.infrastructure.filter.CorrelationIdHolder.CORRELATION_ID_HEADER
+import static com.ofg.infrastructure.correlationid.CorrelationIdHolder.CORRELATION_ID_HEADER
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 
 @TypeChecked

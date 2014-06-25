@@ -1,6 +1,6 @@
 package com.ofg.base
 import com.ofg.config.Application
-import com.ofg.infrastructure.filter.CorrelationIdFilter
+import com.ofg.infrastructure.correlationid.CorrelationIdFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.context.ApplicationContext

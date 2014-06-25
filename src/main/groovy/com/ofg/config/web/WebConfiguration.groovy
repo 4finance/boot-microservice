@@ -1,5 +1,5 @@
 package com.ofg.config.web
-import com.ofg.infrastructure.filter.CorrelationIdFilter
+import com.ofg.infrastructure.correlationid.CorrelationIdFilter
 import groovy.transform.TypeChecked
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.embedded.FilterRegistrationBean
