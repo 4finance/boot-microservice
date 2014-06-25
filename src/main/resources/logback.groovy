@@ -9,7 +9,7 @@ statusListener(OnConsoleStatusListener)
 
 String rollingFile = "FILE"
 String console = "CONSOLE"
-String logPattern = "%d{HH:mm:ss.SSS} | %-5level | %thread | %logger{1} | %m%n%rEx"
+String logPattern = "%d{HH:mm:ss.SSS} | %-5level | %X{correlationId} | %thread | %logger{1} | %m%n%rEx"
 List whereToLog = [rollingFile, console]
 String scanTime = "1 minutes"
 String currentLogFile = "logs/application.log"

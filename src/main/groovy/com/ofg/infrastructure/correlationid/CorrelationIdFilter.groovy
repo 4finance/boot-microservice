@@ -30,7 +30,6 @@ class CorrelationIdFilter extends OncePerRequestFilter {
         String correlationId = getCorrelationIdFrom(request) ?: getCorrelationIdFrom(response)
         correlationId = createNewCorrIdIfEmpty(correlationId)
         CorrelationIdHolder.set(correlationId)
-        MDC.put(CorrelationIdHolder.CORRELATION_ID_HEADER, correlationId)
         addCorrelationIdToResponseIfNotPresent(response, correlationId)
     }
 
@@ -45,6 +44,7 @@ class CorrelationIdFilter extends OncePerRequestFilter {
     private withLoggingAs(String whereWasFound, Closure correlationIdGetter) {
         String correlationId = correlationIdGetter.call()
         if (hasText(correlationId)) {
+            MDC.put(CorrelationIdHolder.CORRELATION_ID_HEADER, correlationId)
             log.debug("Found correlationId in $whereWasFound: $correlationId")
         }
         return correlationId
@@ -54,6 +54,7 @@ class CorrelationIdFilter extends OncePerRequestFilter {
     private String createNewCorrIdIfEmpty(String currentCorrId) {
         if (!hasText(currentCorrId)) {
             currentCorrId = UUID.randomUUID().toString()
+            MDC.put(CorrelationIdHolder.CORRELATION_ID_HEADER, currentCorrId)
             log.info("Generating new correlationId: " + currentCorrId)
         }
         return currentCorrId

@@ -21,7 +21,7 @@ class AsyncController {
 
     @RequestMapping("/quotes")
     @ResponseBody
-    Callable<String>  callReturnigCorrelationIdAndUsingItInAsync() {
+    Callable<String> callReturnigCorrelationIdAndUsingItInAsync() {
         String correlationId = CorrelationIdHolder.get()
         log.debug("Correlation id present in main request thread: $correlationId")
         return withCorrelationId { asyncService.asyncWork() }
