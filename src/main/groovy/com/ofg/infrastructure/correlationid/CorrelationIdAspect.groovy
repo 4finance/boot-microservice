@@ -1,5 +1,6 @@
 package com.ofg.infrastructure.correlationid
 
+import groovy.util.logging.Slf4j
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
@@ -8,6 +9,7 @@ import org.aspectj.lang.annotation.Pointcut
 import java.util.concurrent.Callable
 
 @Aspect
+@Slf4j
 class CorrelationIdAspect {
 
     @Pointcut("@target(org.springframework.web.bind.annotation.RestController))")
@@ -25,6 +27,7 @@ class CorrelationIdAspect {
     @Around('anyControllerOrRestControllerWithPublicAsyncMethod()')
     Object wrapWithCorrelationId(ProceedingJoinPoint pjp) throws Throwable {
         Callable callable = pjp.proceed() as Callable
+        log.debug("Wrapping callable with correlation id [${CorrelationIdHolder.get()}]")
         return CorrelationCallable.withCorrelationId {
             callable.call()
         }
