@@ -3,18 +3,18 @@ buildscript {
         mavenLocal()
         maven { url "http://repo.spring.io/libs-snapshot" }
         jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
-        classpath("com.ofg:uptodate-gradle-plugin:0.0.2")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE"
+        classpath "com.ofg:uptodate-gradle-plugin:0.0.2"
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.3.0'
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
-apply plugin: 'sonar-runner'
-apply plugin: 'jacoco'
 apply plugin: 'uptodate'
 
 ext.versionPrefix = "CD"
@@ -110,28 +110,23 @@ sourceSets {
     }
 }
 
-sonarRunner {
-    sonarProperties {
-	//TODO: fill this
-        property "sonar.host.url", ""
-        property "sonar.junit.reportsPath", "build/test-results"
-    }
-}
-
-jacoco {
-    toolVersion = "0.7.0.201403182114"
-}
-
-buildscript {
-    dependencies {
-        classpath 'net.saliman:gradle-cobertura-plugin:2.2.2'
-    }
-}
-
 
 if(project.hasProperty("coverage")) {
-    apply plugin: 'cobertura'
     apply plugin: 'codenarc'
+    apply plugin: 'jacoco'
+    apply plugin: 'sonar-runner'
+    apply plugin: 'coveralls'
+
+    jacoco {
+        toolVersion = "0.7.0.201403182114"
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true // coveralls plugin depends on xml format report
+            html.enabled = true
+        }
+    }
 
     codenarc {
         configFile = file('config/codenarc/rules.groovy')
@@ -149,9 +144,14 @@ if(project.hasProperty("coverage")) {
     test {
         ignoreFailures = true
     }
-    
-    cobertura {
-        coverageFormats = ['html', 'xml']
+
+
+    sonarRunner {
+        sonarProperties {
+            //TODO: fill this
+            property "sonar.host.url", ""
+            property "sonar.junit.reportsPath", "build/test-results"
+        }
     }
    
 }

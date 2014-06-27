@@ -1,3 +1,9 @@
 language: groovy
 jdk:
 - oraclejdk8
+
+env:
+- TERM=dumb
+
+after_success:
+- ./gradlew jacocoTestReport coveralls -Pcoverage
