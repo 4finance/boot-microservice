@@ -125,13 +125,6 @@ sourceSets {
     }
 }
 
-sonarRunner {
-    sonarProperties {
-        //TODO: fill this
-        property "sonar.host.url", ""
-        property "sonar.junit.reportsPath", "build/test-results"
-    }
-}
 
 if(project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
