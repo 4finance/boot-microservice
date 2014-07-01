@@ -1,0 +1,9 @@
+{
+    "pl": {
+        "this": "payments",
+        "dependencies": {
+            "clients": "com.ofg.loans.pl.clients",
+            "loans": "com.ofg.loans.pl.backoffice-vivus-pl"
+        }
+    }
+}
