@@ -63,6 +63,10 @@ jar {
     from "commitHash.txt"
 }
 
+run {
+    systemProperties = System.properties
+}
+
 build.dependsOn 'uptodate'
 
 repositories {
