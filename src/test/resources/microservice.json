@@ -1,8 +1,0 @@
-{
-    "pl": {
-        "this": "payments",
-        "dependencies": {
-            "trustly": "com/ofg/trustly-adapter"
-        }
-    }
-}
