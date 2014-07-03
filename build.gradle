@@ -90,7 +90,7 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile("com.ofg:micro-deps:$microDepsVersion") {
+    compile("com.ofg:micro-deps-spring-config:0.0.2") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
@@ -118,7 +118,7 @@ tasks.withType(GroovyCompile) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.12'
+    gradleVersion = '2.0'
 }
 
 sourceSets {
@@ -177,6 +177,7 @@ if(project.hasProperty("coverage")) {
 
 }
 
+//TODO: Check if run mocks works after adding micro-deps-spring-config
 task runMocks << {
     String microDepsFatJar = buildscript.configurations.classpath.find { it.name.startsWith("micro-deps") }
     String microDepCMD = "java -jar $microDepsFatJar $zookeeperPort $zookeeperMockPort"

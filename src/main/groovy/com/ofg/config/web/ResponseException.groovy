@@ -6,5 +6,4 @@ import groovy.transform.TypeChecked
 
 @TypeChecked
 @InheritConstructors
-@PackageScope
 class ResponseException extends RuntimeException {}
