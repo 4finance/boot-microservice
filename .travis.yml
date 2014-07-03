@@ -2,6 +2,12 @@ language: groovy
 jdk:
 - oraclejdk7
 
+install:
+- true
+
+script:
+- ./gradlew build
+
 env:
 - TERM=dumb
 
