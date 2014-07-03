@@ -41,7 +41,6 @@ appender(rollingFile, RollingFileAppender) {
 }
 
 appender(console, ConsoleAppender) {
-    append = true
     encoder(PatternLayoutEncoder) {
         pattern = logPattern
     }
