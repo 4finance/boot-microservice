@@ -20,9 +20,4 @@ class WebConfiguration {
     FilterRegistrationBean correlationHeaderFilter() {
         return new FilterRegistrationBean(new CorrelationIdFilter())
     }
-
-    @Bean
-    Filter apiDocsCORSFilter() {
-        return new CORSFilter()
-    }
 }
