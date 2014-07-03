@@ -10,7 +10,7 @@ before_script:
  - "export JAVA_OPTS=-Xmx512m"
 
 script:
-- ./gradlew build
+- ./gradlew build --debug
 
 env:
 - TERM=dumb
