@@ -10,6 +10,7 @@ script:
 
 env:
 - TERM=dumb
+- -Xmx512m
 
 after_success:
 - ./gradlew test jacocoTestReport coveralls -Pcoverage
