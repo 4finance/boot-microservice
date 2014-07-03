@@ -1,26 +1,29 @@
 package com.ofg.examples
-
 import com.ofg.infrastructure.correlationid.CorrelationIdHolder
+import com.wordnik.swagger.annotations.Api
+import com.wordnik.swagger.annotations.ApiOperation
 import groovy.transform.PackageScope
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
+import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
 
 import java.util.concurrent.Callable
 
-import static com.ofg.infrastructure.correlationid.CorrelationCallable.withCorrelationId
-
 @TypeChecked
 @Controller
 @Slf4j
+@Api(value = "quotes", description = "Async quotes call to test correlation id")
 //TODO: set up AsyncTaskExecutor, as the default doesn't reuse threads
 class AsyncController {
     private AsyncService asyncService = new AsyncService()
 
-    @RequestMapping("/quotes")
+    @RequestMapping(value = "/quotes", produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
+    @ApiOperation(value = "Async call with CorrelationID",
+            notes = "This will asynchronously call the server, proving that correlation id works in that case")
     Callable<String> callReturnigCorrelationIdAndUsingItInAsync() {
         String correlationId = CorrelationIdHolder.get()
         log.debug("Correlation id present in main request thread: $correlationId")
