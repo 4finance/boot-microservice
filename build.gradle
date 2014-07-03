@@ -10,7 +10,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE")
         classpath("com.ofg:uptodate-gradle-plugin:0.0.2")
-        classpath("com.ofg:micro-deps:0.1.0:fatJar")
+        classpath("com.ofg:micro-deps:0.3.1:fatJar")
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.3.0'
     }
 }
@@ -43,7 +43,7 @@ ext {
     springBootVersion = '1.1.3.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.1'
-    microDepsVersion = '0.1.0'
+    microDepsVersion = '0.3.1'
 
     zookeeperPort = 2181
     zookeeperMockPort = 18081

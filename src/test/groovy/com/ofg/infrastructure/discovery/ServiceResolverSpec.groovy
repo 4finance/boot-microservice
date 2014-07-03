@@ -2,6 +2,7 @@ package com.ofg.infrastructure.discovery
 import com.ofg.base.IntegrationSpec
 import com.ofg.infrastructure.discovery.watcher.DependencyWatcher
 import org.springframework.beans.factory.annotation.Autowired
+import com.google.common.base.Optional
 
 class ServiceResolverSpec extends IntegrationSpec {    
     
@@ -11,8 +12,7 @@ class ServiceResolverSpec extends IntegrationSpec {
     
     def 'should resolve urls properly'() {
         expect:
-            serviceResolver.getUrl("trustly") == Optional.of('http://localhost:8080/rest')        
-        
+            serviceResolver.getUrl("trustly") == Optional.of('http://localhost:8080/rest')
     }
    
 }

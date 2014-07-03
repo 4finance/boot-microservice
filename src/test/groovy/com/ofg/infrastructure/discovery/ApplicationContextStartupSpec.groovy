@@ -1,6 +1,6 @@
 package com.ofg.infrastructure.discovery
 
-import com.ofg.infrastructure.discovery.watcher.NoInstancesRunningException
+import com.ofg.infrastructure.discovery.watcher.presence.checker.NoInstancesRunningException
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import spock.lang.Specification
 
@@ -19,7 +19,7 @@ class ApplicationContextStartupSpec extends Specification {
             applicationContext.refresh()
         then:    
             Throwable thrown = thrown(Throwable)
-            extractRootCause(thrown).class == NoInstancesRunningException                   
+            extractRootCause(thrown).class == NoInstancesRunningException
         cleanup:
             applicationContext.close()
     }
