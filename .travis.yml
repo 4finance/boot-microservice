@@ -5,12 +5,15 @@ jdk:
 install:
 - true
 
+before_script:
+ - "echo $JAVA_OPTS"
+ - "export JAVA_OPTS=-Xmx512m"
+
 script:
 - ./gradlew build
 
 env:
 - TERM=dumb
-- -Xmx512m
 
 after_success:
 - ./gradlew test jacocoTestReport coveralls -Pcoverage
