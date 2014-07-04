@@ -5,6 +5,7 @@ import groovy.transform.TypeChecked
 import org.slf4j.MDC
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MvcResult
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
 @TypeChecked
 class CorrelationIdFilterSpec extends MvcIntegrationSpec {
@@ -40,11 +41,12 @@ class CorrelationIdFilterSpec extends MvcIntegrationSpec {
     }
 
     private MvcResult sendPingWithCorrelationId(String passedCorrelationId) {
-        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get('/ping').accept(MediaType.TEXT_PLAIN).header(CorrelationIdHolder.CORRELATION_ID_HEADER, passedCorrelationId)).andReturn()
+        mockMvc.perform(MockMvcRequestBuilders.get('/ping').accept(MediaType.TEXT_PLAIN)
+                .header(CorrelationIdHolder.CORRELATION_ID_HEADER, passedCorrelationId)).andReturn()
     }
 
     private MvcResult sendPingWithoutCorrelationId() {
-        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get('/ping').accept(MediaType.TEXT_PLAIN)).andReturn()
+        mockMvc.perform(MockMvcRequestBuilders.get('/ping').accept(MediaType.TEXT_PLAIN)).andReturn()
     }
 
     private String getCorrelationIdFromResonseHeader(MvcResult mvcResult) {
