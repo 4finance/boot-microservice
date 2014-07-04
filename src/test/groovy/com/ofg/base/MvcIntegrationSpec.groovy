@@ -1,6 +1,6 @@
 package com.ofg.base
-import com.ofg.config.Application
-import com.ofg.infrastructure.correlationid.CorrelationIdFilter
+
+import com.ofg.microservice.infrastructure.correlationid.CorrelationIdFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.context.ApplicationContext
@@ -12,10 +12,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 import spock.lang.Specification
 
-import static com.ofg.config.Profiles.TEST
+import static com.ofg.microservice.config.Profiles.TEST
 
 @WebAppConfiguration
-@ContextConfiguration(classes = [Application], loader = SpringApplicationContextLoader)
+@ContextConfiguration(classes = [ServiceDiscoveryStubbingApplicationConfiguration], loader = SpringApplicationContextLoader)
 @ActiveProfiles(TEST)
 abstract class MvcIntegrationSpec extends Specification {
     
