@@ -7,7 +7,7 @@ class BadParameterError {
     String field
     String message
 
-    BadParameterError(field, message) {
+    BadParameterError(String field, String message) {
         this.field = field
         this.message = message
     }

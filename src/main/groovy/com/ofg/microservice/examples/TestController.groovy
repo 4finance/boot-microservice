@@ -1,4 +1,4 @@
-package com.ofg.microservice.infrastructure.examples
+package com.ofg.microservice.examples
 
 import com.ofg.microservice.infrastructure.exception.BadParametersException
 import groovy.transform.TypeChecked

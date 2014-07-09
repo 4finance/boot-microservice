@@ -1,15 +1,15 @@
 package com.ofg.microservice.config.web
-
+import com.ofg.microservice.config.web.errors.HttpStatusVerifier
 import org.springframework.http.HttpStatus
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class RestUtilSpec extends Specification {
+class HttpStatusVerifierSpec extends Specification {
 
     @Unroll
     def 'should return [#isError] if http status series equals [#httpStatusSeries]'() {
         expect:
-            RestUtil.isError(httpStatus) == isError
+            HttpStatusVerifier.isError(httpStatus) == isError
         where:
             httpStatus                          || isError
             HttpStatus.ACCEPTED                 || false

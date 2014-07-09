@@ -41,6 +41,6 @@ class ControllerExceptionHandler {
     }
 
     private BadParameterError getBindError(ObjectError error) {
-        new BadParameterError(error.getProperties().get("field"), error.getDefaultMessage())
+        new BadParameterError(error.getProperties().get("field").toString(), error.getDefaultMessage())
     }
 }

@@ -1,4 +1,6 @@
 package com.ofg.microservice.config.web
+
+import com.ofg.microservice.config.web.errors.ResponseRethrowingErrorHandler
 import groovy.transform.TypeChecked
 import org.springframework.http.HttpMethod
 import org.springframework.http.client.BufferingClientHttpRequestFactory
@@ -16,9 +18,9 @@ class RestTemplate extends org.springframework.web.client.RestTemplate {
     }
     
     public <T> T putForObject(String url, Object request, Class<T> responseType) throws RestClientException {
-        RequestCallback requestCallback = httpEntityCallback(request, responseType);
+        RequestCallback requestCallback = httpEntityCallback(request, responseType)
         HttpMessageConverterExtractor<T> responseExtractor =
-                new HttpMessageConverterExtractor<T>(responseType, getMessageConverters());
-        return execute(url, HttpMethod.PUT, requestCallback, responseExtractor);
+                new HttpMessageConverterExtractor<T>(responseType, getMessageConverters())
+        return execute(url, HttpMethod.PUT, requestCallback, responseExtractor)
     }
 }

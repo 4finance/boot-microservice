@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration
 class SwaggerConfiguration {
 
     @Bean
-    SwaggerSpringMvcPlugin swaggerSpringMvcPlugin(@Value('${rest.api.version}') String restApiVersion,
-                                                       SpringSwaggerConfig springSwaggerConfig){
+    SwaggerSpringMvcPlugin swaggerSpringMvcPlugin(
+            @Value('${rest.api.version}') String restApiVersion, SpringSwaggerConfig springSwaggerConfig) {
         return new SwaggerSpringMvcPlugin(springSwaggerConfig)
                 .apiInfo(apiInfo())
                 .apiVersion(restApiVersion)
@@ -31,5 +31,4 @@ class SwaggerConfiguration {
                 "My Apps API License URL"
         )
     }
-
 }
