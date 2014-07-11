@@ -1,6 +1,6 @@
 {
     "pl": {
-        "this": "com.ofg.CHANGETHIS",
+        "this": "com/ofg/CHANGETHIS",
         "dependencies": {
 
         }
