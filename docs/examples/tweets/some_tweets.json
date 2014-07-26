@@ -1,0 +1,1804 @@
+[
+    {
+        "created_at": "Sat Jul 26 09:38:57 +0000 2014",
+        "id": 492967299297845248,
+        "id_str": "492967299297845248",
+        "text": "Strong, motivated teams: Trust is at the foundation of all agile methods. This motivates all involved and builds strong teams.",
+        "source": "\u003ca href=\"http:\/\/tweetadder.com\" rel=\"nofollow\"\u003eTweetAdder v4\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 785680898,
+            "id_str": "785680898",
+            "name": "FreeScrumEbook",
+            "screen_name": "FreeScrumEbook",
+            "location": "UK",
+            "description": "In the spirit of Agile we provide free information.  We give so that we may receive. Free Scrum Ebook at http:\/\/t.co\/9PoJHcIf",
+            "url": "http:\/\/t.co\/9PoJHcIf",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/9PoJHcIf",
+                            "expanded_url": "http:\/\/bit.ly\/T9xkSY",
+                            "display_url": "bit.ly\/T9xkSY",
+                            "indices": [0, 20]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/9PoJHcIf",
+                            "expanded_url": "http:\/\/bit.ly\/T9xkSY",
+                            "display_url": "bit.ly\/T9xkSY",
+                            "indices": [105, 125]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 5890,
+            "friends_count": 5287,
+            "listed_count": 78,
+            "created_at": "Mon Aug 27 23:09:30 +0000 2012",
+            "favourites_count": 2,
+            "utc_offset": 7200,
+            "time_zone": "Amsterdam",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 6143,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/2550375211\/power-of-scrum_cover_normal.jpg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/2550375211\/power-of-scrum_cover_normal.jpg",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 09:15:10 +0000 2014",
+        "id": 492961315070439424,
+        "id_str": "492961315070439424",
+        "text": "Buyers are taking control of their own buying process: http:\/\/t.co\/xDUuuD1pfy Make yourself discoverable to potential customers",
+        "source": "\u003ca href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\"\u003eHootsuite\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 17093617,
+            "id_str": "17093617",
+            "name": "Hootsuite",
+            "screen_name": "hootsuite",
+            "location": "Vancouver, Canada",
+            "description": "Social media news and tips from the world\u2019s most widely used social relationship platform. Sign up for free: http:\/\/t.co\/Zmrb0hY23s Support: @Hootsuite_Help",
+            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+                            "expanded_url": "http:\/\/blog.hootsuite.com",
+                            "display_url": "blog.hootsuite.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/Zmrb0hY23s",
+                            "expanded_url": "http:\/\/ow.ly\/uulpL",
+                            "display_url": "ow.ly\/uulpL",
+                            "indices": [109, 131]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 6025005,
+            "friends_count": 1606764,
+            "listed_count": 38588,
+            "created_at": "Fri Oct 31 22:26:54 +0000 2008",
+            "favourites_count": 2234,
+            "utc_offset": -25200,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 13022,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "FFFFFF",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/17093617\/1401834341",
+            "profile_link_color": "00AEEF",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "EEEEEE",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 9,
+        "favorite_count": 13,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/xDUuuD1pfy",
+                    "expanded_url": "http:\/\/ow.ly\/zw7qd",
+                    "display_url": "ow.ly\/zw7qd",
+                    "indices": [55, 77]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 09:05:22 +0000 2014",
+        "id": 492958847460716544,
+        "id_str": "492958847460716544",
+        "text": "@tgrall go, go, go !",
+        "source": "\u003ca href=\"http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\" rel=\"nofollow\"\u003eTwitter for Mac\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": 492952779762462720,
+        "in_reply_to_status_id_str": "492952779762462720",
+        "in_reply_to_user_id": 14338755,
+        "in_reply_to_user_id_str": "14338755",
+        "in_reply_to_screen_name": "tgrall",
+        "user": {
+            "id": 14441858,
+            "id_str": "14441858",
+            "name": "Guillaume Laforge",
+            "screen_name": "glaforge",
+            "location": "Paris, France",
+            "description": "Groovy project manager",
+            "url": "http:\/\/t.co\/8ieqmn4cfT",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/8ieqmn4cfT",
+                            "expanded_url": "http:\/\/glaforge.appspot.com",
+                            "display_url": "glaforge.appspot.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 8431,
+            "friends_count": 309,
+            "listed_count": 642,
+            "created_at": "Sat Apr 19 09:10:53 +0000 2008",
+            "favourites_count": 1052,
+            "utc_offset": 7200,
+            "time_zone": "Paris",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 24208,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "1A1B1F",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme9\/bg.gif",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme9\/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/480309342135017472\/kveVXIxM_normal.png",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/480309342135017472\/kveVXIxM_normal.png",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/14441858\/1398198938",
+            "profile_link_color": "2FC2EF",
+            "profile_sidebar_border_color": "181A1E",
+            "profile_sidebar_fill_color": "252429",
+            "profile_text_color": "666666",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [],
+            "user_mentions": [
+                {
+                    "screen_name": "tgrall",
+                    "name": "Tugdual Grall",
+                    "id": 14338755,
+                    "id_str": "14338755",
+                    "indices": [0, 7]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 09:01:42 +0000 2014",
+        "id": 492957922516008960,
+        "id_str": "492957922516008960",
+        "text": "Podejrza\u0142am u Ala Ma Kota i te\u017c mam pomadk\u0119 peelinguj\u0105c\u0105! :) Jest rewelacyjna. Wszystkiego najlepszego dla ka\u017cdej... http:\/\/t.co\/iZjT20FEVI",
+        "source": "\u003ca href=\"http:\/\/www.facebook.com\/twitter\" rel=\"nofollow\"\u003eFacebook\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 1407515424,
+            "id_str": "1407515424",
+            "name": "Goodtotry",
+            "screen_name": "GoodtotryBlog",
+            "location": "",
+            "description": "",
+            "url": "http:\/\/t.co\/aHV9X76OBh",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/aHV9X76OBh",
+                            "expanded_url": "http:\/\/goodtotry.blogspot.com",
+                            "display_url": "goodtotry.blogspot.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 14,
+            "friends_count": 11,
+            "listed_count": 0,
+            "created_at": "Mon May 06 11:41:35 +0000 2013",
+            "favourites_count": 0,
+            "utc_offset": 7200,
+            "time_zone": "Warsaw",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 1522,
+            "lang": "pl",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "ACDED6",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme18\/bg.gif",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme18\/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/378800000408618802\/654e56163e35222eb580cd7e716f5d3b_normal.png",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/378800000408618802\/654e56163e35222eb580cd7e716f5d3b_normal.png",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1407515424\/1378278737",
+            "profile_link_color": "038543",
+            "profile_sidebar_border_color": "EEEEEE",
+            "profile_sidebar_fill_color": "F6F6F6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/iZjT20FEVI",
+                    "expanded_url": "http:\/\/fb.me\/2o902L0Vt",
+                    "display_url": "fb.me\/2o902L0Vt",
+                    "indices": [117, 139]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "pl"
+    },
+    {
+        "created_at": "Sat Jul 26 09:00:07 +0000 2014",
+        "id": 492957523704414208,
+        "id_str": "492957523704414208",
+        "text": "Thoughtworker @dpjoyce Learning to See, Learning to Lead; The Vanguard Method #agileafrica - http:\/\/t.co\/gNShY4BVdl",
+        "source": "\u003ca href=\"http:\/\/sproutsocial.com\" rel=\"nofollow\"\u003eSprout Social\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 23009949,
+            "id_str": "23009949",
+            "name": "ThoughtWorks",
+            "screen_name": "thoughtworks",
+            "location": "",
+            "description": "A community of passionate individuals whose purpose is to revolutionize software design, creation and delivery, while advocating for positive social change.",
+            "url": "http:\/\/t.co\/MfDvjQZ9Ut",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/MfDvjQZ9Ut",
+                            "expanded_url": "http:\/\/www.thoughtworks.com",
+                            "display_url": "thoughtworks.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 20740,
+            "friends_count": 7594,
+            "listed_count": 767,
+            "created_at": "Fri Mar 06 01:20:09 +0000 2009",
+            "favourites_count": 859,
+            "utc_offset": -18000,
+            "time_zone": "Central Time (US & Canada)",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 6974,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "FFFFFF",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/378800000164187732\/4zhDcyvE.png",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/378800000164187732\/4zhDcyvE.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/459401977462407168\/reORxIro_normal.png",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/459401977462407168\/reORxIro_normal.png",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/23009949\/1404922780",
+            "profile_link_color": "F867AC",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "A7A7AA",
+            "profile_text_color": "292929",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 1,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "agileafrica",
+                    "indices": [78, 90]
+                }
+            ],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/gNShY4BVdl",
+                    "expanded_url": "http:\/\/bit.ly\/1zWKAi6",
+                    "display_url": "bit.ly\/1zWKAi6",
+                    "indices": [93, 115]
+                }
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "dpjoyce",
+                    "name": "David Joyce",
+                    "id": 38150687,
+                    "id_str": "38150687",
+                    "indices": [14, 22]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 08:41:15 +0000 2014",
+        "id": 492952779762462720,
+        "id_str": "492952779762462720",
+        "text": "Breizhman : here we go ! (2.7k \/ 80k \/ 20k ) http:\/\/t.co\/SisIc7y36v",
+        "source": "\u003ca href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter for iPhone\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 14338755,
+            "id_str": "14338755",
+            "name": "Tugdual Grall",
+            "screen_name": "tgrall",
+            "location": "It depends!",
+            "description": "Happy geek and slow triathlete. Developer of @resultri @NantesJUG Leader. Technical Evangelist PTS @MongoDB",
+            "url": "http:\/\/t.co\/o6cpdGEw1H",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/o6cpdGEw1H",
+                            "expanded_url": "http:\/\/about.me\/tugdual",
+                            "display_url": "about.me\/tugdual",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 1767,
+            "friends_count": 666,
+            "listed_count": 102,
+            "created_at": "Wed Apr 09 03:46:45 +0000 2008",
+            "favourites_count": 40,
+            "utc_offset": -7200,
+            "time_zone": "Greenland",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 6747,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "709397",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme6\/bg.gif",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme6\/bg.gif",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/420663813042479104\/UyAEiEiy_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/420663813042479104\/UyAEiEiy_normal.jpeg",
+            "profile_link_color": "3C8524",
+            "profile_sidebar_border_color": "86A4A6",
+            "profile_sidebar_fill_color": "A0C5C7",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": true
+        },
+        "geo": {
+            "type": "Point",
+            "coordinates": [48.01962802, -2.17232795]
+        },
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [-2.17232795, 48.01962802]
+        },
+        "place": {
+            "id": "0e4db861b7b77505",
+            "url": "https:\/\/api.twitter.com\/1.1\/geo\/id\/0e4db861b7b77505.json",
+            "place_type": "city",
+            "name": "Paimpont",
+            "full_name": "Paimpont, Ille-et-Vilaine",
+            "country_code": "FR",
+            "country": "France",
+            "contained_within": [],
+            "bounding_box": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-2.2897065, 47.9792103],
+                        [-2.0698025, 47.9792103],
+                        [-2.0698025, 48.0857495],
+                        [-2.2897065, 48.0857495]
+                    ]
+                ]
+            },
+            "attributes": {}
+        },
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 1,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [],
+            "user_mentions": [],
+            "media": [
+                {
+                    "id": 492952762960080897,
+                    "id_str": "492952762960080897",
+                    "indices": [45, 67],
+                    "media_url": "http:\/\/pbs.twimg.com\/media\/BtdR7RdIcAE9248.jpg",
+                    "media_url_https": "https:\/\/pbs.twimg.com\/media\/BtdR7RdIcAE9248.jpg",
+                    "url": "http:\/\/t.co\/SisIc7y36v",
+                    "display_url": "pic.twitter.com\/SisIc7y36v",
+                    "expanded_url": "http:\/\/twitter.com\/tgrall\/status\/492952779762462720\/photo\/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1024,
+                            "h": 768,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "extended_entities": {
+            "media": [
+                {
+                    "id": 492952762960080897,
+                    "id_str": "492952762960080897",
+                    "indices": [45, 67],
+                    "media_url": "http:\/\/pbs.twimg.com\/media\/BtdR7RdIcAE9248.jpg",
+                    "media_url_https": "https:\/\/pbs.twimg.com\/media\/BtdR7RdIcAE9248.jpg",
+                    "url": "http:\/\/t.co\/SisIc7y36v",
+                    "display_url": "pic.twitter.com\/SisIc7y36v",
+                    "expanded_url": "http:\/\/twitter.com\/tgrall\/status\/492952779762462720\/photo\/1",
+                    "type": "photo",
+                    "sizes": {
+                        "medium": {
+                            "w": 600,
+                            "h": 450,
+                            "resize": "fit"
+                        },
+                        "large": {
+                            "w": 1024,
+                            "h": 768,
+                            "resize": "fit"
+                        },
+                        "thumb": {
+                            "w": 150,
+                            "h": 150,
+                            "resize": "crop"
+                        },
+                        "small": {
+                            "w": 340,
+                            "h": 255,
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 08:15:11 +0000 2014",
+        "id": 492946218008322048,
+        "id_str": "492946218008322048",
+        "text": "\u201cLinkedIn favours profiles that are 100% complete\u201d http:\/\/t.co\/dDHhbqtEj6 Tips to get found",
+        "source": "\u003ca href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\"\u003eHootsuite\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 17093617,
+            "id_str": "17093617",
+            "name": "Hootsuite",
+            "screen_name": "hootsuite",
+            "location": "Vancouver, Canada",
+            "description": "Social media news and tips from the world\u2019s most widely used social relationship platform. Sign up for free: http:\/\/t.co\/Zmrb0hY23s Support: @Hootsuite_Help",
+            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+                            "expanded_url": "http:\/\/blog.hootsuite.com",
+                            "display_url": "blog.hootsuite.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/Zmrb0hY23s",
+                            "expanded_url": "http:\/\/ow.ly\/uulpL",
+                            "display_url": "ow.ly\/uulpL",
+                            "indices": [109, 131]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 6025005,
+            "friends_count": 1606764,
+            "listed_count": 38588,
+            "created_at": "Fri Oct 31 22:26:54 +0000 2008",
+            "favourites_count": 2234,
+            "utc_offset": -25200,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 13022,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "FFFFFF",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/17093617\/1401834341",
+            "profile_link_color": "00AEEF",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "EEEEEE",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 40,
+        "favorite_count": 31,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/dDHhbqtEj6",
+                    "expanded_url": "http:\/\/ow.ly\/zw6GL",
+                    "display_url": "ow.ly\/zw6GL",
+                    "indices": [51, 73]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:57:37 +0000 2014",
+        "id": 492941797333934080,
+        "id_str": "492941797333934080",
+        "text": "Check the hour when this was tweeted! ;-) \u201c@_axel22_: #sbt name hashing - checking this out now https:\/\/t.co\/OGyZQ417Io\u201d",
+        "source": "\u003ca href=\"http:\/\/twitter.com\/#!\/download\/ipad\" rel=\"nofollow\"\u003eTwitter for iPad\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": 492824579199741952,
+        "in_reply_to_status_id_str": "492824579199741952",
+        "in_reply_to_user_id": 474974342,
+        "in_reply_to_user_id_str": "474974342",
+        "in_reply_to_screen_name": "_axel22_",
+        "user": {
+            "id": 26209148,
+            "id_str": "26209148",
+            "name": "Grzegorz Kossakowski",
+            "screen_name": "gkossakowski",
+            "location": "Warsaw",
+            "description": "Programmer, thinker, food and coffee enthusiast. Hacking #scala compiler @typesafe.",
+            "url": "http:\/\/t.co\/UlY7gHW8kC",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/UlY7gHW8kC",
+                            "expanded_url": "http:\/\/github.com\/gkossakowski",
+                            "display_url": "github.com\/gkossakowski",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 1209,
+            "friends_count": 205,
+            "listed_count": 59,
+            "created_at": "Tue Mar 24 10:03:50 +0000 2009",
+            "favourites_count": 63,
+            "utc_offset": 7200,
+            "time_zone": "Warsaw",
+            "geo_enabled": true,
+            "verified": false,
+            "statuses_count": 1327,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/443401638812725249\/froE9-YT_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/443401638812725249\/froE9-YT_normal.jpeg",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "sbt",
+                    "indices": [54, 58]
+                }
+            ],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/OGyZQ417Io",
+                    "expanded_url": "https:\/\/groups.google.com\/forum\/#!topic\/play-framework\/S_-wYW5Tcvw",
+                    "display_url": "groups.google.com\/forum\/#!topic\/\u2026",
+                    "indices": [96, 119]
+                }
+            ],
+            "user_mentions": [
+                {
+                    "screen_name": "_axel22_",
+                    "name": "Aleksandar Prokopec",
+                    "id": 474974342,
+                    "id_str": "474974342",
+                    "indices": [43, 52]
+                }
+            ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:53:48 +0000 2014",
+        "id": 492940836053610496,
+        "id_str": "492940836053610496",
+        "text": "http:\/\/t.co\/YteE0G1kyZ http:\/\/t.co\/a4PNPw4OTr",
+        "source": "\u003ca href=\"http:\/\/www.linkedin.com\/\" rel=\"nofollow\"\u003eLinkedIn\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 203073011,
+            "id_str": "203073011",
+            "name": "Tomek Kaczanowski",
+            "screen_name": "tkaczanowski",
+            "location": "Krakow, Poland",
+            "description": "Java, TDD, test-automation, TestNG enthusiast, technical team leader, Kanban, http:\/\/t.co\/PpXfnDKz blogger",
+            "url": "http:\/\/t.co\/NyIpGmJzIs",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/NyIpGmJzIs",
+                            "expanded_url": "http:\/\/practicalunittesting.com",
+                            "display_url": "practicalunittesting.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/PpXfnDKz",
+                            "expanded_url": "http:\/\/kaczanowscy.pl\/tomek",
+                            "display_url": "kaczanowscy.pl\/tomek",
+                            "indices": [78, 98]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 460,
+            "friends_count": 24,
+            "listed_count": 12,
+            "created_at": "Fri Oct 15 13:35:30 +0000 2010",
+            "favourites_count": 4,
+            "utc_offset": 7200,
+            "time_zone": "Warsaw",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 791,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "000000",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/584121004\/eciayn1ktfyawsoxzcru.jpeg",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/584121004\/eciayn1ktfyawsoxzcru.jpeg",
+            "profile_background_tile": true,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/2326119829\/2b29qo07tdld789p1d2d_normal.png",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/2326119829\/2b29qo07tdld789p1d2d_normal.png",
+            "profile_link_color": "990000",
+            "profile_sidebar_border_color": "DFDFDF",
+            "profile_sidebar_fill_color": "F3F3F3",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/YteE0G1kyZ",
+                    "expanded_url": "http:\/\/pbs.twimg.com",
+                    "display_url": "pbs.twimg.com",
+                    "indices": [0, 22]
+                },
+                {
+                    "url": "http:\/\/t.co\/a4PNPw4OTr",
+                    "expanded_url": "http:\/\/lnkd.in\/d7-Ej4j",
+                    "display_url": "lnkd.in\/d7-Ej4j",
+                    "indices": [23, 45]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "und"
+    },
+    {
+        "created_at": "Sat Jul 26 07:52:29 +0000 2014",
+        "id": 492940505018552320,
+        "id_str": "492940505018552320",
+        "text": "How OOP is implemented in most common imperative langs is probably the biggest misunderstanding in the millenarian history of engineering",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 142589904,
+            "id_str": "142589904",
+            "name": "Mario Fusco",
+            "screen_name": "mariofusco",
+            "location": "Milan, Italy",
+            "description": "RedHatter, Drools core developer, Milano Jug coordinator, frequent speaker & co-author of Java 8 in Action. A functional mind hosted in an object oriented brain",
+            "url": "https:\/\/t.co\/sBWK3Dln7F",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https:\/\/t.co\/sBWK3Dln7F",
+                            "expanded_url": "https:\/\/github.com\/mariofusco\/",
+                            "display_url": "github.com\/mariofusco\/",
+                            "indices": [0, 23]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 3876,
+            "friends_count": 187,
+            "listed_count": 290,
+            "created_at": "Tue May 11 07:34:02 +0000 2010",
+            "favourites_count": 0,
+            "utc_offset": 7200,
+            "time_zone": "Rome",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 4998,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "FFFFFF",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/111751460\/liberation.png",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/111751460\/liberation.png",
+            "profile_background_tile": true,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/3424607887\/2db11a04674105094bf5ee315d97612f_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/3424607887\/2db11a04674105094bf5ee315d97612f_normal.jpeg",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/142589904\/1398362643",
+            "profile_link_color": "117733",
+            "profile_sidebar_border_color": "E7E7E7",
+            "profile_sidebar_fill_color": "E7E7E7",
+            "profile_text_color": "000000",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": true
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 1,
+        "favorite_count": 2,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:30:37 +0000 2014",
+        "id": 492935000489467904,
+        "id_str": "492935000489467904",
+        "text": "Simplified UI in Oracle Applications Cloud https:\/\/t.co\/0DQChSHZpG",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/0DQChSHZpG",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/soacommunity\/entry\/simplified_ui_in_oracle_applications",
+                    "display_url": "blogs.oracle.com\/soacommunity\/e\u2026",
+                    "indices": [43, 66]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "fr"
+    },
+    {
+        "created_at": "Sat Jul 26 07:29:23 +0000 2014",
+        "id": 492934693512572928,
+        "id_str": "492934693512572928",
+        "text": "Enhance AutoVue's Performance with streaming files https:\/\/t.co\/6GEkYz3zOj",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/6GEkYz3zOj",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/enterprisevisualization\/entry\/enhance_autovue_s_performance_with",
+                    "display_url": "blogs.oracle.com\/enterprisevisu\u2026",
+                    "indices": [51, 74]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:29:02 +0000 2014",
+        "id": 492934605205696512,
+        "id_str": "492934605205696512",
+        "text": "Oracle Database 12c: INTERACTIVE QUICK REFERENCE http:\/\/t.co\/UazgDqkAzt",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/UazgDqkAzt",
+                    "expanded_url": "http:\/\/www.oracle.com\/webfolder\/technetwork\/tutorials\/obe\/db\/12c\/r1\/poster\/OUTPUT_poster\/poster.html",
+                    "display_url": "oracle.com\/webfolder\/tech\u2026",
+                    "indices": [49, 71]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:28:49 +0000 2014",
+        "id": 492934549102682113,
+        "id_str": "492934549102682113",
+        "text": "What's New in SOA Suite 12c - Unified Interface for Service Bus and Event Processing https:\/\/t.co\/XrI3jPsvel",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/XrI3jPsvel",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/SOA\/entry\/what_s_new_in_soa1",
+                    "display_url": "blogs.oracle.com\/SOA\/entry\/what\u2026",
+                    "indices": [85, 108]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:28:06 +0000 2014",
+        "id": 492934369859092480,
+        "id_str": "492934369859092480",
+        "text": "The Case for Stand-alone Rating System https:\/\/t.co\/zJo7we7z5V",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/zJo7we7z5V",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/insurance\/entry\/the_case_for_stand_alone",
+                    "display_url": "blogs.oracle.com\/insurance\/entr\u2026",
+                    "indices": [39, 62]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:27:51 +0000 2014",
+        "id": 492934306827087872,
+        "id_str": "492934306827087872",
+        "text": "Understanding Oracle Workforce Reputation Management https:\/\/t.co\/2tloyON2aA",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/2tloyON2aA",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/applications\/entry\/understanding_oracle_workforce_reputation_management",
+                    "display_url": "blogs.oracle.com\/applications\/e\u2026",
+                    "indices": [53, 76]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:27:21 +0000 2014",
+        "id": 492934181333499904,
+        "id_str": "492934181333499904",
+        "text": "How Does a 724% Return on Your Salesforce Automation Investment Sound? https:\/\/t.co\/vIgZeYTL5H",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 371309903,
+            "id_str": "371309903",
+            "name": "MAX",
+            "screen_name": "dbms_output",
+            "location": "",
+            "description": "Oracle Certified Professional Advanced PL\/SQL Developer",
+            "url": null,
+            "entities": {
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 99,
+            "friends_count": 71,
+            "listed_count": 5,
+            "created_at": "Sat Sep 10 16:09:24 +0000 2011",
+            "favourites_count": 0,
+            "utc_offset": 21600,
+            "time_zone": "Ekaterinburg",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 24460,
+            "lang": "ru",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png",
+            "profile_link_color": "0084B4",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": true,
+            "default_profile_image": true,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 0,
+        "favorite_count": 0,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "https:\/\/t.co\/vIgZeYTL5H",
+                    "expanded_url": "https:\/\/blogs.oracle.com\/applications\/entry\/how_does_a_724_return",
+                    "display_url": "blogs.oracle.com\/applications\/e\u2026",
+                    "indices": [71, 94]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:15:09 +0000 2014",
+        "id": 492931108439224320,
+        "id_str": "492931108439224320",
+        "text": "10 easy ways to get more Twitter followers: http:\/\/t.co\/LHTS3ce6jw",
+        "source": "\u003ca href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\"\u003eHootsuite\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 17093617,
+            "id_str": "17093617",
+            "name": "Hootsuite",
+            "screen_name": "hootsuite",
+            "location": "Vancouver, Canada",
+            "description": "Social media news and tips from the world\u2019s most widely used social relationship platform. Sign up for free: http:\/\/t.co\/Zmrb0hY23s Support: @Hootsuite_Help",
+            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/3Xvuxw2JEG",
+                            "expanded_url": "http:\/\/blog.hootsuite.com",
+                            "display_url": "blog.hootsuite.com",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/Zmrb0hY23s",
+                            "expanded_url": "http:\/\/ow.ly\/uulpL",
+                            "display_url": "ow.ly\/uulpL",
+                            "indices": [109, 131]
+                        }
+                    ]
+                }
+            },
+            "protected": false,
+            "followers_count": 6025005,
+            "friends_count": 1606764,
+            "listed_count": 38588,
+            "created_at": "Fri Oct 31 22:26:54 +0000 2008",
+            "favourites_count": 2234,
+            "utc_offset": -25200,
+            "time_zone": "Pacific Time (US & Canada)",
+            "geo_enabled": false,
+            "verified": true,
+            "statuses_count": 13022,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "FFFFFF",
+            "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/491618833099014145\/iT7oZe6f.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/473952620160090113\/nlkoo80h_normal.jpeg",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/17093617\/1401834341",
+            "profile_link_color": "00AEEF",
+            "profile_sidebar_border_color": "FFFFFF",
+            "profile_sidebar_fill_color": "EEEEEE",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 31,
+        "favorite_count": 47,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "url": "http:\/\/t.co\/LHTS3ce6jw",
+                    "expanded_url": "http:\/\/ow.ly\/zw7ug",
+                    "display_url": "ow.ly\/zw7ug",
+                    "indices": [44, 66]
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+    },
+    {
+        "created_at": "Sat Jul 26 07:13:18 +0000 2014",
+        "id": 492930646252457984,
+        "id_str": "492930646252457984",
+        "text": "Try in groovy: \ndef x = '* abc' - (~\/^\\*\\s+\/)\nassert x == 'abc'\nIsn't it great?",
+        "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+            "id": 1490888982,
+            "id_str": "1490888982",
+            "name": "Andrey Hihlovskiy",
+            "screen_name": "AndreyHihlovski",
+            "location": "Bonn, Germany",
+            "description": "Knows a thing or two about Groovy, Gradle, Java and Web.",
+            "url": "http:\/\/t.co\/VrqUsEeN6m",
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http:\/\/t.co\/VrqUsEeN6m",
+                            "expanded_url": "http:\/\/akhikhl.org",
+                            "display_url": "akhikhl.org",
+                            "indices": [0, 22]
+                        }
+                    ]
+                },
+                "description": {
+                    "urls": []
+                }
+            },
+            "protected": false,
+            "followers_count": 173,
+            "friends_count": 642,
+            "listed_count": 4,
+            "created_at": "Fri Jun 07 17:39:37 +0000 2013",
+            "favourites_count": 2385,
+            "utc_offset": 7200,
+            "time_zone": "Amsterdam",
+            "geo_enabled": false,
+            "verified": false,
+            "statuses_count": 1395,
+            "lang": "en",
+            "contributors_enabled": false,
+            "is_translator": false,
+            "is_translation_enabled": false,
+            "profile_background_color": "C0DEED",
+            "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+            "profile_background_tile": false,
+            "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/3768230795\/4ca6d9f137bdeebf180dac7cb595f59a_normal.jpeg",
+            "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/3768230795\/4ca6d9f137bdeebf180dac7cb595f59a_normal.jpeg",
+            "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1490888982\/1397333773",
+            "profile_link_color": "007AB3",
+            "profile_sidebar_border_color": "C0DEED",
+            "profile_sidebar_fill_color": "DDEEF6",
+            "profile_text_color": "333333",
+            "profile_use_background_image": true,
+            "default_profile": false,
+            "default_profile_image": false,
+            "following": true,
+            "follow_request_sent": false,
+            "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 3,
+        "favorite_count": 1,
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [],
+            "user_mentions": []
+        },
+        "favorited": false,
+        "retweeted": false,
+        "lang": "en"
+    }
+]
