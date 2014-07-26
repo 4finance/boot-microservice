@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:0.0.3'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.6.0'
+        if(project.hasProperty("coverage")) { classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2' }
     }
 }
 
@@ -37,7 +37,7 @@ uploadArchives {
 ext {
     groovyVersion = '2.3.3'
     spockVersion = '0.7-groovy-2.0'
-    springBootVersion = '1.1.3.RELEASE'
+    springBootVersion = '1.1.4.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.1'
     microDepsVersion = '0.3.1'
@@ -81,7 +81,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     compile "org.codehaus.groovy:groovy-all:$groovyVersion:indy"
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.1.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.1.3'
     compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapper"
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
     compile 'com.google.guava:guava:17.0'
@@ -90,14 +90,14 @@ dependencies {
     compile 'com.jayway.jsonpath:json-path-assert:0.9.1'
     compile 'org.yaml:snakeyaml:1.13'
     compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.2.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
     compile("com.ofg:micro-deps-spring-config:0.0.2") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
     compile 'org.apache.ivy:ivy:2.3.0'
-    compile "com.mangofactory:swagger-springmvc:0.8.4"
+    compile "com.mangofactory:swagger-springmvc:0.8.5"
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
@@ -111,7 +111,7 @@ dependencies {
     testRuntime("org.spockframework:spock-spring:$spockVersion") {
         exclude group: 'org.spockframework', module: 'spock-core'
     }
-    testCompile 'org.springframework:spring-test:4.0.5.RELEASE'
+    testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
     testCompile 'com.github.tomakehurst:wiremock:1.46'
 
     mockDependencies 'com.ofg:micro-deps:0.3.1:fatJar'
@@ -129,7 +129,7 @@ if(project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
     apply plugin: 'jacoco'
     apply plugin: 'sonar-runner'
-    apply plugin: 'coveralls'
+    apply plugin: 'com.github.kt3k.coveralls'
 
     jacoco {
         toolVersion = "0.7.0.201403182114"
