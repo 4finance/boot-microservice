@@ -186,7 +186,15 @@
             "notifications": false
         },
         "geo": null,
-        "coordinates": null,
+        "coordinates":
+        {
+            "coordinates":
+                [
+                    -75.14310264,
+                    40.05701649
+                ],
+            "type":"Point"
+        },
         "place": null,
         "contributors": null,
         "retweet_count": 9,
