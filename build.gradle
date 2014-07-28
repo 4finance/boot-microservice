@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE'
-        classpath 'com.ofg:uptodate-gradle-plugin:0.0.3'       
+        classpath 'com.ofg:uptodate-gradle-plugin:0.0.3'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.6.0'
     }
 }
@@ -42,6 +42,7 @@ ext {
     aspectjVersion = '1.8.1'
     microDepsVersion = '0.3.1'
 
+    stubRepositoryUrl = '' //TODO: fill this in
     zookeeperPort = 2181
     zookeeperMockPort = 18081
 }
@@ -70,6 +71,10 @@ repositories {
     maven { url 'http://repo.spring.io/milestone' }
     mavenCentral()
     jcenter()
+}
+
+configurations {
+    mockDependencies
 }
 
 dependencies {
@@ -108,6 +113,8 @@ dependencies {
     }
     testCompile 'org.springframework:spring-test:4.0.5.RELEASE'
     testCompile 'com.github.tomakehurst:wiremock:1.46'
+
+    mockDependencies 'com.ofg:micro-deps:0.3.1:fatJar'
 }
 
 tasks.withType(GroovyCompile) {
@@ -165,11 +172,11 @@ if(project.hasProperty("coverage")) {
 
 }
 
-//TODO: Check if run mocks works after adding micro-deps-spring-config
 task runMocks << {
-    String microDepsFatJar = buildscript.configurations.classpath.find { it.name.startsWith("micro-deps") }
-    String microDepCMD = "java -jar $microDepsFatJar $zookeeperPort $zookeeperMockPort"
-    Process process = microDepCMD.execute()
+    File microserviceMetadata = sourceSets.main.resources.find { it.name == 'microservice.json' }
+    String microDepsFatJar = configurations.mockDependencies.find { it.name.startsWith 'micro-deps' }
+    String runMocksCommand = "java -jar $microDepsFatJar -p $zookeeperPort -mp $zookeeperMockPort -f ${microserviceMetadata.absolutePath} -r $stubRepositoryUrl"
+    runMocksCommand.execute()
 }
 
 task stopMocks << {
