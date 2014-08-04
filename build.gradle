@@ -15,7 +15,6 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
-apply plugin: 'sonar-runner'
 apply plugin: 'uptodate'
 
 ext.versionPrefix = "CD"
