@@ -24,12 +24,12 @@ ext.currentVersion = "${versionPrefix}-${buildNrLoc}"
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "http://nexus.microhackathon.pl/content/groups/public/pl/microhackaton") {
+        repository(url: "http://nexus.microhackathon.pl/content/groups/public/") {
             authentication(userName: 'deployment', password: 'deployment123')
         }
         pom.version = "${currentVersion}"
         pom.artifactId = "twitter-places-analyzer"
-        pom.groupId = "com.ofg.twitter"
+        pom.groupId = " pl.microhackathon"
     }
 }
 
@@ -42,7 +42,7 @@ ext {
     aspectjVersion = '1.8.1'
     microDepsVersion = '0.3.1'
 
-    stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/pl/microhackaton'
+    stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public'
     zookeeperPort = 2181
     zookeeperMockPort = 18081
 }
