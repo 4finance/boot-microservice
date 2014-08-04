@@ -29,7 +29,7 @@ uploadArchives {
         }
         pom.version = "${currentVersion}"
         pom.artifactId = "twitter-places-analyzer"
-        pom.groupId = " pl.microhackathon"
+        pom.groupId = " pl.microhackaton"
     }
 }
 
