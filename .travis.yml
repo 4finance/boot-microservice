@@ -17,3 +17,4 @@ env:
 
 after_success:
 - ./gradlew test jacocoTestReport coveralls -Pcoverage
+- ./gradlew clean build uploadArchives -PbuildNr=$TRAVIS_JOB_ID
