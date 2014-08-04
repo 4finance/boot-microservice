@@ -24,7 +24,7 @@ ext.currentVersion = "${versionPrefix}-${buildNrLoc}"
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "http://nexus.microhackathon.pl/content/groups/public/") {
+        repository(url: "http://nexus.microhackathon.pl/content/repositories/releases/") {
             authentication(userName: 'deployment', password: 'deployment123')
         }
         pom.version = "${currentVersion}"
