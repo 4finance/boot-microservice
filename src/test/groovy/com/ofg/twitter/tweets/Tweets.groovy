@@ -3,7 +3,6 @@ package com.ofg.twitter.tweets
 class Tweets {
 
     public static String TWEET_WITH_PLACE = '''
-
     {
         "created_at": "Sat Jul 26 09:38:57 +0000 2014",
         "id": 492967299297845248,
@@ -35,7 +34,6 @@ class Tweets {
 '''
 
     public static String TWEET_WITHOUT_A_PLACE = '''
-
     {
         "created_at": "Sat Jul 26 09:38:57 +0000 2014",
         "id": 492967299297845248,

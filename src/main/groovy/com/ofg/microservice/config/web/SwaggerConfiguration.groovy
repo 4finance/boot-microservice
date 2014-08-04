@@ -14,7 +14,7 @@ class SwaggerConfiguration {
 
     @Bean
     SwaggerSpringMvcPlugin swaggerSpringMvcPlugin(
-            @Value('${rest.api.version}') String restApiVersion, SpringSwaggerConfig springSwaggerConfig) {
+            @Value('${rest.api.version:1.0}') String restApiVersion, SpringSwaggerConfig springSwaggerConfig) {
         return new SwaggerSpringMvcPlugin(springSwaggerConfig)
                 .apiInfo(apiInfo())
                 .apiVersion(restApiVersion)

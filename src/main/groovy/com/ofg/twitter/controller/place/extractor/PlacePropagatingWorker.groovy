@@ -4,10 +4,12 @@ import com.ofg.microservice.config.web.RestTemplate
 import com.ofg.twitter.controller.place.Place
 import com.ofg.twitter.controller.place.PlacesJsonBuilder
 import groovy.transform.TypeChecked
+import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.scheduling.annotation.Async
 
 @TypeChecked
+@Slf4j
 class PlacePropagatingWorker implements PropagationWorker {
 
     public static final String COLLERATOR_DEPENDENCY_NAME = 'collerator'
@@ -33,7 +35,8 @@ class PlacePropagatingWorker implements PropagationWorker {
     @Async
     void collectAndPropagate(long pairId, String tweets) {
         Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(tweets)
-        String jsonToPropagate = placesJsonBuilder.buildPlacesJson(pairId, extractedPlaces)
+        String jsonToPropagate = placesJsonBuilder.buildPlacesJson(pairId, extractedPlaces)        
         restTemplate.postForObject("${serviceResolver.getUrl(COLLERATOR_DEPENDENCY_NAME).get()}/$pairId", jsonToPropagate, String)
+        log.debug("Sent json [$jsonToPropagate] to collerator")
     }
 }
