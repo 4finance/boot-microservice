@@ -14,7 +14,7 @@ class ServiceResolverSpec extends IntegrationSpec {
     
     def 'should resolve urls properly'() {
         expect:
-            serviceResolver.getUrl("trustly") == Optional.of('http://localhost:8080/rest')
+            serviceResolver.getUrl("collerator") == Optional.of('http://localhost:8030/collerator')
     }
    
 }

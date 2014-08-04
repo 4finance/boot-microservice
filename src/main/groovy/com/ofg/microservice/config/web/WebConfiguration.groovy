@@ -22,6 +22,11 @@ class WebConfiguration {
     }
 
     @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate()
+    }
+
+    @Bean
     Filter apiDocsCORSFilter() {
         return new CORSFilter()
     }

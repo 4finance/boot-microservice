@@ -4,6 +4,8 @@ import groovy.transform.TypeChecked
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse
+
 //TODO: this needs a usage example (preferably as tests)
 @TypeChecked
 class StubbedHttpResponseBuilder {
@@ -33,18 +35,18 @@ class StubbedHttpResponseBuilder {
     }
 
     static ResponseDefinitionBuilder notFoundResponse() {
-        return com.github.tomakehurst.wiremock.client.WireMock.aResponse().withStatus(HttpStatus.NOT_FOUND.value())
+        return aResponse().withStatus(HttpStatus.NOT_FOUND.value())
     }
 
     private static ResponseDefinitionBuilder createResponse(HttpStatus status, String responseBody, String contentType) {
-        return com.github.tomakehurst.wiremock.client.WireMock.aResponse()
+        return aResponse()
                 .withStatus(status.value())
                 .withHeader('Content-Type', contentType)
                 .withBody(responseBody)
     }   
     
     private static ResponseDefinitionBuilder createFileResponse(HttpStatus status, String responseBodyFileName, String contentType) {
-        return com.github.tomakehurst.wiremock.client.WireMock.aResponse()
+        return aResponse()
                 .withStatus(status.value())
                 .withHeader('Content-Type', contentType)
                 .withBodyFile("/$responseBodyFileName")

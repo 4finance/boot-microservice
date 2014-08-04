@@ -1,5 +1,4 @@
 package com.ofg.base
-
 import com.ofg.microservice.config.Application
 import com.ofg.microservice.config.discovery.ServiceDiscoveryTestingServerConfiguration
 import groovy.transform.TypeChecked

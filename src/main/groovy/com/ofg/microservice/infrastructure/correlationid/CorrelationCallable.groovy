@@ -20,7 +20,7 @@ class CorrelationCallable<T> implements Callable<T> {
         return callable.call()
     }
 
-    static Callable<String> withCorrelationId(Closure closure) {
+    static Callable<T> withCorrelationId(Closure closure) {
         return new CorrelationCallable(closure)
     }
 }

@@ -1,13 +1,11 @@
 package com.ofg.microservice.config.web.errors
 
-import groovy.transform.PackageScope
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
 import org.springframework.http.client.ClientHttpResponse
 import org.springframework.web.client.ResponseErrorHandler
 
 @TypeChecked
-@PackageScope
 @Slf4j
 class ResponseRethrowingErrorHandler implements ResponseErrorHandler {
 
