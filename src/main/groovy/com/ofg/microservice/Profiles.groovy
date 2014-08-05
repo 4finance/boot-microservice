@@ -1,4 +1,4 @@
-package com.ofg.microservice.config
+package com.ofg.microservice
 
 import groovy.transform.TypeChecked
 

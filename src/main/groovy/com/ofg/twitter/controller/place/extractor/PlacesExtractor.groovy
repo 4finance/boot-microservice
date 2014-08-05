@@ -26,7 +26,7 @@ class PlacesExtractor {
     }
 
     private Map<String, Optional<Place>> appendExtractedTweet(Object parsedTweets) {
-        return [(parsedTweets.id_str): extractPlace(parsedTweets)]
+        return [(parsedTweets.id_str as String): extractPlace(parsedTweets)]
     }
 
     private Optional<Place> extractPlace(Object singleTweet) {

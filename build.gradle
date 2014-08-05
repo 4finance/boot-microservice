@@ -40,6 +40,7 @@ ext {
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.1'
     microDepsVersion = '0.3.1'
+    microDepsSpringVersion = '0.0.8'
 
     stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/'
     zookeeperPort = 2181
@@ -99,14 +100,16 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.2.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile("com.ofg:micro-deps-spring-config:0.0.8") {
-        exclude group: 'org.slf4j'
-        exclude group: 'log4j'
-    }
     compile 'org.apache.ivy:ivy:2.3.0'
     compile "com.mangofactory:swagger-springmvc:0.8.5"
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.8.3'
+    // microservices
+    compile("com.ofg:micro-deps-spring-config:$microDepsSpringVersion") {
+        exclude group: 'org.slf4j'
+        exclude group: 'log4j'
+    }
+    compile 'com.ofg:micro-infra-spring:0.0.1'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
@@ -127,7 +130,7 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    
+    testCompile "com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion"
     mockDependencies 'com.ofg:micro-deps:0.3.1:fatJar'
 }
 

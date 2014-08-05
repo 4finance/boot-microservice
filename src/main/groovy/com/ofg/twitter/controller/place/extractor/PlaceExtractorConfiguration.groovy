@@ -1,7 +1,7 @@
 package com.ofg.twitter.controller.place.extractor
 
 import com.ofg.infrastructure.discovery.ServiceResolver
-import com.ofg.microservice.config.web.RestTemplate
+import com.ofg.infrastructure.web.resttemplate.RestTemplate
 import com.ofg.twitter.controller.place.PlacesJsonBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

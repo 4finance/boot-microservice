@@ -1,6 +1,6 @@
 package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.microservice.config.web.RestTemplate
+import com.ofg.infrastructure.web.resttemplate.RestTemplate
 import com.ofg.twitter.controller.place.Place
 import spock.lang.Specification
 
