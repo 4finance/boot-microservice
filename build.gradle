@@ -28,7 +28,7 @@ uploadArchives {
         }
         pom.version = "${currentVersion}"
         pom.artifactId = "twitter-places-analyzer"
-        pom.groupId = " pl.microhackaton"
+        pom.groupId = "pl.microhackaton"
     }
 }
 
@@ -41,7 +41,7 @@ ext {
     aspectjVersion = '1.8.1'
     microDepsVersion = '0.3.1'
 
-    stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public'
+    stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/'
     zookeeperPort = 2181
     zookeeperMockPort = 18081
 }

@@ -15,6 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT
 
 @Slf4j
 @RestController
+@RequestMapping('/api')
 @Api(value = "pairId", description = "Collects places from tweets and propagates them to Collerators")
 class PairIdController {
 

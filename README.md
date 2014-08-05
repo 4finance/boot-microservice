@@ -9,7 +9,7 @@ INPUT
 Hit *PUT* at: 
 
 ```
-/{pairId}
+/api/{pairId}
 ```
 
 with list of tweets:

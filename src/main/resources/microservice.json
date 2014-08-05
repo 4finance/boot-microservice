@@ -1,8 +1,8 @@
 {
     "pl": {
-        "this": "pl/microhackathon/twitter-places-analyzer",
+        "this": "microhackathon/twitter-places-analyzer",
         "dependencies": {
-            "collerator" : "pl/microhackathon/twitter-places-collerator"
+            "collerator" : "microhackathon/twitter-places-collerator"
         }
     }
 }
