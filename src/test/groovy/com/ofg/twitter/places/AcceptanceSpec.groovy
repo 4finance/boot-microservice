@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class AcceptanceSpec extends MvcWiremockIntegrationSpec {
        
+    static final String ROOT_PATH = '/api'
     static final String PAIR_ID = '1'
     static final MediaType TWITTER_PLACES_ANALYZER_MICROSERVICE_V1 = new MediaType('application', 'vnd.com.ofg.twitter-places-analyzer.v1+json')
     static final String COLLERATOR_ENPOINT_URL = '/collerator'
@@ -27,7 +28,7 @@ class AcceptanceSpec extends MvcWiremockIntegrationSpec {
             String tweet = TWEET_WITH_PLACE
             stubInteraction(post(COLLERATOR_URL_WITH_PAIR_ID), aResponse().withStatus(HttpStatus.OK.value()))
         when: "trying to retrieve place from the tweet"
-            mockMvc.perform(put("/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
+            mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
                    .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
             await().atMost(2, SECONDS).until({ colaWireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
@@ -51,7 +52,7 @@ class AcceptanceSpec extends MvcWiremockIntegrationSpec {
             stubInteraction(wireMockGet('/?lat=-75&lon=40'), aResponse().withBody(CITY_FOUND))
             stubInteraction(post(COLLERATOR_URL_WITH_PAIR_ID), aResponse().withStatus(HttpStatus.OK.value()))
         when: 'trying to retrieve place from the tweet'
-            mockMvc.perform(put("/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
+            mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
                     .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
             await().atMost(2, SECONDS).until({ colaWireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
