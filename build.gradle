@@ -75,7 +75,6 @@ repositories {
     mavenLocal()
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
-    maven { url 'http://dl.bintray.com/4finance/micro-deps' }
     mavenCentral()
     jcenter()
 }
