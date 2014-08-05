@@ -68,6 +68,7 @@ repositories {
     mavenLocal()
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
+    maven { url 'http://dl.bintray.com/4finance/micro-deps' }
     mavenCentral()
     jcenter()
 }
@@ -92,7 +93,7 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.2.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile("com.ofg:micro-deps-spring-config:0.0.7") {
+    compile("com.ofg:micro-deps-spring-config:0.0.8") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
@@ -116,7 +117,11 @@ dependencies {
     }
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
     testCompile 'com.github.tomakehurst:wiremock:1.47'
-
+    testCompile("com.ofg:micro-deps-spring-test-config:0.0.8") {
+        exclude group: 'org.slf4j'
+        exclude group: 'log4j'
+    }
+    
     mockDependencies 'com.ofg:micro-deps:0.3.1:fatJar'
 }
 

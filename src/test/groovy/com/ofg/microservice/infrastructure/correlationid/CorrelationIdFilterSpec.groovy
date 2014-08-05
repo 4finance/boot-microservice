@@ -1,6 +1,6 @@
 package com.ofg.microservice.infrastructure.correlationid
 
-import com.ofg.base.MvcIntegrationSpec
+import com.ofg.base.MicroserviceMvcIntegrationSpec
 import groovy.transform.TypeChecked
 import org.slf4j.MDC
 import org.springframework.http.MediaType
@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.MvcResult
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
 @TypeChecked
-class CorrelationIdFilterSpec extends MvcIntegrationSpec {
+class CorrelationIdFilterSpec extends MicroserviceMvcIntegrationSpec {
 
     def "should create and return correlationId in HTTP header"() {
         when:

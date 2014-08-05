@@ -1,5 +1,5 @@
 package com.ofg.microservice.infrastructure.exception
-import com.ofg.base.MvcIntegrationSpec
+import com.ofg.base.MicroserviceMvcIntegrationSpec
 
 import static org.hamcrest.Matchers.equalTo
 import static org.springframework.http.HttpStatus.BAD_REQUEST
@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class ExceptionHandlingMvcSpec extends MvcIntegrationSpec {
+class ExceptionHandlingMvcSpec extends MicroserviceMvcIntegrationSpec {
     
     def "should return bad request error for missing last name"() {
         expect:

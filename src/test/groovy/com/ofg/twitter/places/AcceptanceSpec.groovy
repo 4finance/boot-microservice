@@ -1,13 +1,13 @@
 package com.ofg.twitter.places
 
 import com.github.tomakehurst.wiremock.client.UrlMatchingStrategy
-import com.ofg.base.MvcWiremockIntegrationSpec
+import com.ofg.base.MicroserviceMvcWiremockSpec
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*
 import static com.jayway.awaitility.Awaitility.await
-import static com.ofg.base.dsl.WireMockHttpRequestMapper.wireMockGet
+import static com.ofg.infrastructure.base.dsl.WireMockHttpRequestMapper.wireMockGet
 import static com.ofg.twitter.controller.place.extractor.WeatherApiResponses.CITY_FOUND
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_COORDINATES
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
@@ -15,7 +15,7 @@ import static java.util.concurrent.TimeUnit.SECONDS
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class AcceptanceSpec extends MvcWiremockIntegrationSpec {
+class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
        
     static final String ROOT_PATH = '/api'
     static final String PAIR_ID = '1'
