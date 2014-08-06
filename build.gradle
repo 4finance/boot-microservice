@@ -22,7 +22,7 @@ ext {
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
     currentVersion = "${versionPrefix}-${buildNrLoc}"
     
-    groovyVersion = '2.3.3'
+    groovyVersion = '2.3.6'
     spockVersion = '0.7-groovy-2.0'
     springBootVersion = '1.1.4.RELEASE'
     springVersion = '4.0.6.RELEASE'
@@ -122,13 +122,12 @@ dependencies {
     testRuntime("org.spockframework:spock-spring:$spockVersion") {
         exclude group: 'org.spockframework', module: 'spock-core'
     }
-    testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
+    testCompile "org.springframework:spring-test:$springVersion"
     testCompile 'com.github.tomakehurst:wiremock:1.47'
-    testCompile("com.ofg:micro-deps-spring-test-config:0.0.8") {
+    testCompile("com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    testCompile "com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion"
     mockDependencies 'com.ofg:micro-deps:0.5.0:fatJar'
 }
 
