@@ -28,7 +28,6 @@ ext {
     springVersion = '4.0.6.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.1'
-    microDepsVersion = '0.5.0'
     microDepsSpringVersion = '0.2.0'
 
     stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/'
@@ -130,7 +129,7 @@ dependencies {
         exclude group: 'log4j'
     }
     testCompile "com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion"
-    mockDependencies 'com.ofg:micro-deps:0.3.1:fatJar'
+    mockDependencies 'com.ofg:micro-deps:0.5.0:fatJar'
 }
 
 tasks.withType(GroovyCompile) {
