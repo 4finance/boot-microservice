@@ -17,6 +17,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'uptodate'
 
+sourceCompatibility = 1.7
+
 ext {
     versionPrefix = "CD"
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
