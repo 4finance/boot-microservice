@@ -17,8 +17,6 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'uptodate'
 
-sourceCompatibility = 1.7
-
 ext {
     versionPrefix = "CD"
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
@@ -107,7 +105,7 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    compile 'com.ofg:micro-infra-spring:0.0.1'
+    compile 'com.ofg:micro-infra-spring:0.0.2'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
