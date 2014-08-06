@@ -30,19 +30,19 @@ ext {
     aspectjVersion = '1.8.1'
     microDepsSpringVersion = '0.2.0'
 
-    stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/'
+    stubRepositoryUrl = 'http://nexus.4finance.net/content/repositories/Pipeline'
     zookeeperPort = 2181
     zookeeperMockPort = 18081
 }
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: "http://nexus.microhackathon.pl/content/repositories/releases/") {
-            authentication(userName: 'deployment', password: 'deployment123')
+        repository(url: "http://nexus.4finance.net/content/repositories/Pipeline") {
+            authentication(userName: '', password: '')
         }
         pom.version = currentVersion
         pom.artifactId = project.name
-        pom.groupId = "pl.microhackaton"
+        pom.groupId = 'com.ofg'
     }
 }
 
