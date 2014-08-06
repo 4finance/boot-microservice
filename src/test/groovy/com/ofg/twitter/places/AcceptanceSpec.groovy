@@ -31,7 +31,7 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
             mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
                    .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).until({ colaWireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
+            await().atMost(2, SECONDS).until({ wireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
                                                                         [{
                                                                             "pair_id" : 1,
                                                                             "tweet_id" : "492967299297845248",
@@ -55,7 +55,7 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
             mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
                     .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).until({ colaWireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
+            await().atMost(2, SECONDS).until({ wireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
                                                                             [{
                                                                                     "pair_id" : 1,
                                                                                     "tweet_id" : "492961315070439424",
