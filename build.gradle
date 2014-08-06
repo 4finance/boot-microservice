@@ -17,22 +17,11 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'uptodate'
 
-ext.versionPrefix = "CD"
-ext.buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
-ext.currentVersion = "${versionPrefix}-${buildNrLoc}"
-
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: "http://nexus.microhackathon.pl/content/repositories/releases/") {
-            authentication(userName: 'deployment', password: 'deployment123')
-        }
-        pom.version = "${currentVersion}"
-        pom.artifactId = "twitter-places-analyzer"
-        pom.groupId = "pl.microhackaton"
-    }
-}
-
 ext {
+    versionPrefix = "CD"
+    buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
+    currentVersion = "${versionPrefix}-${buildNrLoc}"
+    
     groovyVersion = '2.3.3'
     spockVersion = '0.7-groovy-2.0'
     springBootVersion = '1.1.4.RELEASE'
@@ -45,6 +34,17 @@ ext {
     stubRepositoryUrl = 'http://nexus.microhackathon.pl/content/groups/public/'
     zookeeperPort = 2181
     zookeeperMockPort = 18081
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "http://nexus.microhackathon.pl/content/repositories/releases/") {
+            authentication(userName: 'deployment', password: 'deployment123')
+        }
+        pom.version = currentVersion
+        pom.artifactId = project.name
+        pom.groupId = "pl.microhackaton"
+    }
 }
 
 task addHashFile << {
