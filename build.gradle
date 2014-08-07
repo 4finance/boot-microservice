@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:0.0.5'
+        classpath 'com.ofg:micro-deps-gradle-plugin:0.0.1'
         if(project.hasProperty("coverage")) { classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2' }
     }
 }
@@ -16,6 +17,7 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'uptodate'
+apply plugin: 'com.ofg.infrastructure.stubrunner'
 
 ext {
     versionPrefix = "CD"
@@ -76,10 +78,6 @@ repositories {
     jcenter()
 }
 
-configurations {
-    mockDependencies
-}
-
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
@@ -126,7 +124,6 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    mockDependencies 'com.ofg:micro-deps:0.5.0:fatJar'
 }
 
 tasks.withType(GroovyCompile) {
@@ -182,15 +179,4 @@ if(project.hasProperty("coverage")) {
         }
     }
 
-}
-
-task runMocks << {
-    File microserviceMetadata = sourceSets.main.resources.find { it.name == 'microservice.json' }
-    String microDepsFatJar = configurations.mockDependencies.find { it.name.startsWith 'micro-deps' }
-    String runMocksCommand = "java -jar $microDepsFatJar -p $zookeeperPort -mp $zookeeperMockPort -f ${microserviceMetadata.absolutePath} -r $stubRepositoryUrl"
-    runMocksCommand.execute()
-}
-
-task stopMocks << {
-    "http://localhost:$zookeeperMockPort/stop".toURL().readLines()
 }
