@@ -60,8 +60,8 @@ jar {
     from "commitHash.txt"
 }
 
-run {
-    systemProperties = System.properties
+project.gradle.projectsEvaluated {
+    applicationDefaultJvmArgs = ["-Dspring.profiles.active=${project.gradle.startParameter.systemPropertiesArgs['spring.profiles.active']}"]
 }
 
 //Workaround for the issue with Java 8u11 and 7u65 - http://www.infoq.com/news/2014/08/Java8-U11-Broke-Tools
