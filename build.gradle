@@ -8,8 +8,11 @@ buildscript {
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:0.0.5'
-        classpath 'com.ofg:micro-deps-gradle-plugin:0.0.1'
-        if(project.hasProperty("coverage")) { classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2' }
+        classpath 'com.ofg:micro-deps-gradle-plugin:0.0.2'
+
+        if(project.hasProperty("coverage")) {
+            classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
+        }
     }
 }
 
@@ -30,7 +33,7 @@ ext {
     springVersion = '4.0.6.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.1'
-    microDepsSpringVersion = '0.2.0'
+    microDepsSpringVersion = '0.2.1'
 
     stubRepositoryUrl = 'http://nexus.4finance.net/content/repositories/Pipeline'
     zookeeperPort = 2181
@@ -103,7 +106,7 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    compile 'com.ofg:micro-infra-spring:0.0.2'
+    compile 'com.ofg:micro-infra-spring:0.0.3'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
