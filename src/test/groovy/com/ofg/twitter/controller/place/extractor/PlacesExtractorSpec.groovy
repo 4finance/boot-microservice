@@ -1,4 +1,6 @@
 package com.ofg.twitter.controller.place.extractor
+
+import com.codahale.metrics.Meter
 import com.jayway.awaitility.Awaitility
 import com.ofg.twitter.controller.place.Place
 import spock.lang.Specification
@@ -10,8 +12,8 @@ class PlacesExtractorSpec extends Specification {
     def 'should extract places from two'() {
         given:
             List<PlaceExtractor>  placeExtractors = [new ByTweetIdPlacesExtractor()]
+            PlacesExtractor placesExtractor = new PlacesExtractor(placeExtractors, Stub(Meter))
             String tweets = '[{"id_str" : "1" }, {"id_str" : "2" }, {"id_str" : "3" }]'
-            PlacesExtractor placesExtractor = new PlacesExtractor(placeExtractors)
         when:
             Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(tweets)
         then:

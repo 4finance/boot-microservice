@@ -1,5 +1,6 @@
 package com.ofg.twitter.controller.place.extractor
 
+import com.codahale.metrics.Meter
 import com.ofg.twitter.controller.place.Place
 import groovy.json.JsonSlurper
 import groovy.transform.PackageScope
@@ -11,9 +12,11 @@ import java.util.concurrent.ConcurrentHashMap
 class PlacesExtractor {
 
     private final List<PlaceExtractor> placeExtractors
+    private final Meter analyzedTweetsMeter
 
-    PlacesExtractor(List<PlaceExtractor> placeExtractors) {
+    PlacesExtractor(List<PlaceExtractor> placeExtractors, Meter analyzedTweetsMeter) {
         this.placeExtractors = placeExtractors
+        this.analyzedTweetsMeter = analyzedTweetsMeter
     }
 
     Map<String, Optional<Place>> extractPlacesFrom(String tweets) {
@@ -22,6 +25,7 @@ class PlacesExtractor {
         GParsPool.withPool {
             parsedTweets.eachParallel { foundPlaces << appendExtractedTweet(it) }                 
         }
+        analyzedTweetsMeter.mark(foundPlaces.size())
         return foundPlaces
     }
 

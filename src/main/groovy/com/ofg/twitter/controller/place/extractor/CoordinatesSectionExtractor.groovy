@@ -1,9 +1,10 @@
 package com.ofg.twitter.controller.place.extractor
 
 import com.ofg.twitter.controller.place.Place
+import com.ofg.twitter.controller.place.Place.PlaceDetails
+import com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability
+import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
 import groovy.transform.PackageScope
-
-import static com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability.HIGH
 
 @PackageScope
 class CoordinatesSectionExtractor implements PlaceExtractor {
@@ -11,9 +12,11 @@ class CoordinatesSectionExtractor implements PlaceExtractor {
     public static final String PLACE_EXTRACTION_NAME = 'twitter_coordinates_section'
 
     private final CityFinder cityFinder
+    private final MatchProbabilityMetrics metrics
 
-    public CoordinatesSectionExtractor(CityFinder cityFinder) {
+    public CoordinatesSectionExtractor(CityFinder cityFinder, MatchProbabilityMetrics matchProbabilityMetrics) {
         this.cityFinder = cityFinder
+        this.metrics = matchProbabilityMetrics
     }
 
     @Override
@@ -22,11 +25,17 @@ class CoordinatesSectionExtractor implements PlaceExtractor {
             return Optional.empty()
         }
         def(long longitude, long latitude) = parsedTweet.coordinates.coordinates
-        Optional<Place.PlaceDetails> placeDetails = cityFinder.findCityFromCoordinates(longitude, latitude)
-        if (!placeDetails.isPresent()) {
+        Optional<PlaceDetails> placeDetails = cityFinder.findCityFromCoordinates(longitude, latitude)
+        return placeIfPresentOrEmptyOptional(placeDetails)
+    }
+
+    private Optional<Place> placeIfPresentOrEmptyOptional(Optional<PlaceDetails> placeDetails) {
+        if (placeDetails.isPresent()) {
+            metrics.update(placeResolutionProbability)
+            return Optional.of(new Place(placeDetails.get(), origin, placeResolutionProbability))
+        } else {
             return Optional.empty()
         }
-        return Optional.of(new Place(placeDetails.get(), origin, placeResolutionProbability))
     }
 
     @Override
@@ -35,7 +44,7 @@ class CoordinatesSectionExtractor implements PlaceExtractor {
     }
 
     @Override
-    PlaceExtractor.PlaceResolutionProbability getPlaceResolutionProbability() {
-        return HIGH
+    PlaceResolutionProbability getPlaceResolutionProbability() {
+        return PlaceResolutionProbability.HIGH
     }
 }
