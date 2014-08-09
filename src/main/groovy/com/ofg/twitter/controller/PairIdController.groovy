@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 import javax.validation.constraints.NotNull
+import java.util.concurrent.Callable
 
 import static org.springframework.web.bind.annotation.RequestMethod.PUT
 
@@ -29,7 +30,7 @@ class PairIdController {
             produces = 'application/vnd.com.ofg.twitter-places-analyzer.v1+json')
     @ApiOperation(value = "Async collecting and propagating of tweets for a given pairId",
             notes = "This will asynchronously call tweet collecting, place extracting and their propagation to Collerators")
-    void getPlacesFromTweets(@PathVariable @NotNull long pairId, @RequestBody @NotNull String tweets) {
+    Callable<Void> getPlacesFromTweets(@PathVariable @NotNull long pairId, @RequestBody @NotNull String tweets) {
         propagationWorker.collectAndPropagate(pairId, tweets)
     }
 

@@ -32,7 +32,6 @@ class PlacePropagatingWorker implements PropagationWorker {
     }
 
     @Override
-    @Async
     void collectAndPropagate(long pairId, String tweets) {
         Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(tweets)
         String jsonToPropagate = placesJsonBuilder.buildPlacesJson(pairId, extractedPlaces)        
