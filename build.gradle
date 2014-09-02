@@ -29,11 +29,11 @@ ext {
     
     groovyVersion = '2.3.6'
     spockVersion = '0.7-groovy-2.0'
-    springBootVersion = '1.1.4.RELEASE'
+    springBootVersion = '1.1.5.RELEASE'
     springVersion = '4.0.6.RELEASE'
     jacksonMapper = '1.9.13'
-    aspectjVersion = '1.8.1'
-    microDepsSpringVersion = '0.2.1'
+    aspectjVersion = '1.8.2'
+    microDepsSpringVersion = '0.2.2'
 
     stubRepositoryUrl = 'http://nexus.4finance.net/content/repositories/Pipeline'
     zookeeperPort = 2181
@@ -86,19 +86,19 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     compile "org.springframework:spring-context-support:$springVersion"
     compile "org.codehaus.groovy:groovy-all:$groovyVersion:indy"
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.1.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
     compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapper"
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
-    compile 'com.google.guava:guava:17.0'
+    compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.9'
+    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.11'
     compile 'com.jayway.jsonpath:json-path-assert:0.9.1'
-    compile 'org.yaml:snakeyaml:1.13'
+    compile 'org.yaml:snakeyaml:1.14'
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.2.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
     compile 'org.apache.ivy:ivy:2.3.0'
-    compile "com.mangofactory:swagger-springmvc:0.8.5"
+    compile "com.mangofactory:swagger-springmvc:0.8.8"
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.8.3'
     // microservices
@@ -106,11 +106,11 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    compile 'com.ofg:micro-infra-spring:0.0.4'
+    compile 'com.ofg:micro-infra-spring:0.0.8'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
-    runtime 'org.aspectj:aspectjweaver:1.8.1'
+    runtime 'org.aspectj:aspectjweaver:1.8.2'
 
     testCompile 'junit:junit:4.11'
     testCompile 'com.jayway.awaitility:awaitility:1.6.1'
