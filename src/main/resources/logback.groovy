@@ -46,8 +46,8 @@ appender(console, ConsoleAppender) {
     }
 }
 
-root(DEBUG, whereToLog)
-logger("com.ofg", DEBUG)
+root(INFO, whereToLog)
+logger("com.ofg", INFO)
 
 
 
