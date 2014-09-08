@@ -13,7 +13,7 @@ String logPattern = "%d{yyyy-MM-dd HH:mm:ss.SSSZ, Europe/Warsaw} | %-5level | %X
 List whereToLog = [rollingFile, console]
 String scanTime = "1 minutes"
 String currentLogFile = "logs/application.log"
-String rollingFileNamePattern = "application.%d{yyyy-MM-dd}.log.zip"
+String rollingFileNamePattern = "logs/application.%d{yyyy-MM-dd}.log.zip"
 int rollingFileMaxHistory = 7
 
 println """Starting logback
