@@ -1,13 +1,13 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url "http://repo.spring.io/libs-snapshot" }
-        mavenCentral()
         jcenter()
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-snapshot" }
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
-        classpath 'com.ofg:uptodate-gradle-plugin:0.0.5'
+        classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'com.ofg:micro-deps-gradle-plugin:0.0.2'
 
         if(project.hasProperty("coverage")) {
@@ -19,7 +19,7 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
-apply plugin: 'uptodate'
+apply plugin: 'com.ofg.uptodate'
 apply plugin: 'com.ofg.infrastructure.stubrunner'
 
 ext {
@@ -29,11 +29,11 @@ ext {
     
     groovyVersion = '2.3.6'
     spockVersion = '0.7-groovy-2.0'
-    springBootVersion = '1.1.5.RELEASE'
-    springVersion = '4.0.6.RELEASE'
+    springBootVersion = '1.1.6.RELEASE'
+    springVersion = '4.0.7.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.2'
-    microDepsSpringVersion = '0.2.2'
+    microDepsSpringVersion = '0.3.0'
 
     stubRepositoryUrl = 'http://nexus.4finance.net/content/repositories/Pipeline'
     zookeeperPort = 2181
@@ -75,10 +75,10 @@ applicationDefaultJvmArgs = [ "-noverify" ]
 
 repositories {
     mavenLocal()
+    jcenter()
+    mavenCentral()
     maven { url 'http://repository.codehaus.org' }
     maven { url 'http://repo.spring.io/milestone' }
-    mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -91,7 +91,7 @@ dependencies {
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.11'
+    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.12'
     compile 'com.jayway.jsonpath:json-path-assert:0.9.1'
     compile 'org.yaml:snakeyaml:1.14'
     compile 'javax.validation:validation-api:1.1.0.Final'
@@ -106,7 +106,7 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
     }
-    compile 'com.ofg:micro-infra-spring:0.0.8'
+    compile 'com.ofg:micro-infra-spring:0.0.9'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
@@ -122,7 +122,7 @@ dependencies {
         exclude group: 'org.spockframework', module: 'spock-core'
     }
     testCompile "org.springframework:spring-test:$springVersion"
-    testCompile 'com.github.tomakehurst:wiremock:1.47'
+    testCompile 'com.github.tomakehurst:wiremock:1.48'
     testCompile("com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
@@ -134,7 +134,7 @@ tasks.withType(GroovyCompile) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '2.1'
 }
 
 if(project.hasProperty("coverage")) {

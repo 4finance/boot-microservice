@@ -3,7 +3,6 @@ package com.ofg.twitter.controller.place.extractor
 import com.codahale.metrics.Meter
 import com.codahale.metrics.MetricRegistry
 import com.ofg.infrastructure.discovery.ServiceResolver
-import com.ofg.infrastructure.web.resttemplate.RestTemplate
 import com.ofg.twitter.controller.place.PlacesJsonBuilder
 import com.ofg.twitter.controller.place.extractor.metrics.ExtractorMetricsConfiguration
 import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
@@ -11,13 +10,14 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
+import org.springframework.web.client.RestOperations
 
 @Configuration
 @Import(ExtractorMetricsConfiguration)
 class PlaceExtractorConfiguration {
 
     @Bean
-    CityFinder cityFinder(RestTemplate restTemplate, @Value('${city.finding.service.url:http://api.openweathermap.org/data/2.5/weather}') String cityFindingServiceUrl) {
+    CityFinder cityFinder(RestOperations restTemplate, @Value('${city.finding.service.url:http://api.openweathermap.org/data/2.5/weather}') String cityFindingServiceUrl) {
         return new CityFinder(restTemplate, cityFindingServiceUrl)
     }
     
@@ -38,7 +38,7 @@ class PlaceExtractorConfiguration {
     PropagationWorker propagationWorker(PlacesExtractor placesExtractor,
                                         PlacesJsonBuilder placesJsonBuilder,
                                         ServiceResolver serviceResolver,
-                                        RestTemplate restTemplate) {
+                                        RestOperations restTemplate) {
         return new PlacePropagatingWorker(placesExtractor, placesJsonBuilder, serviceResolver, restTemplate)
     }
 

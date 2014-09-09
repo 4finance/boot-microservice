@@ -1,17 +1,17 @@
 package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.infrastructure.web.resttemplate.RestTemplate
 import com.ofg.twitter.controller.place.Place
 import groovy.json.JsonSlurper
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.http.HttpStatus
+import org.springframework.web.client.RestOperations
 
 class CityFinder {
 
-    private final RestTemplate restTemplate
+    private final RestOperations restTemplate
     private final String cityFindingServiceUrl
 
-    CityFinder(RestTemplate restTemplate, String cityFindingServiceUrl) {
+    CityFinder(RestOperations restTemplate, String cityFindingServiceUrl) {
         this.restTemplate = restTemplate
         this.cityFindingServiceUrl = cityFindingServiceUrl
     }
