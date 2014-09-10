@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.EnableAspectJAutoProxy
 import org.springframework.scheduling.annotation.EnableAsync
 
+import static com.ofg.config.BasicProfiles.*
+
 @TypeChecked
 @Configuration
 @EnableAutoConfiguration
@@ -21,7 +23,7 @@ class Application {
 
     static void main(String[] args) {
         SpringApplication application = new SpringApplication(Application)
-        application.addListeners(new EnvironmentSetupVerifier(Profiles.all()))
+        application.addListeners(new EnvironmentSetupVerifier([DEVELOPMENT, PRODUCTION, TEST]))
         application.run(args)
     }
 }
