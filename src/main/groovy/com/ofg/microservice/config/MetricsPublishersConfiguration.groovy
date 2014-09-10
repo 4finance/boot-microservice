@@ -1,24 +1,20 @@
 package com.ofg.microservice.config
-
 import com.codahale.metrics.MetricRegistry
 import com.codahale.metrics.graphite.Graphite
 import com.ofg.config.BasicProfiles
 import com.ofg.infrastructure.metrics.publishing.GraphitePublisher
 import com.ofg.infrastructure.metrics.publishing.GraphitePublisher.PublishingInterval
 import com.ofg.infrastructure.metrics.publishing.JmxPublisher
-import com.ofg.infrastructure.metrics.registry.MetricsRegistryConfiguration
 import groovy.transform.TypeChecked
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Import
 import org.springframework.context.annotation.Profile
 
 import static java.util.concurrent.TimeUnit.*
 
 @TypeChecked
 @Configuration
-@Import(MetricsRegistryConfiguration)
 @Profile(BasicProfiles.PRODUCTION)
 class MetricsPublishersConfiguration {
 
@@ -28,7 +24,7 @@ class MetricsPublishersConfiguration {
     }
 
     @Bean
-    Graphite graphite(@Value('${graphite.host}') String hostname, @Value('${graphite.port}') int port) {
+    Graphite graphite(@Value('${graphite.host:localhost}') String hostname, @Value('${graphite.port:2004}') int port) {
         return new Graphite(new InetSocketAddress(hostname, port))
     }
 
