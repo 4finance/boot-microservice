@@ -172,5 +172,4 @@ if(project.hasProperty("coverage")) {
             property "sonar.junit.reportsPath", "build/test-results"
         }
     }
-
 }
