@@ -3,6 +3,7 @@ package com.ofg.microservice
 import com.ofg.infrastructure.environment.EnvironmentSetupVerifier
 import groovy.transform.TypeChecked
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.actuate.autoconfigure.MetricFilterAutoConfiguration
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.ComponentScan
@@ -14,7 +15,7 @@ import static com.ofg.config.BasicProfiles.*
 
 @TypeChecked
 @Configuration
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = MetricFilterAutoConfiguration)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan(basePackages = ["com.ofg.microservice", "com.ofg.twitter"])
 @EnableCaching
