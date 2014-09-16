@@ -45,6 +45,9 @@ uploadArchives {
     }
 }
 
+// Make sure that fat jar is built before uploading
+uploadArchives.dependsOn build
+
 task addHashFile << {
     String gitCmd = "git log --pretty=format:'%H' -n 1"
     def proc = gitCmd.execute()
