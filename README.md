@@ -3,6 +3,10 @@ boot-microservice
 
 Example of a microservice that works on Spring Boot.
 
+## Requirements
+
+* JDK8 v.05
+
 ## Introduction
 
 To make setting up microservices in micro-time we needed to extract the common building blocks to separate libraries.
