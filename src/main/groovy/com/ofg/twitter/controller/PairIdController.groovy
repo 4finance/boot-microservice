@@ -21,7 +21,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT
 class PairIdController {
 
     @Autowired private PropagationWorker propagationWorker
-
     
     @RequestMapping(
             value = '{pairId}',
