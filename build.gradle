@@ -97,7 +97,6 @@ dependencies {
     compile 'org.hibernate:hibernate-validator:5.1.2.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
     compile 'org.apache.ivy:ivy:2.3.0'
-    compile "com.mangofactory:swagger-springmvc:0.8.8"
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.8.4'
     // microservices
