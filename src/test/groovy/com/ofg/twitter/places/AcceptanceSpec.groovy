@@ -1,5 +1,4 @@
 package com.ofg.twitter.places
-
 import com.github.tomakehurst.wiremock.client.UrlMatchingStrategy
 import com.ofg.base.MicroserviceMvcWiremockSpec
 import org.springframework.http.HttpStatus
@@ -13,6 +12,7 @@ import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_COORDINATES
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
 import static java.util.concurrent.TimeUnit.SECONDS
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
@@ -29,6 +29,7 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
             stubInteraction(post(COLLERATOR_URL_WITH_PAIR_ID), aResponse().withStatus(HttpStatus.OK.value()))
         when: "trying to retrieve place from the tweet"
             mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
+                    .andDo(print())
                    .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
             await().atMost(2, SECONDS).until({ wireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
