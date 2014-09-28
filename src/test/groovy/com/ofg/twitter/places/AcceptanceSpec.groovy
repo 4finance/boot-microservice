@@ -1,4 +1,5 @@
 package com.ofg.twitter.places
+
 import com.github.tomakehurst.wiremock.client.UrlMatchingStrategy
 import com.ofg.base.MicroserviceMvcWiremockSpec
 import org.springframework.http.HttpStatus
