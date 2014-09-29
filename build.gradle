@@ -6,7 +6,7 @@ buildscript {
         maven { url "http://repo.spring.io/libs-snapshot" }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.7.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
 
         if(project.hasProperty("coverage")) {
@@ -25,9 +25,9 @@ ext {
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
     currentVersion = "${versionPrefix}-${buildNrLoc}"
     
-    groovyVersion = '2.3.6'
+    groovyVersion = '2.3.7'
     spockVersion = '0.7-groovy-2.0'
-    springBootVersion = '1.1.6.RELEASE'
+    springBootVersion = '1.1.7.RELEASE'
     springVersion = '4.1.0.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.2'
@@ -90,8 +90,8 @@ dependencies {
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
-    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.12'
-    compile 'com.jayway.jsonpath:json-path-assert:0.9.1'
+    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.14'
+    compile 'com.jayway.jsonpath:json-path-assert:1.0.0'
     compile 'org.yaml:snakeyaml:1.14'
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.2.Final'
@@ -117,7 +117,7 @@ dependencies {
         exclude group: 'org.spockframework', module: 'spock-core'
     }
     testCompile "org.springframework:spring-test:$springVersion"
-    testCompile 'com.github.tomakehurst:wiremock:1.48'
+    testCompile 'com.github.tomakehurst:wiremock:1.50'
     testCompile("com.ofg:micro-deps-spring-test-config:$microDepsSpringVersion") {
         exclude group: 'org.slf4j'
         exclude group: 'log4j'
