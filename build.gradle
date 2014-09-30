@@ -100,7 +100,7 @@ dependencies {
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.8.4'
     // microservices
-    compile 'com.ofg:micro-infra-spring:0.4.1'
+    compile 'com.ofg:micro-infra-spring:0.4.2'
 
     runtime "cglib:cglib-nodep:3.1"
     runtime "org.objenesis:objenesis:2.1" // allows mocking of classes without default constructor (together with CGLIB)
