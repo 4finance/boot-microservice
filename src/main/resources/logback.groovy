@@ -4,6 +4,9 @@ import ch.qos.logback.core.rolling.RollingFileAppender
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy
 import ch.qos.logback.core.status.OnConsoleStatusListener
 
+import static com.ofg.config.BasicProfiles.PRODUCTION
+import static org.springframework.core.env.AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME
+
 //for more details about groovy conf, see http://logback.qos.ch/manual/groovy.html
 statusListener(OnConsoleStatusListener)
 
@@ -47,7 +50,11 @@ appender(console, ConsoleAppender) {
 }
 
 root(INFO, whereToLog)
-logger("com.ofg", INFO)
+if (System.getProperty(ACTIVE_PROFILES_PROPERTY_NAME) == PRODUCTION) {
+    logger("com.ofg", INFO)
+} else {
+    logger("com.ofg", DEBUG)
+}
 
 
 
