@@ -5,7 +5,7 @@ Example of a microservice that works on Spring Boot.
 
 ## Requirements
 
-* JDK8 v.05
+* Java 8
 
 ## Introduction
 
