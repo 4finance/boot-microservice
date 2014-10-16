@@ -57,13 +57,13 @@ extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specific
 
 you may wonder - how on earth does the collaborator *collerator* respond to with 200 when you post him at /1 ?! It's all about 
 [Consumer Driven Contracts](http://martinfowler.com/articles/consumerDrivenContracts.html) and our implementation called 
-[stub-runner=spring](https://github.com/4finance/stub-runner-spring/wiki/How-to-use-it).
+[stub-runner-spring](https://github.com/4finance/stub-runner-spring/wiki/How-to-use-it).
 
 What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the 
 [stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
 tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/repository/mappings/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
 
-The paths to the repo, the module name and artifactId are here - [application.properties](src/main/resources/application.properites).
+The paths to the repo, the module name and artifactId are here - [application.properties](src/main/resources/application.properties).
 
 ## Sample business requirement
 Twitter places analyzer, searches through tweets for places. Then analyzers send those to Collerators.
