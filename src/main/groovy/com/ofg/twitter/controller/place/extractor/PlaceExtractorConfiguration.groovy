@@ -36,8 +36,13 @@ class PlaceExtractorConfiguration {
     @Bean
     PropagationWorker propagationWorker(PlacesExtractor placesExtractor,
                                         PlacesJsonBuilder placesJsonBuilder,
-                                        ServiceRestClient serviceRestClient) {
-        return new PlacePropagatingWorker(placesExtractor, placesJsonBuilder, new ColleratorClient(serviceRestClient))
+                                        ColleratorClient colleratorClient) {
+        return new PlacePropagatingWorker(placesExtractor, placesJsonBuilder, colleratorClient)
+    }
+
+    @Bean
+    ColleratorClient colleratorClient(ServiceRestClient serviceRestClient) {
+        return new ColleratorClient(serviceRestClient)
     }
 
 }

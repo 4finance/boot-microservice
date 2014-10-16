@@ -1,25 +1,32 @@
 package com.ofg.twitter.places
-
 import com.github.tomakehurst.wiremock.client.UrlMatchingStrategy
 import com.ofg.base.MicroserviceMvcWiremockSpec
+import org.hamcrest.CoreMatchers
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.test.context.ContextConfiguration
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*
 import static com.jayway.awaitility.Awaitility.await
+import static com.ofg.infrastructure.base.dsl.Matchers.equalsReferenceJson
 import static com.ofg.infrastructure.base.dsl.WireMockHttpRequestMapper.wireMockGet
 import static com.ofg.twitter.controller.place.extractor.WeatherApiResponses.CITY_FOUND
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_COORDINATES
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
 import static java.util.concurrent.TimeUnit.SECONDS
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
+@ContextConfiguration(classes = ColleratorClientStubConfiguration)
 class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
-       
+
+    @Autowired ColleratorClientStub colleratorClientStub
+
     static final String ROOT_PATH = '/api'
-    static final String PAIR_ID = '1'
+    static final Long PAIR_ID = 1
     static final MediaType TWITTER_PLACES_ANALYZER_MICROSERVICE_V1 = new MediaType('application', 'vnd.com.ofg.twitter-places-analyzer.v1+json')
     static final String COLLERATOR_ENPOINT_URL = '/collerator'
     static final UrlMatchingStrategy COLLERATOR_URL_WITH_PAIR_ID = urlEqualTo("$COLLERATOR_ENPOINT_URL/$PAIR_ID")
@@ -33,7 +40,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     .andDo(print())
                    .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).until({ wireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
+            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                         [{
                                                                             "pair_id" : 1,
                                                                             "tweet_id" : "492967299297845248",
@@ -45,7 +53,7 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                                                                             "probability" : "2",
                                                                             "origin" : "twitter_place_section"
                                                                         }]
-                                                                        ''')))})
+                                                                        '''))
     }
 
     def "should find a place by verifying tweet's coordinates"() {
@@ -57,7 +65,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
             mockMvc.perform(put("$ROOT_PATH/$PAIR_ID").contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).content("[$tweet]"))
                     .andExpect(status().isOk())
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).until({ wireMock.verifyThat(postRequestedFor(COLLERATOR_URL_WITH_PAIR_ID).withRequestBody(equalToJson('''
+            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                             [{
                                                                                     "pair_id" : 1,
                                                                                     "tweet_id" : "492961315070439424",
@@ -69,7 +78,7 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                                                                                     "probability" : "2",
                                                                                     "origin" : "twitter_coordinates_section"
                                                                                 }]
-                                                                            ''')))})            
+                                                                            '''))
     }
 
     // http://api.openweathermap.org/data/2.5/weather?q=London

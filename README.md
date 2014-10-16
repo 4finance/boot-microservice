@@ -54,6 +54,7 @@ extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specific
 [WireMock](http://wiremock.org/) related fields and methods.
 
 
+
 ## Sample business requirement
 Twitter places analyzer, searches through tweets for places. Then analyzers send those to Collerators.
 
