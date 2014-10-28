@@ -16,6 +16,11 @@ In this template we are using the following 4finance custom libraries (available
 
 [Micro Deps Spring Config library (micro-deps-spring-test-config module)](https://github.com/4finance/micro-deps-spring-config#micro-deps-spring-test-config)
 
+## What should I do after I clone the repo?
+
+You can remove all the caching related libraries, annotations and **com.ofg.twitter** packages.
+Next adjust all the properties and then you have an empty project - you're now ready to go.
+
 ## How it works?
 
 ### Production code
@@ -66,6 +71,7 @@ tests are ran against it. The stub is in fact here [twitter-places-collerator st
 The paths to the repo, the module name and artifactId are here - [application.properties](src/main/resources/application.properties).
 
 ## Sample business requirement
+
 Twitter places analyzer, searches through tweets for places. Then analyzers send those to Collerators.
 
 INPUT

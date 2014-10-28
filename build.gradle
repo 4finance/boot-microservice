@@ -30,8 +30,8 @@ ext {
     springBootVersion = '1.1.8.RELEASE'
     springVersion = '4.1.1.RELEASE'
     jacksonMapper = '1.9.13'
-    aspectjVersion = '1.8.2'
-    microInfraSpringVersion = '0.5.3'
+    aspectjVersion = '1.8.3'
+    microInfraSpringVersion = '0.5.4'
 }
 
 uploadArchives {
@@ -88,19 +88,18 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
     compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.14'
-    compile 'com.jayway.jsonpath:json-path-assert:1.0.0'
+    compile 'com.jayway.jsonpath:json-path-assert:1.1.0'
     compile 'org.yaml:snakeyaml:1.14'
     compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.2.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.3.Final'
     compile "org.aspectj:aspectjrt:$aspectjVersion"
-    compile 'org.apache.ivy:ivy:2.3.0'
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.9.0'
     compile "com.ofg:micro-infra-spring:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.1'
     runtime 'org.objenesis:objenesis:2.1'
-    runtime 'org.aspectj:aspectjweaver:1.8.2'
+    runtime 'org.aspectj:aspectjweaver:1.8.3'
     runtime 'com.h2database:h2:1.4.182'
 
     testCompile 'junit:junit:4.11'
