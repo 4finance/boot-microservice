@@ -24,14 +24,14 @@ ext {
     versionPrefix = "CD"
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
     currentVersion = "${versionPrefix}-${buildNrLoc}"
-    
+
     groovyVersion = '2.3.7'
     spockVersion = '0.7-groovy-2.0'
     springBootVersion = '1.1.8.RELEASE'
     springVersion = '4.1.1.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.3'
-    microInfraSpringVersion = '0.5.4'
+    microInfraSpringVersion = '0.6.0'
 }
 
 uploadArchives {
@@ -141,11 +141,11 @@ if(project.hasProperty("coverage")) {
         reportFormat = 'xml'
         ignoreFailures = true
     }
-    
+
     dependencies {
         codenarc 'org.codenarc:CodeNarc:0.21'
     }
-    
+
     test {
         ignoreFailures = true
         jacoco {

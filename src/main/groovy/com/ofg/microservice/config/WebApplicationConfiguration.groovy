@@ -1,12 +1,12 @@
 package com.ofg.microservice.config
 
-import com.ofg.infrastructure.config.WebAppConfiguration
+import com.ofg.infrastructure.config.EnableMicroservice
+import com.ofg.infrastructure.config.EnableSwaggerDocumentation
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Import
 
 @Configuration
-@Import(WebAppConfiguration)
+@EnableMicroservice
+@EnableSwaggerDocumentation
 class WebApplicationConfiguration {
-
 
 }
