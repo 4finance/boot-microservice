@@ -85,7 +85,7 @@ Hit *PUT* at:
 
 with list of tweets:
 
-```
+```json
 [
     {
         "created_at": "Sat Jul 26 09:15:10 +0000 2014",
@@ -125,7 +125,7 @@ OUTPUT
 
 And it will hit collectors at /{pairId} with tweets taken from twitter
 
-```
+```json
 [
     {
         "pair_id" : 1,
