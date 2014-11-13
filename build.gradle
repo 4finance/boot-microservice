@@ -27,7 +27,7 @@ ext {
 
     groovyVersion = '2.3.7'
     spockVersion = '0.7-groovy-2.0'
-    springBootVersion = '1.1.8.RELEASE'
+    springBootVersion = '1.1.9.RELEASE'
     springVersion = '4.1.1.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.3'
