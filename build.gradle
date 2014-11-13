@@ -6,7 +6,7 @@ buildscript {
         maven { url "http://repo.spring.io/libs-snapshot" }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
 
         if(project.hasProperty("coverage")) {
