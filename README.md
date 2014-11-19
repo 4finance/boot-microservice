@@ -35,7 +35,7 @@ contains Spring Boot autoconfiguration and contains *main* method
 
 ##### Microservice Autoconfiguration
 
-Spring boot autoconfigure feature imports configuration from [4finance's "Micro Infra Spring"](https://github.com/4finance/micro-infra-spring). That enables module like
+Spring boot auto-configure application and enable support for [4finance's "Micro Infra Spring"](https://github.com/4finance/micro-infra-spring). That enables module like
 ServiceDiscovery, Swagger, CorrelationId filters, custom RestTemplate, custom exception handling, health check controllers etc.
 
 If you want only certain modules of the system just check out [4finance's Micro Infra Spring's readme](https://github.com/4finance/micro-infra-spring).
