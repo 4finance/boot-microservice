@@ -1,4 +1,4 @@
-package com.ofg.microservice
+package com.ofg.twitter.config
 
 import groovy.transform.CompileStatic
 
