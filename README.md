@@ -33,9 +33,9 @@ Below you can find description of the most crucial parts of the application's pr
 
 contains Spring Boot autoconfiguration and contains *main* method
 
-##### WebAppConfiguration
+##### Microservice Autoconfiguration
 
-imports configuration from [4finance's "Micro Infra Spring"](https://github.com/4finance/micro-infra-spring). That module contains all common web configuration like
+Spring boot autoconfigure feature imports configuration from [4finance's "Micro Infra Spring"](https://github.com/4finance/micro-infra-spring). That enables module like
 ServiceDiscovery, Swagger, CorrelationId filters, custom RestTemplate, custom exception handling, health check controllers etc.
 
 If you want only certain modules of the system just check out [4finance's Micro Infra Spring's readme](https://github.com/4finance/micro-infra-spring).
