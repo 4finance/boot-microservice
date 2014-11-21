@@ -1,4 +1,4 @@
-package com.ofg.microservice.config
+package com.ofg.twitter.config
 
 import net.sf.ehcache.config.CacheConfiguration
 import org.springframework.cache.CacheManager

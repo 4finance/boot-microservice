@@ -1,7 +1,7 @@
 package com.ofg.twitter.controller.place.extractor
 
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
-import com.ofg.microservice.Collaborators
+import com.ofg.twitter.config.Collaborators
 import groovy.transform.CompileStatic
 
 @CompileStatic
