@@ -2,7 +2,6 @@ package com.ofg.twitter.controller.place.extractor
 
 import com.codahale.metrics.Meter
 import com.jayway.awaitility.Awaitility
-import com.ofg.twitter.controller.place.Place
 import spock.lang.Specification
 
 import static com.jayway.awaitility.Duration.ONE_SECOND

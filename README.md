@@ -12,9 +12,7 @@ Example of a microservice that works on Spring Boot.
 To make setting up microservices in micro-time we needed to extract the common building blocks to separate libraries.
 In this template we are using the following 4finance custom libraries (available in jcenter)
 
-[Micro Infra Spring](https://github.com/4finance/micro-infra-spring). 
-
-[Micro Deps Spring Config library (micro-deps-spring-test-config module)](https://github.com/4finance/micro-deps-spring-config#micro-deps-spring-test-config)
+[Micro Infra Spring](https://github.com/4finance/micro-infra-spring).
 
 ## What should I do after I clone the repo?
 
@@ -37,6 +35,7 @@ contains Spring Boot autoconfiguration and contains *main* method
 
 Spring boot auto-configure application and enable support for [4finance's "Micro Infra Spring"](https://github.com/4finance/micro-infra-spring). That enables module like
 ServiceDiscovery, Swagger, CorrelationId filters, custom RestTemplate, custom exception handling, health check controllers etc.
+Check out [Micro Infra Spring's Boot Starter module's Spring factories set up](https://github.com/4finance/micro-infra-spring/blob/master/micro-infra-spring-boot-starter/src/main/resources/META-INF/spring.factories)
 
 If you want only certain modules of the system just check out [4finance's Micro Infra Spring's readme](https://github.com/4finance/micro-infra-spring).
 

@@ -14,7 +14,6 @@ class WeatherClient {
         this.cityFindingServiceUrl = cityFindingServiceUrl
     }
 
-
     String findCity(long latitude, long longitude) {
         return serviceRestClient.forExternalService()
                 .get()

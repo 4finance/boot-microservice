@@ -1,7 +1,6 @@
 package com.ofg.twitter.controller.place.extractor
 
 import com.codahale.metrics.Meter
-import com.ofg.twitter.controller.place.Place
 import groovy.json.JsonSlurper
 import groovy.transform.PackageScope
 import groovyx.gpars.GParsPool

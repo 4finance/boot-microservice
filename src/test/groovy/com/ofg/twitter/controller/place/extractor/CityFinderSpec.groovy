@@ -1,6 +1,5 @@
 package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.twitter.controller.place.Place
 import spock.lang.Specification
 
 class CityFinderSpec extends Specification {

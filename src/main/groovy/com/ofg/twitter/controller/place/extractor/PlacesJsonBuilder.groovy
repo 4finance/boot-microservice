@@ -1,9 +1,11 @@
-package com.ofg.twitter.controller.place
+package com.ofg.twitter.controller.place.extractor
 
 import groovy.text.SimpleTemplateEngine
+import groovy.transform.PackageScope
 import groovy.transform.TypeChecked
 
 @TypeChecked
+@PackageScope
 class PlacesJsonBuilder {
 
     String buildPlacesJson(long pairId, Map<String, Optional<Place>> places) {

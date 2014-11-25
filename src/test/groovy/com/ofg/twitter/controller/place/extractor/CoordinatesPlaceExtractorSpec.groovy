@@ -1,5 +1,5 @@
 package com.ofg.twitter.controller.place.extractor
-import com.ofg.twitter.controller.place.Place
+
 import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
 import com.ofg.twitter.tweets.Tweets
 import groovy.json.JsonSlurper

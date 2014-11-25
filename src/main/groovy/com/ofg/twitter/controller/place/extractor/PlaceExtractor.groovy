@@ -1,7 +1,5 @@
 package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.twitter.controller.place.Place
-import com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability
 import groovy.transform.PackageScope
 
 @PackageScope

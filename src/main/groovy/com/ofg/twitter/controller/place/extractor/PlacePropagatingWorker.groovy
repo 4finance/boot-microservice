@@ -1,7 +1,5 @@
 package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.twitter.controller.place.Place
-import com.ofg.twitter.controller.place.PlacesJsonBuilder
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired
 @TypeChecked
 @Slf4j
 class PlacePropagatingWorker implements PropagationWorker {
-
-    public static final String COLLERATOR_DEPENDENCY_NAME = 'collerator'
     
     private final PlacesExtractor placesExtractor
     private final PlacesJsonBuilder placesJsonBuilder
     private final ColleratorClient colleratorClient
-    
 
     @Autowired
     PlacePropagatingWorker(PlacesExtractor placesExtractor, 

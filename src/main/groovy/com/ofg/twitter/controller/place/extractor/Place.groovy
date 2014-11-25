@@ -1,9 +1,10 @@
-package com.ofg.twitter.controller.place
+package com.ofg.twitter.controller.place.extractor
 
-import com.ofg.twitter.controller.place.extractor.PlaceExtractor
+import groovy.transform.PackageScope
 import groovy.transform.ToString
 
 @ToString
+@PackageScope
 class Place {
     final PlaceDetails placeDetails
     final String placeResolutionOrigin
