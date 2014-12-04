@@ -1,4 +1,4 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
 import groovy.text.SimpleTemplateEngine
 import groovy.transform.PackageScope

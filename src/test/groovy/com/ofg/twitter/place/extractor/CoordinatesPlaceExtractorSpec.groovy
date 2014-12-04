@@ -1,9 +1,9 @@
-package com.ofg.twitter.controller.place.extractor
-
-import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
+package com.ofg.twitter.place.extractor
+import com.ofg.twitter.place.extractor.metrics.MatchProbabilityMetrics
 import com.ofg.twitter.tweets.Tweets
-import groovy.json.JsonSlurper
 import spock.lang.Specification
+
+import static com.ofg.twitter.place.extractor.TweetParser.parseTweet
 
 class CoordinatesPlaceExtractorSpec extends Specification {
 
@@ -26,7 +26,7 @@ class CoordinatesPlaceExtractorSpec extends Specification {
             String tweet = Tweets.TWEET_WITH_COORDINATES
             CoordinatesPlaceExtractor coordinatesPlaceExtractor = new CoordinatesPlaceExtractor(NEW_PLACE_RETURNING_CITY_FINDER, metrics)
         when:
-            Optional<Place> extractedPlace = coordinatesPlaceExtractor.extractPlaceFrom(new JsonSlurper().parseText(tweet))
+            Optional<Place> extractedPlace = coordinatesPlaceExtractor.extractPlaceFrom(parseTweet(tweet))
         then:
             extractedPlace.present
     }
@@ -36,21 +36,21 @@ class CoordinatesPlaceExtractorSpec extends Specification {
             String tweet = Tweets.TWEET_WITHOUT_COORDINATES
             CoordinatesPlaceExtractor coordinatesPlaceExtractor = new CoordinatesPlaceExtractor(MISSING_PLACE_RETURNING_CITY_FINDER, metrics)
         when:
-            Optional<Place> extractedPlace = coordinatesPlaceExtractor.extractPlaceFrom(new JsonSlurper().parseText(tweet))
+            Optional<Place> extractedPlace = coordinatesPlaceExtractor.extractPlaceFrom(parseTweet(tweet))
         then:
             !extractedPlace.present
     }
 
     private static final CityFinder NEW_PLACE_RETURNING_CITY_FINDER = new CityFinder(null) {
         @Override
-        Optional<Place.PlaceDetails> findCityFromCoordinates(long latitude, long longitude) {
+        Optional<Place.PlaceDetails> findCityFromCoordinates(double latitude, double longitude) {
             return Optional.of(new Place.PlaceDetails('Washington', 'US'))
         }
     }
 
     private static final CityFinder MISSING_PLACE_RETURNING_CITY_FINDER = new CityFinder(null) {
         @Override
-        Optional<Place.PlaceDetails> findCityFromCoordinates(long latitude, long longitude) {
+        Optional<Place.PlaceDetails> findCityFromCoordinates(double latitude, double longitude) {
             return Optional.empty()
         }
     }

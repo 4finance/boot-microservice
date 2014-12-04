@@ -1,10 +1,11 @@
-package com.ofg.twitter.controller.place.extractor
-
+package com.ofg.twitter.place.extractor
 import com.codahale.metrics.Meter
 import com.jayway.awaitility.Awaitility
+import com.ofg.twitter.place.model.Tweet
 import spock.lang.Specification
 
 import static com.jayway.awaitility.Duration.ONE_SECOND
+import static com.ofg.twitter.place.extractor.TweetParser.parseTweets
 
 class PlacesExtractorSpec extends Specification {
 
@@ -14,7 +15,7 @@ class PlacesExtractorSpec extends Specification {
             PlacesExtractor placesExtractor = new PlacesExtractor(placeExtractors, Stub(Meter))
             String tweets = '[{"id_str" : "1" }, {"id_str" : "2" }, {"id_str" : "3" }]'
         when:
-            Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(tweets)
+            Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(parseTweets(tweets))
         then:
             Awaitility.await().atMost(ONE_SECOND)until({
                 assert extractedPlaces.size() == 3
@@ -25,7 +26,7 @@ class PlacesExtractorSpec extends Specification {
     class ByTweetIdPlacesExtractor implements PlaceExtractor {
 
         @Override
-        Optional<Place> extractPlaceFrom(Object parsedTweet) {
+        Optional<Place> extractPlaceFrom(Tweet parsedTweet) {
             if (parsedTweet.id_str == '3' ){
                 return Optional.empty()
             }
@@ -42,5 +43,4 @@ class PlacesExtractorSpec extends Specification {
             return PlaceExtractor.PlaceResolutionProbability.LOW
         }
     }
-
 }

@@ -1,5 +1,6 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
+import com.ofg.twitter.place.model.Tweet
 import groovy.transform.TypeChecked
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,7 +23,7 @@ class PlacePropagatingWorker implements PropagationWorker {
     }
 
     @Override
-    void collectAndPropagate(long pairId, String tweets) {
+    void collectAndPropagate(long pairId, List<Tweet> tweets) {
         Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(tweets)
         String jsonToPropagate = placesJsonBuilder.buildPlacesJson(pairId, extractedPlaces)
         colleratorClient.populatePlaces(pairId, jsonToPropagate)
