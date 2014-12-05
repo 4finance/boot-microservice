@@ -1,8 +1,8 @@
-package com.ofg.twitter.controller.place.extractor.metrics
+package com.ofg.twitter.place.extractor.metrics
 
 import com.codahale.metrics.Meter
 import com.codahale.metrics.MetricRegistry
-import com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability
+import com.ofg.twitter.place.extractor.PlaceExtractor.PlaceResolutionProbability
 
 class MatchProbabilityMetrics {
 

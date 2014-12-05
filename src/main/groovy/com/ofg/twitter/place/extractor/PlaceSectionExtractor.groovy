@@ -1,8 +1,9 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
-import com.ofg.twitter.controller.place.extractor.Place.PlaceDetails
-import com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability
-import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
+import com.ofg.twitter.place.extractor.Place.PlaceDetails
+import com.ofg.twitter.place.extractor.PlaceExtractor.PlaceResolutionProbability
+import com.ofg.twitter.place.extractor.metrics.MatchProbabilityMetrics
+import com.ofg.twitter.place.model.Tweet
 import groovy.transform.PackageScope
 
 @PackageScope
@@ -17,7 +18,7 @@ class PlaceSectionExtractor implements PlaceExtractor {
     }
 
     @Override
-    Optional<Place> extractPlaceFrom(Object parsedTweet) {
+    Optional<Place> extractPlaceFrom(Tweet parsedTweet) {
         if(parsedTweet.place == null) {
             return Optional.empty()
         } else {

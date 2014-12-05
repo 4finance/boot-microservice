@@ -1,4 +1,4 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import groovy.transform.CompileStatic
@@ -14,10 +14,10 @@ class WeatherClient {
         this.cityFindingServiceUrl = cityFindingServiceUrl
     }
 
-    String findCity(long latitude, long longitude) {
+    String findCity(double latitude, double longitude) {
         return serviceRestClient.forExternalService()
                 .get()
-                .onUrl("$cityFindingServiceUrl?lat=${latitude.toInteger()}&lon=${longitude.toInteger()}")
+                .onUrl("$cityFindingServiceUrl?lat=${latitude}&lon=${longitude}")
                 .anObject()
                 .ofType(String)
     }

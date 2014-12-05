@@ -1,4 +1,4 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
 import groovy.json.JsonSlurper
 import org.springframework.cache.annotation.Cacheable
@@ -13,7 +13,7 @@ class CityFinder {
     }
 
     @Cacheable('cities')
-    Optional<Place.PlaceDetails> findCityFromCoordinates(long latitude, long longitude) {
+    Optional<Place.PlaceDetails> findCityFromCoordinates(double latitude, double longitude) {
         String cityResponse = weatherClient.findCity(latitude, longitude)
         def parsedCityResponse = new JsonSlurper().parseText(cityResponse)
         if (!isStatusResponseOk(parsedCityResponse)) {

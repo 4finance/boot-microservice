@@ -1,17 +1,18 @@
-package com.ofg.twitter.controller.place.extractor
+package com.ofg.twitter.place.extractor
 
-import com.ofg.twitter.controller.place.extractor.PlaceExtractor.PlaceResolutionProbability
-import com.ofg.twitter.controller.place.extractor.metrics.MatchProbabilityMetrics
-import groovy.json.JsonSlurper
+import com.ofg.twitter.place.extractor.PlaceExtractor.PlaceResolutionProbability
+import com.ofg.twitter.place.extractor.metrics.MatchProbabilityMetrics
 import spock.lang.Specification
 
-import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
+import static com.ofg.twitter.place.extractor.TweetParser.parseTweet
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITHOUT_A_PLACE
+import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
 
 class PlaceSectionExtractorSpec extends Specification {
 
     MatchProbabilityMetrics matchProbabilityMetrics = Mock()
     PlaceSectionExtractor placeSectionExtractor = new PlaceSectionExtractor(matchProbabilityMetrics)
+
 
     def 'should return high probability of result'() {
         expect:
@@ -61,7 +62,4 @@ class PlaceSectionExtractorSpec extends Specification {
             0 * matchProbabilityMetrics.update(_)
     }
 
-    private def parseTweet(String tweet) {
-        return new JsonSlurper().parseText(tweet)
-    }
 }
