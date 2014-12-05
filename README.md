@@ -21,17 +21,37 @@ Next adjust all the properties and then you have an empty project - you're now r
 
 ## How can I run it?
 
-To run it just create a jar or run `./gradlew bootRun` and pass the following parameters
+### From jar
+
+To run it just
+ - create a jar - `./gradlew clean build`
+ - go to `build/libs` to find the fat jar
+ - execute `java -jar` like presented below
 
 for production mode (no stubs)
 ```
--Dspring.profiles.active=prod
+java -Dspring.profiles.active=prod -jar boot-microservice.jar
+```
+
+for developer mode (stubs and embedded Zookeeper)
+```
+java -Dspring.profiles.active=dev -jar boot-microservice.jar
+```
+
+### From gradle
+
+you can also run it directly using gradle like this:
+
+for production mode (no stubs)
+
+```
+./gradlew bootRun -Dspring.profiles.active=prod
 ```
 
 for developer mode (stubs and embedded Zookeeper)
 
 ```
--Dspring.profiles.active=dev
+./gradlew bootRun -Dspring.profiles.active=dev
 ```
 
 ## How it works?
@@ -64,8 +84,7 @@ extends *com.ofg.infrastructure.base.IntegrationSpec* Spock *Specification* clas
 
 ##### MicroserviceMvcIntegrationSpec
 
-extends *com.ofg.infrastructure.base.MvcIntegrationSpec* Spock *Specification* class that initializes Spring web-context and provides some autowired fields including the
-*ServiceProvider* interface that allows you to stub Zookeeper entries.
+extends *com.ofg.infrastructure.base.MvcIntegrationSpec* Spock *Specification* class that initializes Spring web-context and provides some additional Mvc related fields.
 
 ##### MicroserviceMvcWiremockSpec
 
