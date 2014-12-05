@@ -36,7 +36,7 @@ class PairIdController {
             produces = TWITTER_PLACES_ANALYZER_JSON_VERSION_1)
     @ApiOperation(value = "Async collecting and propagating of tweets for a given pairId",
             notes = "This will asynchronously call tweet collecting, place extracting and their propagation to Collerators")
-    Callable<Void> getPlacesFromTweets(@PathVariable @NotNull long pairId, @RequestBody @NotNull List<Tweet> tweets) {
+    void getPlacesFromTweets(@PathVariable @NotNull long pairId, @RequestBody @NotNull List<Tweet> tweets) {
         propagationWorker.collectAndPropagate(pairId, tweets)
     }
 
