@@ -19,6 +19,21 @@ In this template we are using the following 4finance custom libraries (available
 You can remove all the caching related libraries, annotations and **com.ofg.twitter** packages.
 Next adjust all the properties and then you have an empty project - you're now ready to go.
 
+## How can I run it?
+
+To run it just create a jar or run `./gradlew bootRun` and pass the following parameters
+
+for production mode (no stubs)
+```
+-Dspring.profiles.active=prod
+```
+
+for developer mode (stubs and embedded Zookeeper)
+
+```
+-Dspring.profiles.active=dev
+```
+
 ## How it works?
 
 ### Production code
