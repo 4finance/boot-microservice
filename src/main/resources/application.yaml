@@ -1,0 +1,16 @@
+spring:
+  jackson.deserialization.fail-on-unknown-properties: false
+  groovy.template.check-template-location: false
+
+rest.api.version: 1.0
+city.finding.service.url: "http://api.openweathermap.org/data/2.5/weather"
+
+metrics.path:
+  country: pl
+  app: service-name
+
+stubrunner.stubs:
+  repository.root: "http://dl.bintray.com/4finance/micro"
+  group: com.ofg
+  module: stub-runner-examples
+
