@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE'
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
 
         if(project.hasProperty("coverage")) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
@@ -19,6 +20,7 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'maven'
 apply plugin: 'com.ofg.uptodate'
+apply plugin: 'docker'
 
 ext {
     versionPrefix = "CD"
@@ -118,6 +120,14 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
+}
+
+task docker(type: Docker) {
+    dependsOn 'build'
+    dryRun true
+    addFile("build/libs/${project.name}.jar", "/${project.name}/${project.name}.jar")
+    exposePort(8095)
+    entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
 }
 
 if(project.hasProperty("coverage")) {

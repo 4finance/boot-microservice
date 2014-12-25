@@ -54,6 +54,49 @@ for developer mode (stubs and embedded Zookeeper)
 ./gradlew bootRun -Dspring.profiles.active=dev
 ```
 
+### From Docker
+
+#### Development
+
+Running:
+
+```
+./gradlew docker
+```
+
+will create `/build/docker/Dockerfile`. You can use this file to create [Docker](https://www.docker.com/) image:
+
+```
+sudo docker build -t boot-microservice build/docker
+```
+
+Self-sufficient Docker image with our sample microservice can be started as follows:
+
+```
+docker run -e spring.profiles.active=dev -p 8080:8095 boot-microservice
+```
+
+Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in-memory embedded ZooKeeper and stubs) and we re-map 8095 port to 8080 on host machine.
+
+#### Standalone ZooKeeper
+
+If you want to run microservice with real service discovery via ZooKeeper, first prepare Docker image for that:
+
+```
+docker run --name zookeeper jplock/zookeeper
+```
+
+After the first time this container can be executed with `docker start -a zookeeper` shorthand. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper instance:
+
+```
+docker run \
+  -e spring.profiles.active=prod \
+  --link zookeeper:zk \
+  boot-microservice \
+  --service.resolver.url=zk:2181
+```
+We link microservice container with ZooKeeper container aliasing it to `zk`. This way microservice sees ZooKeeper container under `zk` hostname and we can simply point `service.resolver.url=zk:2181` (`zk:2181` is a valid network address from `boot-microservice` container's perspective).
+
 ## How it works?
 
 ### Production code
