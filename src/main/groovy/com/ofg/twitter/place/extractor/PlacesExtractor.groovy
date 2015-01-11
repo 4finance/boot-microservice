@@ -2,11 +2,13 @@ package com.ofg.twitter.place.extractor
 import com.codahale.metrics.Meter
 import com.ofg.twitter.place.model.Tweet
 import groovy.transform.PackageScope
+import groovy.util.logging.Slf4j
 import groovyx.gpars.GParsPool
 
 import java.util.concurrent.ConcurrentHashMap
 
 @PackageScope
+@Slf4j
 class PlacesExtractor {
 
     private final List<PlaceExtractor> placeExtractors
@@ -27,7 +29,13 @@ class PlacesExtractor {
     }
 
     private Map<String, Optional<Place>> appendExtractedTweet(Tweet tweet) {
-        return [(tweet.id_str as String): extractPlace(tweet)]
+        String tweetId = tweet.id_str as String
+        try {
+            return [(tweetId): extractPlace(tweet)]
+        } catch (Exception e) {
+            log.warn("Unable to extract Tweet", e)
+            return [(tweetId), Optional.empty()]
+        }
     }
 
     private Optional<Place> extractPlace(Tweet singleTweet) {
