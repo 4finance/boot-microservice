@@ -1,4 +1,4 @@
-boot-microservice
+boot-microservice [![Build Status](https://travis-ci.org/4finance/boot-microservice.svg?branch=master)](https://travis-ci.org/4finance/boot-microservice)
 =======================
 
 Example of a microservice that works on Spring Boot.
