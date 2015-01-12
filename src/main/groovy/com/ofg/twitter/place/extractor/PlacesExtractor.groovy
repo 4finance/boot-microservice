@@ -34,7 +34,7 @@ class PlacesExtractor {
             return [(tweetId): extractPlace(tweet)]
         } catch (Exception e) {
             log.warn("Unable to extract Tweet", e)
-            return [(tweetId), Optional.empty()]
+            return [(tweetId): Optional.empty()]
         }
     }
 
