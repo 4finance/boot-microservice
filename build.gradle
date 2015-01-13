@@ -33,7 +33,7 @@ ext {
     springVersion = '4.1.4.RELEASE'
     jacksonMapper = '1.9.13'
     aspectjVersion = '1.8.3'
-    microInfraSpringVersion = '0.7.7'
+    microInfraSpringVersion = '0.8.1'
 }
 
 configurations {
