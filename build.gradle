@@ -1,4 +1,7 @@
 buildscript {
+    ext {
+        springBootVersion = "1.2.1.RELEASE"
+    }
     repositories {
         mavenLocal()
         jcenter()
@@ -6,7 +9,7 @@ buildscript {
         maven { url "http://repo.spring.io/libs-snapshot" }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
 
@@ -36,9 +39,18 @@ uploadArchives {
         repository(url: "http://nexus.4finance.net/content/repositories/Pipeline") {
             authentication(userName: '', password: '')
         }
-        pom.version = currentVersion
-        pom.artifactId = project.name
-        pom.groupId = 'com.ofg'
+        pom {
+            version = currentVersion
+            artifactId = project.name
+            groupId = 'com.ofg'
+            project {
+                parent {
+                    groupId "org.springframework.boot"
+                    artifactId "spring-boot-starter-parent"
+                    version springBootVersion
+                }
+            }
+        }
     }
 }
 
