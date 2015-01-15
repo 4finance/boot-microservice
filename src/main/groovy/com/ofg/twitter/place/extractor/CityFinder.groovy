@@ -1,9 +1,11 @@
 package com.ofg.twitter.place.extractor
 
 import groovy.json.JsonSlurper
+import groovy.util.logging.Slf4j
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.http.HttpStatus
 
+@Slf4j
 class CityFinder {
 
     private final WeatherClient weatherClient
@@ -14,6 +16,7 @@ class CityFinder {
 
     @Cacheable('cities')
     Optional<Place.PlaceDetails> findCityFromCoordinates(double latitude, double longitude) {
+        log.debug("Geolocating: ($latitude, $longitude)")
         String cityResponse = weatherClient.findCity(latitude, longitude)
         def parsedCityResponse = new JsonSlurper().parseText(cityResponse)
         if (!isStatusResponseOk(parsedCityResponse)) {

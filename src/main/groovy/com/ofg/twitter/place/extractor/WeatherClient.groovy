@@ -1,5 +1,9 @@
 package com.ofg.twitter.place.extractor
 
+import com.netflix.hystrix.HystrixCommand
+import com.netflix.hystrix.HystrixCommandGroupKey
+import com.netflix.hystrix.HystrixCommandKey
+import com.ofg.infrastructure.hystrix.CorrelatedCommand
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import groovy.transform.CompileStatic
 
@@ -15,20 +19,36 @@ class WeatherClient {
     }
 
     String findCity(double latitude, double longitude) {
-        return serviceRestClient.forExternalService()
-                .get()
-                .onUrl(cityFindingServiceUrl + "?lat=${latitude}&lon=${longitude}")
-                .anObject()
-                .ofType(String)
+        withHystrix('findCity') {
+            return serviceRestClient.forExternalService()
+                    .get()
+                    .onUrl(cityFindingServiceUrl + "?lat=${latitude}&lon=${longitude}")
+                    .anObject()
+                    .ofType(String)
+        }
     }
 
     String isCityExistent(String cityNameToCheck) {
-        return serviceRestClient.forExternalService()
-                .get()
-                .onUrl("$cityFindingServiceUrl?q=$cityNameToCheck")
-                .anObject()
-                .ofType(String)
+        withHystrix('isCityExistent') {
+            return serviceRestClient.forExternalService()
+                    .get()
+                    .onUrl("$cityFindingServiceUrl?q=$cityNameToCheck")
+                    .anObject()
+                    .ofType(String)
+        }
     }
 
+    private def withHystrix(String name, Closure block) {
+        return new CorrelatedCommand(key(name)) {
+            @Override
+            def doRun() {
+                return block.call()
+            }
+        }.execute()
+    }
 
+    private def HystrixCommand.Setter key(String name) {
+        return HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(WeatherClient.class.getSimpleName()))
+                .andCommandKey(HystrixCommandKey.Factory.asKey(name))
+    }
 }
