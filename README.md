@@ -77,24 +77,31 @@ docker run -e spring.profiles.active=dev -p 8080:8095 boot-microservice
 
 Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in-memory embedded ZooKeeper and stubs) and we re-map 8095 port to 8080 on host machine.
 
-#### Standalone ZooKeeper
+#### Standalone setup with ZooKeeper and Graphite
 
-If you want to run microservice with real service discovery via ZooKeeper, first prepare Docker image for that:
+If you want to run microservice with real service discovery via ZooKeeper and Graphite, first prepare Docker images for that:
 
 ```
-docker run --name zookeeper jplock/zookeeper
+docker run --name zookeeper            jplock/zookeeper
+docker run --name graphite  -p 8081:80 kamon/grafana_graphite
 ```
 
-After the first time this container can be executed with `docker start -a zookeeper` shorthand. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper instance:
+After the first time these containers can be executed with `docker start -a zookeeper` and `docker start -a graphite` shorthands. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper/Graphite instances:
 
 ```
 docker run \
+  -p 8080:8080 \
   -e spring.profiles.active=prod \
   --link zookeeper:zk \
+  --link graphite:gr \
   boot-microservice \
-  --service.resolver.url=zk:2181
+  --service.resolver.url=zk:2181 \
+  --graphite.host=gr
 ```
-We link microservice container with ZooKeeper container aliasing it to `zk`. This way microservice sees ZooKeeper container under `zk` hostname and we can simply point `service.resolver.url=zk:2181` (`zk:2181` is a valid network address from `boot-microservice` container's perspective).
+
+We link microservice container with ZooKeeper container aliasing it to `zk`. This way microservice sees ZooKeeper container under `zk` hostname and we can simply point `service.resolver.url=zk:2181` (`zk:2181` is a valid network address from `boot-microservice` container's perspective). Same applies to Graphite.
+
+Your microservice (assuming it exposes 8080 port) will be visible outside under 8080 as well. Moreover you can browse to `localhost:8081` and browse Grafana.
 
 ## How it works?
 
