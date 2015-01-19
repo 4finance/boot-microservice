@@ -31,7 +31,7 @@ ext {
     currentVersion = "${versionPrefix}-${buildNrLoc}"
 
     jacksonMapper = '1.9.13'
-    microInfraSpringVersion = '0.8.1'
+    microInfraSpringVersion = '0.8.3'
 }
 
 uploadArchives {
