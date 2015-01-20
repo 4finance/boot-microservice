@@ -1,4 +1,5 @@
 package com.ofg.twitter.place.extractor
+
 import com.codahale.metrics.Meter
 import com.ofg.twitter.place.model.Tweet
 import groovy.transform.PackageScope
@@ -6,6 +7,8 @@ import groovy.util.logging.Slf4j
 import groovyx.gpars.GParsPool
 
 import java.util.concurrent.ConcurrentHashMap
+
+import static com.ofg.infrastructure.correlationid.CorrelationIdUpdater.wrapClosureWithId
 
 @PackageScope
 @Slf4j
@@ -22,7 +25,9 @@ class PlacesExtractor {
     Map<String, Optional<Place>> extractPlacesFrom(List<Tweet> tweets) {
         Map<String, Optional<Place>> foundPlaces = new ConcurrentHashMap<>()
         GParsPool.withPool {
-            tweets.eachParallel { foundPlaces << appendExtractedTweet(it) }
+            tweets.eachParallel wrapClosureWithId { tweet ->
+                foundPlaces << appendExtractedTweet(tweet)
+            }
         }
         analyzedTweetsMeter.mark(foundPlaces.size())
         return foundPlaces
@@ -47,6 +52,4 @@ class PlacesExtractor {
         }
         return Optional.empty()
     }
-
-
 }
