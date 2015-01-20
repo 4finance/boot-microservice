@@ -31,7 +31,7 @@ ext {
     currentVersion = "${versionPrefix}-${buildNrLoc}"
 
     jacksonMapper = '1.9.13'
-    microInfraSpringVersion = '0.8.1'
+    microInfraSpringVersion = '0.8.3'
 }
 
 uploadArchives {
@@ -96,7 +96,6 @@ dependencies {
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
     compile 'com.jayway.jsonpath:json-path-assert:1.2.0'
     compile 'org.yaml:snakeyaml'
-    compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
@@ -110,12 +109,7 @@ dependencies {
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 
-    testCompile 'junit:junit'
     testCompile 'com.jayway.awaitility:awaitility:1.6.3'
-    testCompile 'org.hamcrest:hamcrest-library'
-    testCompile "org.spockframework:spock-core"
-    testRuntime "org.spockframework:spock-spring"
-    testCompile "org.springframework:spring-test"
     testCompile('com.github.tomakehurst:wiremock:1.52') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
