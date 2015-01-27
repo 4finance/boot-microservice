@@ -75,6 +75,9 @@ project.gradle.projectsEvaluated {
 
 test {
     jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
+    testLogging {
+        exceptionFormat = 'full'
+    }
 }
 
 repositories {
