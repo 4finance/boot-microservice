@@ -8,7 +8,7 @@ class AcceptanceSwaggerUISpec extends GebSpec{
         //run app from console
         def command ="""./gradlew bootRun -Dspring.profiles.active=dev"""
         command.execute()
-        sleep 15000
+        sleep 30000
     }
 
     def cleanupSpec(){
