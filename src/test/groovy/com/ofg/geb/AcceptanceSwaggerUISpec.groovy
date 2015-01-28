@@ -6,9 +6,9 @@ class AcceptanceSwaggerUISpec extends GebSpec{
     def setupSpec(){
         //TODO
         //run app from console
-//        def command ="""./gradlew bootRun -Dspring.profiles.active=dev"""
-//        command.execute()
-//        sleep 30000
+        def command ="""./gradlew bootRun -Dspring.profiles.active=dev"""
+        command.execute()
+        sleep 30000
     }
 
     def cleanupSpec(){
@@ -21,8 +21,6 @@ class AcceptanceSwaggerUISpec extends GebSpec{
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-
-
     }
 
     //FIXME api link i page object should be fixed first
@@ -42,6 +40,8 @@ class AcceptanceSwaggerUISpec extends GebSpec{
         then:
             at SwaggerUIHomePage
             assert metricsMvcEndpointText.displayed
+            showMicroservice.click()
+            assert microserviceJsonText.displayed
     }
 
     def "Endpoint health-mvc-endpoint is visible"(){
@@ -51,16 +51,4 @@ class AcceptanceSwaggerUISpec extends GebSpec{
             at SwaggerUIHomePage
             assert healthMvcEndpointText.displayed
     }
-
-    def "Configuration should be displayed correctly"(){
-        when:
-            to SwaggerUIHomePage
-        then:
-            at SwaggerUIHomePage
-            showMicroservice.click()
-            assert microserviceJsonText.displayed
-
-
-    }
-
 }
