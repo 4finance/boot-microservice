@@ -122,6 +122,7 @@ dependencies {
     testCompile "org.gebish:geb-spock:0.10.0"
     testCompile "org.seleniumhq.selenium:selenium-firefox-driver:2.43.1"
     testCompile "org.seleniumhq.selenium:selenium-support:2.43.1"
+    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:2.43.1"
 
 }
 
