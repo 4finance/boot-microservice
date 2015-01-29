@@ -6,7 +6,7 @@ class AcceptanceSwaggerUISpec extends GebSpec{
     def setupSpec(){
         //TODO
         //run app from console
-        def command ="""./gradlew bootRun -Dspring.profiles.active=dev"""
+        def command ="""./gradlew bootRun -Dspring.profiles.active=dev -Dstubrunner.skip-local-repo=true"""
         command.execute()
         sleep 30000
     }
