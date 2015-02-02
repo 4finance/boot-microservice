@@ -1,6 +1,5 @@
 package com.ofg.geb
 import geb.spock.GebSpec
-import spock.lang.Ignore
 
 class AcceptanceSwaggerUISpec extends GebSpec{
     def setupSpec(){
@@ -23,16 +22,6 @@ class AcceptanceSwaggerUISpec extends GebSpec{
             at SwaggerUIHomePage
     }
 
-    //FIXME api link i page object should be fixed first
-    @Ignore
-    def "Endpoint API is visible"(){
-        when:
-            to SwaggerUIHomePage
-        then:
-            at SwaggerUIHomePage
-            assert apiEndpointText.displayed
-    }
-
 
     def "Endpoint microservice-configuration-controller is visible"(){
         when:
@@ -50,5 +39,11 @@ class AcceptanceSwaggerUISpec extends GebSpec{
         then:
             at SwaggerUIHomePage
             assert healthMvcEndpointText.displayed
+            assert showHealthMVCEndpoints.displayed
     }
+
+
+
+
+
 }
