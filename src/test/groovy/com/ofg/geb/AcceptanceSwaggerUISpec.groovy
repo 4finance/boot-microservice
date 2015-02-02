@@ -1,21 +1,16 @@
 package com.ofg.geb
-
 import com.ofg.geb.pages.SwaggerUIHomePage
+import com.ofg.twitter.Application
 import geb.spock.GebSpec
+import org.springframework.boot.test.IntegrationTest
+import org.springframework.boot.test.SpringApplicationContextLoader
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.web.WebAppConfiguration
 
+@ContextConfiguration(loader = SpringApplicationContextLoader.class,classes = Application)
+@WebAppConfiguration
+@IntegrationTest("spring.profiles.active:dev,stubrunner.skip-local-repo:true")
 class AcceptanceSwaggerUISpec extends GebSpec{
-    def setupSpec(){
-        //TODO
-        //run app from console
-        def command ="""./gradlew bootRun -Dspring.profiles.active=dev -Dstubrunner.skip-local-repo=true"""
-        command.execute()
-        sleep 30000
-    }
-
-    def cleanupSpec(){
-        //TODO
-        //kill app from setup
-    }
 
     def "SwaggerUI home page should be visible"(){
         when:
@@ -43,9 +38,5 @@ class AcceptanceSwaggerUISpec extends GebSpec{
             assert healthMvcEndpointText.displayed
             assert showHealthMVCEndpoints.displayed
     }
-
-
-
-
 
 }

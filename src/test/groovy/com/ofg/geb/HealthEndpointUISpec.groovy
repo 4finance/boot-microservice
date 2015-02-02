@@ -1,10 +1,17 @@
 package com.ofg.geb
 
 import com.ofg.geb.pages.SwaggerUIHomePage
+import com.ofg.twitter.Application
 import geb.spock.GebSpec
+import org.springframework.boot.test.IntegrationTest
+import org.springframework.boot.test.SpringApplicationContextLoader
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.web.WebAppConfiguration
 import spock.lang.Unroll
 
-
+@ContextConfiguration(loader = SpringApplicationContextLoader.class,classes = Application)
+@WebAppConfiguration
+@IntegrationTest("spring.profiles.active:dev,stubrunner.skip-local-repo:true")
 @Unroll
 class HealthEndpointUISpec extends GebSpec {
 
