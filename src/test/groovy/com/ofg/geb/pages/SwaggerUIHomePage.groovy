@@ -1,4 +1,4 @@
-package com.ofg.geb
+package com.ofg.geb.pages
 
 import geb.Page
 
