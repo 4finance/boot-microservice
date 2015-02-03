@@ -40,4 +40,15 @@ class AcceptanceSwaggerUISpec extends GebSpec {
         showHealthMVCEndpoints.displayed
     }
 
+    def "Endpoint 'pairid' is visible"() {
+        when:
+        to SwaggerUIHomePage
+        then:
+        at SwaggerUIHomePage
+        showPairIdEndpoints.click()
+        waitFor { pairIdPutText.displayed }
+        pairIdPutText.text() == "/api/{pairId}"
+
+    }
+
 }
