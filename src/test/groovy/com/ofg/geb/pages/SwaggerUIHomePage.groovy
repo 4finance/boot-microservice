@@ -13,7 +13,7 @@ class SwaggerUIHomePage extends Page {
         showMicroservice { $("a", id: "endpointListTogger_microservice-configuration-controller") }
         showHealthMVCEndpoints { $("a", id: "endpointListTogger_health-mvc-endpoint") }
         microserviceJsonText { $("a", text: "/microservice.json") }
-        heathEndpointsTable { $("ul#health-mvc-endpoint_endpoint_list") }
+        heathEndpointsTable(wait: true) { $("ul#health-mvc-endpoint_endpoint_list") }
 
     }
 

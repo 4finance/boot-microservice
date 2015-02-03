@@ -1,5 +1,4 @@
 package com.ofg.geb
-
 import com.ofg.geb.pages.SwaggerUIHomePage
 import com.ofg.twitter.Application
 import geb.spock.GebSpec
@@ -7,17 +6,25 @@ import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
+import spock.lang.Stepwise
 import spock.lang.Unroll
 
 @ContextConfiguration(loader = SpringApplicationContextLoader.class,classes = Application)
 @WebAppConfiguration
 @IntegrationTest("spring.profiles.active:dev,stubrunner.skip-local-repo:true")
+@Stepwise
 @Unroll
 class HealthEndpointUISpec extends GebSpec {
 
-    def setupSpec(){
-        to SwaggerUIHomePage
-        showHealthMVCEndpoints.click()
+    def "Setup step"(){
+        when:
+            to SwaggerUIHomePage
+        then:
+            at SwaggerUIHomePage
+            showHealthMVCEndpoints.click()
+            waitFor{heathEndpointsTable}
+            waitFor { $("#resource_health-mvc-endpoint li.trace span.path a")}
+            sleep(5000)
     }
 
     def "Check visibility of operations and their paths for 'health-mvc-endpoint' #httpOperation"(){
