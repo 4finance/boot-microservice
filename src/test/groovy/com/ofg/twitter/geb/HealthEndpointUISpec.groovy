@@ -46,8 +46,8 @@ class HealthEndpointUISpec extends GebSpec {
     }
 
     String getTextfromHealthOperation(String http_operation) {
-        waitFor { $("#resource_health-mvc-endpoint li." + http_operation + " span.path a") }
-        return $("#resource_health-mvc-endpoint li." + http_operation + " span.path a").text()
+        waitFor { $("#resource_health-mvc-endpoint li.$http_operation span.path a").displayed }
+        return $("#resource_health-mvc-endpoint li.$http_operation span.path a").text()
     }
 
 }

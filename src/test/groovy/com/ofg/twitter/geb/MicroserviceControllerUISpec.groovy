@@ -1,4 +1,5 @@
 package com.ofg.twitter.geb
+
 import com.ofg.twitter.Application
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import geb.spock.GebSpec
@@ -38,8 +39,8 @@ class MicroserviceControllerUISpec extends GebSpec {
             microserviceGetTryButton.click()
         then:
             waitFor { microserviceGetResponseCode.displayed }
-            assert microserviceGetResponseCode.displayed
-            assert microserviceGetResponseCode.text() == '200'
+            microserviceGetResponseCode.displayed
+            microserviceGetResponseCode.text() == '200'
             def inputFile = Loader.getResource("microservice.json")
             def inputJSON = new JsonSlurper().parseText(inputFile.text)
             def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())

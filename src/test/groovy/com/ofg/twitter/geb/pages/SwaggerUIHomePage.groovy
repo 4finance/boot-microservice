@@ -12,7 +12,7 @@ class SwaggerUIHomePage extends Page {
         showMicroservice { $("a", id: "endpointListTogger_microservice-configuration-controller") }
         showHealthMVCEndpoints { $("a", id: "endpointListTogger_health-mvc-endpoint") }
         healthEndpointsTable(wait: true) { $("ul#health-mvc-endpoint_endpoint_list") }
-        healthEndpointTraceText{$("#resource_health-mvc-endpoint li.trace span.path a")}
+        healthEndpointTraceText { $("#resource_health-mvc-endpoint li.trace span.path a") }
         microserviceJsonText { $("a", text: "/microservice.json") }
         microserviceGetTryButton {
             $("ul#microservice-configuration-controller_endpoint_list .submit[value='Try it out!']")
@@ -26,4 +26,6 @@ class SwaggerUIHomePage extends Page {
         showPairIdEndpoints { $("a#endpointListTogger_pairid") }
         pairIdPutText { $("ul#pairid_endpoint_list span.path a") }
     }
+
+
 }
