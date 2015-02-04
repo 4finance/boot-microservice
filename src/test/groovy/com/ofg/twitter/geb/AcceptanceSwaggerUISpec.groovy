@@ -29,7 +29,9 @@ class AcceptanceSwaggerUISpec extends GebSpec {
         then:
             at SwaggerUIHomePage
             metricsMvcEndpointText.displayed
+        when:
             showMicroservice.click()
+        then:
             microserviceJsonText.displayed
     }
 
@@ -47,7 +49,9 @@ class AcceptanceSwaggerUISpec extends GebSpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
+        when:
             showPairIdEndpoints.click()
+        then:
             waitFor { pairIdPutText.displayed }
             pairIdPutText.text() == "/api/{pairId}"
 

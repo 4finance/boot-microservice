@@ -29,7 +29,10 @@ class MicroserviceControllerUISpec extends GebSpec {
         when:
             showMicroservice.click()
         then:
+            microserviceJsonText.displayed
+        when:
             microserviceJsonText.click()
+        then:
             waitFor { microserviceGetTryButton.displayed }
             microserviceGetTryButton.displayed
     }
@@ -41,6 +44,7 @@ class MicroserviceControllerUISpec extends GebSpec {
             waitFor { microserviceGetResponseCode.displayed }
             microserviceGetResponseCode.displayed
             microserviceGetResponseCode.text() == '200'
+        and:
             def inputFile = Loader.getResource("microservice.json")
             def inputJSON = new JsonSlurper().parseText(inputFile.text)
             def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
