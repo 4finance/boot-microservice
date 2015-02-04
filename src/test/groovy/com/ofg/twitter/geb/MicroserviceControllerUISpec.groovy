@@ -4,7 +4,6 @@ import com.ofg.twitter.Application
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import geb.spock.GebSpec
 import groovy.json.JsonSlurper
-import org.apache.log4j.helpers.Loader
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.test.context.ContextConfiguration
@@ -45,7 +44,7 @@ class MicroserviceControllerUISpec extends GebSpec {
             microserviceGetResponseCode.displayed
             microserviceGetResponseCode.text() == '200'
         and:
-            def inputFile = Loader.getResource("microservice.json")
+            def inputFile = getClass().getResource("/microservice.json")
             def inputJSON = new JsonSlurper().parseText(inputFile.text)
             def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
             inputJSON == outputJSON
