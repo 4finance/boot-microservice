@@ -25,12 +25,12 @@ class MicroserviceControllerUISpec extends GebSpec {
 
     }
 
-    def "'Try it put' button is visible for GET opeation"() {
+    def "'Try it put' button is visible for GET operation"() {
         when:
         showMicroservice.click()
         then:
         microserviceJsonText.click()
-        waitFor() { microserviceGetTryButton.displayed }
+        waitFor { microserviceGetTryButton.displayed }
         microserviceGetTryButton.displayed
 
 
