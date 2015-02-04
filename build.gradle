@@ -118,12 +118,12 @@ dependencies {
     }
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
 
-    testCompile "org.gebish:geb-core:0.10.0"
-    testCompile "org.gebish:geb-spock:0.10.0"
+    testCompile "org.gebish:geb-core:$gebVersion"
+    testCompile "org.gebish:geb-spock:$gebVersion"
     testCompile "org.spockframework:spock-spring"
-    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:2.43.1"
-    testCompile "org.seleniumhq.selenium:selenium-support:2.43.1"
-    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:2.43.1"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
 
 }
 

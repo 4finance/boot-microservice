@@ -1,9 +1,9 @@
-package com.ofg.geb
-
-import com.ofg.geb.pages.SwaggerUIHomePage
+package com.ofg.twitter.geb
 import com.ofg.twitter.Application
+import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import geb.spock.GebSpec
 import groovy.json.JsonSlurper
+import org.apache.log4j.helpers.Loader
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.test.context.ContextConfiguration
@@ -18,37 +18,32 @@ class MicroserviceControllerUISpec extends GebSpec {
 
     def "Microservice controller is visible on Swagger Page"() {
         when:
-        to SwaggerUIHomePage
+            to SwaggerUIHomePage
         then:
-        at SwaggerUIHomePage
-        metricsMvcEndpointText.displayed
-
+            at SwaggerUIHomePage
+            metricsMvcEndpointText.displayed
     }
 
     def "'Try it put' button is visible for GET operation"() {
         when:
-        showMicroservice.click()
+            showMicroservice.click()
         then:
-        microserviceJsonText.click()
-        waitFor { microserviceGetTryButton.displayed }
-        microserviceGetTryButton.displayed
-
-
+            microserviceJsonText.click()
+            waitFor { microserviceGetTryButton.displayed }
+            microserviceGetTryButton.displayed
     }
 
     def "Try it out and Check respond body and code"() {
         when:
-        microserviceGetTryButton.click()
-        waitFor { microserviceGetResponseCode.displayed }
+            microserviceGetTryButton.click()
         then:
-        assert microserviceGetResponseCode.displayed
-        assert microserviceGetResponseCode.text() == '200'
-        def inputFile = new File("src/main/resources/microservice.json")
-        def inputJSON = new JsonSlurper().parseText(inputFile.text)
-        def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
-        inputJSON == outputJSON
-
-
+            waitFor { microserviceGetResponseCode.displayed }
+            assert microserviceGetResponseCode.displayed
+            assert microserviceGetResponseCode.text() == '200'
+            def inputFile = Loader.getResource("microservice.json")
+            def inputJSON = new JsonSlurper().parseText(inputFile.text)
+            def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
+            inputJSON == outputJSON
     }
 
 }

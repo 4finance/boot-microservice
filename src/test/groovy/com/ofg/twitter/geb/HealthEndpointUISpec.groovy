@@ -1,6 +1,6 @@
-package com.ofg.geb
+package com.ofg.twitter.geb
 
-import com.ofg.geb.pages.SwaggerUIHomePage
+import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import com.ofg.twitter.Application
 import geb.spock.GebSpec
 import org.springframework.boot.test.IntegrationTest
@@ -19,29 +19,29 @@ class HealthEndpointUISpec extends GebSpec {
 
     def "Setup step"() {
         when:
-        to SwaggerUIHomePage
+            to SwaggerUIHomePage
         then:
-        at SwaggerUIHomePage
-        showHealthMVCEndpoints.click()
-        waitFor { heathEndpointsTable.displayed }
-        waitFor { $("#resource_health-mvc-endpoint li.trace span.path a").displayed }
+            at SwaggerUIHomePage
+            showHealthMVCEndpoints.click()
+            waitFor { healthEndpointsTable.displayed }
+            waitFor { healthEndpointTraceText.displayed }
     }
 
     def "Check visibility of operations and their paths for 'health-mvc-endpoint' #httpOperation"() {
 
         expect:
-        getTextfromHealthOperation(httpOperation) == path
+            getTextfromHealthOperation(httpOperation) == path
 
         where:
-        httpOperation | path
-        "get"         | "/health"
-        "delete"      | "/health"
-        "head"        | "/health"
-        "options"     | "/health"
-        "post"        | "/health"
-        "patch"       | "/health"
-        "put"         | "/health"
-        "trace"       | "/health"
+            httpOperation || path
+            "get"         || "/health"
+            "delete"      || "/health"
+            "head"        || "/health"
+            "options"     || "/health"
+            "post"        || "/health"
+            "patch"       || "/health"
+            "put"         || "/health"
+            "trace"       || "/health"
 
     }
 

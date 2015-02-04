@@ -1,9 +1,9 @@
-package com.ofg.geb.pages
+package com.ofg.twitter.geb.pages
 
 import geb.Page
 
 class SwaggerUIHomePage extends Page {
-    static url = "http://localhost:8095/swagger"
+    static url = "/swagger"
     static at = { title == "Swagger UI" }
 
     static content = {
@@ -11,7 +11,8 @@ class SwaggerUIHomePage extends Page {
         metricsMvcEndpointText { $("li", id: "resource_microservice-configuration-controller") }
         showMicroservice { $("a", id: "endpointListTogger_microservice-configuration-controller") }
         showHealthMVCEndpoints { $("a", id: "endpointListTogger_health-mvc-endpoint") }
-        heathEndpointsTable(wait: true) { $("ul#health-mvc-endpoint_endpoint_list") }
+        healthEndpointsTable(wait: true) { $("ul#health-mvc-endpoint_endpoint_list") }
+        healthEndpointTraceText{$("#resource_health-mvc-endpoint li.trace span.path a")}
         microserviceJsonText { $("a", text: "/microservice.json") }
         microserviceGetTryButton {
             $("ul#microservice-configuration-controller_endpoint_list .submit[value='Try it out!']")
