@@ -117,6 +117,14 @@ dependencies {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
+
+    testCompile "org.gebish:geb-core:$gebVersion"
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile "org.spockframework:spock-spring"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
+
 }
 
 task docker(type: Docker) {
