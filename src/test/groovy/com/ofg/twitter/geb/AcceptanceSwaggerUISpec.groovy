@@ -28,6 +28,7 @@ class AcceptanceSwaggerUISpec extends GebSpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
+            waitFor {metricsMvcEndpointText.displayed}
             metricsMvcEndpointText.displayed
         when:
             showMicroservice.click()
@@ -40,6 +41,7 @@ class AcceptanceSwaggerUISpec extends GebSpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
+            waitFor {healthMvcEndpointText.displayed}
             healthMvcEndpointText.displayed
             showHealthMVCEndpoints.displayed
     }
@@ -50,6 +52,7 @@ class AcceptanceSwaggerUISpec extends GebSpec {
         then:
             at SwaggerUIHomePage
         when:
+            waitFor {showPairIdEndpoints.displayed}
             showPairIdEndpoints.click()
         then:
             waitFor { pairIdPutText.displayed }
