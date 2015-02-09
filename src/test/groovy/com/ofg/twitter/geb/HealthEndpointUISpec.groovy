@@ -23,6 +23,7 @@ class HealthEndpointUISpec extends GebSpec {
         then:
             at SwaggerUIHomePage
         when:
+            waitFor {showHealthMVCEndpoints.displayed}
             showHealthMVCEndpoints.click()
         then:
             waitFor { healthEndpointsTable.displayed }
