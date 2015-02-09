@@ -1,3 +1,6 @@
+import org.joda.time.DateTime
+import org.apache.tools.ant.filters.*
+
 buildscript {
     repositories {
         mavenLocal()
@@ -11,8 +14,10 @@ buildscript {
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath 'io.codearte.accurest:accurest-gradle-plugin:0.4.1'
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.6'
+        classpath 'joda-time:joda-time:2.4'
 
-        if(project.hasProperty("coverage")) {
+        if (project.hasProperty("coverage")) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
         }
     }
@@ -23,6 +28,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'maven-publish'
 apply plugin: 'com.ofg.uptodate'
 apply plugin: 'docker'
+apply plugin: 'idea'
+apply plugin: 'com.moowork.node'
 apply plugin: 'accurest'
 
 ext {
@@ -50,6 +57,33 @@ configurations {
                 }
             }
         }
+    }
+}
+
+task addHashFile << {
+    String gitCmd = "git log --pretty=format:'%H' -n 1"
+    def proc = gitCmd.execute()
+    proc.waitFor()
+    new File("commitHash.txt").withWriter { it << proc.in.text }
+}
+
+processResources {
+    String hashOlfLastCommitCmd = "git log --pretty=format:%H -n 1"
+    def hashProc = hashOlfLastCommitCmd.execute()
+    hashProc.waitFor()
+    // Replace @placeholder@ in resource files with specific data
+    filter ReplaceTokens, tokens: [
+            "last-commit-hash": hashProc.in.text,
+            "build-date-time": DateTime.now().toString("dd/MM/yyyy HH:mm:ss")
+    ]
+}
+
+jar {
+    dependsOn addHashFile
+    from "commitHash.txt"
+
+    from(fileTree("src/main/web/dist")) {
+        into "static"
     }
 }
 
@@ -100,6 +134,10 @@ dependencies {
     runtime 'com.h2database:h2'
 
     testCompile 'com.jayway.awaitility:awaitility:1.6.3'
+    testCompile 'org.hamcrest:hamcrest-library'
+    testCompile "org.spockframework:spock-core"
+    testRuntime "org.spockframework:spock-spring"
+    testCompile "org.springframework:spring-test"
     testCompile('com.github.tomakehurst:wiremock:1.52') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
@@ -107,7 +145,6 @@ dependencies {
 
     testCompile "org.gebish:geb-core:$gebVersion"
     testCompile "org.gebish:geb-spock:$gebVersion"
-    testCompile "org.spockframework:spock-spring"
     testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
     testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
     testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
@@ -123,7 +160,7 @@ task docker(type: Docker) {
     entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
 }
 
-if(project.hasProperty("coverage")) {
+if (project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
     apply plugin: 'jacoco'
     apply plugin: 'sonar-runner'
@@ -154,6 +191,7 @@ if(project.hasProperty("coverage")) {
     }
 
     test {
+        ignoreFailures = true
         jacoco {
             excludes = ['*Configuration']
         }
@@ -177,18 +215,6 @@ accurest {
 }
 
 generateAccurest.dependsOn generateWiremockClientStubs
-
-task addHashFile << {
-    String gitCmd = "git log --pretty=format:'%H' -n 1"
-    def proc = gitCmd.execute()
-    proc.waitFor()
-    new File("commitHash.txt").withWriter { it << proc.in.text }
-}
-
-jar {
-    dependsOn addHashFile
-    from "commitHash.txt"
-}
 
 task stubsJar(type: Jar) {
     baseName = "${project.name}-stubs"
@@ -228,7 +254,51 @@ publishing {
             }
         }
     }
+
 }
+
+def webDir = new File(projectDir, "src/main/web")
+
+node {
+    // Version of node to use.
+    version = '0.10.29'
+
+    // Enabled the automatic download. False is the default (for now).
+    download = true
+
+    workDir = webDir
+}
+
+task installAllNpm(type: NpmTask) {
+    workingDir = webDir
+    args = ['install']
+}
+
+task bower(type: NodeTask) {
+    script = new File(webDir, 'node_modules/bower/bin/bower')
+    workingDir = webDir
+    args = ['--allow-root', 'install']
+}
+
+task grunt(type: NodeTask) {
+    script = new File(webDir, 'node_modules/grunt-cli/bin/grunt')
+    workingDir = webDir
+}
+
+task cleanGUIDeps << {
+    ['bower_components', 'node_modules'].each {
+        new File(webDir, it).deleteDir()
+    }
+}
+
+clean << {
+    new File(webDir, 'dist').deleteDir()
+}
+
+// run bower and grunt to build the web
+bower.dependsOn installAllNpm
+grunt.dependsOn bower
+jar.dependsOn grunt
 
 wrapper {
     gradleVersion '2.2.1'

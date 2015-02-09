@@ -1,0 +1,29 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+    <span ng-bind-html="alert.msg"></span>
+</alert>
+
+<div>
+    <h3>Welcome in the bootstrap gui microservice</h3>
+
+    <p class="lead">
+
+    <h4>Find the city</h4>
+
+    <form role="form">
+        <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="text" class="form-control" id="latitude" placeholder="Latitude" ng-model="coords.lat">
+        </div>
+        <div class="form-group">
+            <label for="longtitude">Longtitude</label>
+            <input type="text" class="form-control" id="longtitude" placeholder="Longtitude" ng-model="coords.lon">
+        </div>
+        <button type="button" class="btn btn-default" ng-click="findCity()">Find</button>
+    </form>
+
+    <hr/>
+
+    <div class="well">
+        The city you are looking for is: {{city}}
+    </div>
+</div>
