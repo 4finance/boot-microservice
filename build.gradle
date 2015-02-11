@@ -30,7 +30,6 @@ ext {
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
     currentVersion = "${versionPrefix}-${buildNrLoc}"
 
-    jacksonMapper = '1.9.13'
     //microInfraSpring version moved to gradle.properties
 }
 
