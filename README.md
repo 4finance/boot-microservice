@@ -9,9 +9,11 @@ Example of a microservice that works on Spring Boot.
 ## Introduction
 
 To make setting up microservices in micro-time we needed to extract the common building blocks to separate libraries.
-In this template we are using the following 4finance custom libraries (available in jcenter)
+In this template we are using 4finance custom library, i.e. [micro-infra-spring](https://github.com/4finance/micro-infra-spring) (available in jcenter).
 
-[Micro Infra Spring](https://github.com/4finance/micro-infra-spring).
+## GUI version
+
+There is a version with web application connected with backend side. You can find it on the branch of this repo: [boot-microservice-gui](https://github.com/4finance/boot-microservice/tree/boot-microservice-gui).
 
 ## What should I do after I clone the repo?
 
