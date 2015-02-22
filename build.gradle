@@ -138,7 +138,7 @@ dependencies {
     testCompile "org.spockframework:spock-core"
     testRuntime "org.spockframework:spock-spring"
     testCompile "org.springframework:spring-test"
-    testCompile('com.github.tomakehurst:wiremock:1.52') {
+    testCompile('com.github.tomakehurst:wiremock:1.53') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
