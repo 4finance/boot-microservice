@@ -38,6 +38,8 @@ ext {
     //microInfraSpring and versions of other dependencies were moved to gradle.properties
 }
 
+version = currentVersion
+
 configurations {
     all {
         resolutionStrategy {
