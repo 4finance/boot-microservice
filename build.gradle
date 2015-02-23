@@ -10,7 +10,7 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
-        classpath 'io.codearte.accurest:accurest-gradle-plugin:0.4.1'
+        classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
 
         if(project.hasProperty("coverage")) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
@@ -31,12 +31,11 @@ ext {
     currentVersion = "${versionPrefix}-${buildNrLoc}"
     projectGroupId = groupId
 
-    jacksonMapper = '1.9.13'
     contractsDir = file("${project.rootDir}/repository/mappings/com/ofg/twitter-places-analyzer")
-    wiremockStubsOutputDirRoot = file("${project.rootDir}/out/production/${project.name}-stubs/")
+    wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
     wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'repository/mappings/')
-    wiremockStubsOutputDir.mkdirs()
-    //microInfraSpring version moved to gradle.properties
+
+    //microInfraSpring and versions of other dependencies were moved to gradle.properties
 }
 
 configurations {
@@ -113,6 +112,7 @@ dependencies {
     testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
     testCompile "com.jayway.restassured:rest-assured:$restAssuredVersion"
     testCompile "com.jayway.restassured:spring-mock-mvc:$restAssuredVersion"
+    testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
 }
 
 task docker(type: Docker) {
@@ -176,7 +176,13 @@ accurest {
     stubsOutputDir = wiremockStubsOutputDir
 }
 
-generateAccurest.dependsOn generateWiremockClientStubs
+//TODO: Put it into the plugin
+task createWiremockStubsOutputDir << {
+    wiremockStubsOutputDir.mkdirs()
+}
+
+generateWiremockClientStubs.dependsOn { createWiremockStubsOutputDir }
+generateAccurest.dependsOn { generateWiremockClientStubs }
 
 task addHashFile << {
     String gitCmd = "git log --pretty=format:'%H' -n 1"
@@ -202,6 +208,10 @@ bootRepackage {
 
 //Make sure that fat jar is built before uploading
 project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
+
+artifacts {
+    archives stubsJar
+}
 
 publishing {
     repositories {
