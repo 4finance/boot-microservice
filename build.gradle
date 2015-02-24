@@ -33,7 +33,7 @@ ext {
 
     contractsDir = file("${project.rootDir}/repository/mappings/com/ofg/twitter-places-analyzer")
     wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
-    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'repository/mappings/')
+    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'mappings/')
 
     //microInfraSpring and versions of other dependencies were moved to gradle.properties
 }
