@@ -64,6 +64,15 @@ test {
     testLogging {
         exceptionFormat = 'full'
     }
+    exclude '**/*UISpec.*'
+}
+
+task guiTest(type: Test) {
+    include '**/*UISpec.*'
+
+    reports.html {
+        destination = file("${reporting.baseDir}/guiTests")
+    }
 }
 
 repositories {
