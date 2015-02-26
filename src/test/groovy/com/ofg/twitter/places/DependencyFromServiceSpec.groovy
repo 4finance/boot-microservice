@@ -5,7 +5,7 @@ import com.ofg.twitter.place.extractor.ColleratorClient
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.IntegrationTest
 
-@IntegrationTest("stubrunner.use-microservice-definitions:true")
+@IntegrationTest(["stubrunner.use-microservice-definitions:true", "server.port=0", "management.port=0"])
 class DependencyFromServiceSpec extends MicroserviceMvcWiremockSpec {
 
     @Autowired
