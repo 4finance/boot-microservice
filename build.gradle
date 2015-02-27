@@ -13,7 +13,7 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
-        classpath 'io.codearte.accurest:accurest-gradle-plugin:0.4.1'
+        classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
         classpath 'com.moowork.gradle:gradle-node-plugin:0.6'
         classpath 'joda-time:joda-time:2.4'
 
@@ -36,15 +36,17 @@ ext {
     versionPrefix = "CD"
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
     currentVersion = "${versionPrefix}-${buildNrLoc}"
-    projectGroupId = groupId
+    projectGroupId = 'com.ofg'
 
-    jacksonMapper = '1.9.13'
     contractsDir = file("${project.rootDir}/repository/mappings/com/ofg/twitter-places-analyzer")
-    wiremockStubsOutputDirRoot = file("${project.rootDir}/out/production/${project.name}-stubs/")
-    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'repository/mappings/')
-    wiremockStubsOutputDir.mkdirs()
-    //microInfraSpring version moved to gradle.properties
+    wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
+    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'mappings/')
+
+    //microInfraSpring and versions of other dependencies were moved to gradle.properties
 }
+
+group = projectGroupId
+version = currentVersion
 
 configurations {
     all {
@@ -60,13 +62,6 @@ configurations {
     }
 }
 
-task addHashFile << {
-    String gitCmd = "git log --pretty=format:'%H' -n 1"
-    def proc = gitCmd.execute()
-    proc.waitFor()
-    new File("commitHash.txt").withWriter { it << proc.in.text }
-}
-
 processResources {
     String hashOlfLastCommitCmd = "git log --pretty=format:%H -n 1"
     def hashProc = hashOlfLastCommitCmd.execute()
@@ -78,15 +73,6 @@ processResources {
     ]
 }
 
-jar {
-    dependsOn addHashFile
-    from "commitHash.txt"
-
-    from(fileTree("src/main/web/dist")) {
-        into "static"
-    }
-}
-
 project.gradle.projectsEvaluated {
     applicationDefaultJvmArgs = project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
 }
@@ -96,6 +82,17 @@ test {
     testLogging {
         exceptionFormat = 'full'
     }
+    exclude '**/*UISpec.*'
+}
+
+task guiTest(type: Test) {
+    include '**/*UISpec.*'
+
+    reports.html {
+        destination = file("${reporting.baseDir}/guiTests")
+    }
+    group = "Verification"
+    description = "Runs the acceptance GUI tests with Geb."
 }
 
 repositories {
@@ -150,6 +147,7 @@ dependencies {
     testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
     testCompile "com.jayway.restassured:rest-assured:$restAssuredVersion"
     testCompile "com.jayway.restassured:spring-mock-mvc:$restAssuredVersion"
+    testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
 }
 
 task docker(type: Docker) {
@@ -191,9 +189,8 @@ if (project.hasProperty("coverage")) {
     }
 
     test {
-        ignoreFailures = true
         jacoco {
-            excludes = ['*Configuration']
+            excludes = ['*Configurationadd b']
         }
     }
 
@@ -203,20 +200,36 @@ if (project.hasProperty("coverage")) {
             property "sonar.host.url", ""
             property "sonar.junit.reportsPath", "build/test-results"
         }
-    }
+    }git
 }
 
 accurest {
     baseClassForTests = 'com.ofg.twitter.places.accurest.BaseMockMvcSpec'
     basePackageForTests = 'accurest'
     contractsDslDir = contractsDir
-    generatedTestSourcesDir = file("${project.rootDir}/src/test/groovy/")
+    generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest")
     stubsOutputDir = wiremockStubsOutputDir
 }
 
-generateAccurest.dependsOn generateWiremockClientStubs
+test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36
 
-task stubsJar(type: Jar) {
+task addHashFile << {
+    String gitCmd = "git log --pretty=format:'%H' -n 1"
+    def proc = gitCmd.execute()
+    proc.waitFor()
+    new File("commitHash.txt").withWriter { it << proc.in.text }
+}
+
+jar {
+    dependsOn addHashFile
+    from "commitHash.txt"
+
+    from(fileTree("src/main/web/dist")) {
+        into "static"
+    }
+}
+
+task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
     baseName = "${project.name}-stubs"
     from wiremockStubsOutputDirRoot
     from "commitHash.txt"
@@ -228,6 +241,10 @@ bootRepackage {
 
 //Make sure that fat jar is built before uploading
 project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
+
+artifacts {
+    archives stubsJar
+}
 
 publishing {
     repositories {
@@ -241,12 +258,10 @@ publishing {
     }
     publications {
         stubs(MavenPublication) {
-            groupId projectGroupId
             artifactId "${project.name}-stubs"
             artifact stubsJar
         }
         mavenJava(MavenPublication) {
-            groupId projectGroupId
             from components.java
             pom.withXml {
                 //Remove dependencies - everything is embedded in JAR created by Spring Boot
@@ -254,7 +269,14 @@ publishing {
             }
         }
     }
+}
 
+task uploadArchives(dependsOn: 'publish') {
+    group "publishing"
+    description "DEPRECATED - Publishes produced archives - DEPRECATED - use 'publish' task"
+    doFirst {
+        logger.warn("DEPRECATION WARNING. Task 'uploadArchives' is deprecated. Use 'publish' task instead.")
+    }
 }
 
 def webDir = new File(projectDir, "src/main/web")

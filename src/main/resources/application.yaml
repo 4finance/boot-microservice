@@ -11,8 +11,9 @@ metrics.path:
   country: pl
   app: service-name
 
+stubrunner.use-microservice-definitions: true
+
 stubrunner.stubs:
   repository.root: "http://dl.bintray.com/4finance/micro"
   group: com.ofg
   module: stub-runner-examples
-

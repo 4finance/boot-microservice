@@ -1,20 +1,11 @@
 package com.ofg.twitter.geb
 
-import com.ofg.twitter.Application
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
-import geb.spock.GebSpec
 import groovy.json.JsonSlurper
-import org.springframework.boot.test.IntegrationTest
-import org.springframework.boot.test.SpringApplicationContextLoader
-import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.web.WebAppConfiguration
 import spock.lang.Stepwise
 
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = Application)
-@WebAppConfiguration
-@IntegrationTest("spring.profiles.active:dev,stubrunner.skip-local-repo:true")
 @Stepwise
-class MicroserviceControllerUISpec extends GebSpec {
+class MicroserviceControllerUISpec extends BaseBootGebSpec {
 
     def "Microservice controller is visible on Swagger Page"() {
         when:
