@@ -73,6 +73,8 @@ task guiTest(type: Test) {
     reports.html {
         destination = file("${reporting.baseDir}/guiTests")
     }
+    group = "Verification"
+    description = "Runs the acceptance GUI tests with Geb."
 }
 
 repositories {
@@ -184,17 +186,11 @@ accurest {
     baseClassForTests = 'com.ofg.twitter.places.accurest.BaseMockMvcSpec'
     basePackageForTests = 'accurest'
     contractsDslDir = contractsDir
-    generatedTestSourcesDir = file("${project.rootDir}/src/test/groovy/")
+    generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest")
     stubsOutputDir = wiremockStubsOutputDir
 }
 
-//TODO: Put it into the plugin
-task createWiremockStubsOutputDir << {
-    wiremockStubsOutputDir.mkdirs()
-}
-
-generateWiremockClientStubs.dependsOn { createWiremockStubsOutputDir }
-generateAccurest.dependsOn { generateWiremockClientStubs }
+test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36
 
 task addHashFile << {
     String gitCmd = "git log --pretty=format:'%H' -n 1"
@@ -208,7 +204,7 @@ jar {
     from "commitHash.txt"
 }
 
-task stubsJar(type: Jar) {
+task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
     baseName = "${project.name}-stubs"
     from wiremockStubsOutputDirRoot
     from "commitHash.txt"
