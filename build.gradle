@@ -68,6 +68,10 @@ test {
 }
 
 task guiTest(type: Test) {
+    jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
+    testLogging {
+        exceptionFormat = 'full'
+    }
     include '**/*UISpec.*'
 
     reports.html {
