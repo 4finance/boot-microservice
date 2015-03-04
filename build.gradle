@@ -116,6 +116,7 @@ dependencies {
     testCompile('com.github.tomakehurst:wiremock:1.53') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
+    testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
 
     testCompile "org.gebish:geb-core:$gebVersion"
