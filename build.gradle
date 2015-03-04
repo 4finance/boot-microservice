@@ -7,7 +7,7 @@ buildscript {
         maven { url 'https://oss.sonatype.org/content/groups/public/' }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE"
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
