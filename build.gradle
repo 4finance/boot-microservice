@@ -102,7 +102,7 @@ dependencies {
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
-    compile 'net.sf.ehcache:ehcache:2.9.0'
+    compile 'net.sf.ehcache:ehcache:2.9.1'
     compile ("com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion") {
         exclude module: 'micro-infra-spring-config'
     }
