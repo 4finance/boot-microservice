@@ -10,7 +10,7 @@ buildscript {
         maven { url 'https://oss.sonatype.org/content/groups/public/' }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE"
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
@@ -120,7 +120,7 @@ dependencies {
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
-    compile 'net.sf.ehcache:ehcache:2.9.0'
+    compile 'net.sf.ehcache:ehcache:2.9.1'
     compile ("com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion") {
         exclude module: 'micro-infra-spring-config'
     }
@@ -138,6 +138,7 @@ dependencies {
     testCompile('com.github.tomakehurst:wiremock:1.53') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
+    testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
 
     testCompile "org.gebish:geb-core:$gebVersion"
