@@ -22,37 +22,20 @@ Next adjust all the properties and then you have an empty project - you're now r
 
 ## How can I run it?
 
+### From gradle
+
+You can also run it directly using gradle. Please check [run.sh](scripts/run.sh) script.
+
 ### From jar
 
 To run it just
- - create a jar - `./gradlew clean build`
- - go to `build/libs` to find the fat jar
- - execute `java -jar` like presented below
 
-for production mode (no stubs)
-```
-java -Dspring.profiles.active=prod -jar boot-microservice.jar
-```
-
-for developer mode (stubs and embedded Zookeeper)
-```
-java -Dspring.profiles.active=dev -jar boot-microservice.jar
-```
-
-### From gradle
-
-you can also run it directly using gradle like this:
-
-for production mode (no stubs)
+* create a jar - `./gradlew clean build`
+* go to `build/libs` to find the fat jar
+* execute `java -jar` with the arguments the same as in [run.sh])(scripts/run.sh) script
 
 ```
-./gradlew bootRun -Dspring.profiles.active=prod
-```
-
-for developer mode (stubs and embedded Zookeeper)
-
-```
-./gradlew bootRun -Dspring.profiles.active=dev
+java -jar boot-microservice.jar runShArgs
 ```
 
 ### From Docker
@@ -152,7 +135,7 @@ What happens under the hood is that the stubs are downloaded from 4finance Bintr
 [stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
 tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/repository/mappings/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
 
-The paths to the repo, the module name and artifactId are here - [application.yaml](src/main/resources/application.yaml).
+The paths to the repo, the module name and artifactId are here - [twitter-places-analyzer.yaml](properties/common/com/ofg/twitter-places-analyzer.yaml).
 
 ## Sample business requirement
 

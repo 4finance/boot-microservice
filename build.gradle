@@ -107,9 +107,7 @@ dependencies {
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache:2.9.1'
-    compile ("com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion") {
-        exclude module: 'micro-infra-spring-config'
-    }
+    compile "com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.1'
     runtime 'org.objenesis:objenesis:2.1'
