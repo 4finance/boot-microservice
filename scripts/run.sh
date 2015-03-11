@@ -5,7 +5,8 @@
 export APP_ENV="prod"
 # Git repository with configuration. Absolute path should be used.
 export CONFIG_FOLDER="properties"
-# use encrypt.key if you pass it as -D option when running java
+# For secretProd env, ENCRYPT_KEY is required.
+# Use encrypt.key if you pass it as -D option when running java
 export ENCRYPT_KEY="secretEncryptKey"
 ###
 
