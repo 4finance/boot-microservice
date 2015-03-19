@@ -22,9 +22,9 @@ Next adjust all the properties and then you have an empty project - you're now r
 
 ## How can I run it?
 
-### From gradle
+### From script
 
-You can also run it directly using gradle. Please check [run.sh](scripts/run.sh) script.
+Execute [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 
 ### From jar
 
@@ -32,11 +32,16 @@ To run it just
 
 * create a jar - `./gradlew clean build`
 * go to `build/libs` to find the fat jar
-* execute `java -jar` with the arguments the same as in [run.sh])(scripts/run.sh) script
+* execute `java -jar` with the same arguments as in runner script
 
 ```
-java -jar boot-microservice.jar runShArgs
+java -jar boot-microservice.jar runnerArgs
 ```
+
+### From gradle
+
+You can also run it directly using gradle with bootRun task and the same arguments as in
+runner script.
 
 ### From Docker
 
