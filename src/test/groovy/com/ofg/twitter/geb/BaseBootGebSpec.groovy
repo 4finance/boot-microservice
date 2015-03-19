@@ -11,4 +11,10 @@ import org.springframework.test.context.web.WebAppConfiguration
 @WebAppConfiguration
 @IntegrationTest("spring.profiles.active:dev")
 abstract class BaseBootGebSpec extends GebSpec {
+
+    def setupSpec() {
+        System.setProperty("APP_ENV", "prod");
+        System.setProperty("CONFIG_FOLDER", "properties");
+        System.setProperty("encrypt.key", "secretEncryptKey");
+    }
 }
