@@ -13,5 +13,6 @@ export ENCRYPT_KEY="secretEncryptKey"
 pushd ..
 # For production mode (no stubs) use prod
 # For developer mode (stubs and embedded Zookeeper) use env
-./gradlew bootRun $@ -Dspring.profiles.active=dev
+./gradlew $@ build
+java -Dspring.profiles.active=dev -jar ./build/libs/boot-microservice-CD-000.jar
 popd

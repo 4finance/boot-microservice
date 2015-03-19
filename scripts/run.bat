@@ -11,5 +11,6 @@ rem ###
 pushd ..
 rem For production mode (no stubs) use prod
 rem For developer mode (stubs and embedded Zookeeper) use env
-gradlew.bat bootRun %* -Dspring.profiles.active=dev
+gradlew %* build
+java -Dspring.profiles.active=dev -jar build\libs\boot-microservice-CD-000.jar
 popd
