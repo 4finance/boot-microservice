@@ -1,19 +1,10 @@
 package com.ofg.twitter.geb
 
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
-import com.ofg.twitter.Application
-import geb.spock.GebSpec
-import org.springframework.boot.test.IntegrationTest
-import org.springframework.boot.test.SpringApplicationContextLoader
-import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.web.WebAppConfiguration
 import spock.lang.Stepwise
 
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = Application)
-@WebAppConfiguration
-@IntegrationTest("spring.profiles.active:dev,stubrunner.skip-local-repo:true")
 @Stepwise
-class AcceptanceSwaggerUISpec extends GebSpec {
+class AcceptanceSwaggerUISpec extends BaseBootGebSpec {
 
     def "SwaggerUI home page should be visible"() {
         when:

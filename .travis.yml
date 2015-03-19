@@ -14,7 +14,7 @@ before_script:
  - "export JAVA_OPTS=-Xmx512m"
 
 script:
-- ./gradlew build --stacktrace -Dstubrunner.skip-local-repo=true
+- ./gradlew guiTest build --stacktrace -Dstubrunner.skip-local-repo=true
 
 env:
 - TERM=dumb
