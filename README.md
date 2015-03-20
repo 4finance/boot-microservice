@@ -243,7 +243,7 @@ Before first use, build your whole application with `gradle build`. It will down
 Then run you application (for example from Idea, just run main in `com.ofg.twitter.Application` specifying
 the correct -Dspring.profiles.active).
 
-Now your application (backend) works. But you still need js+html. And since this is 2014, you don't just write html anymore, you have to use a shitload of libs :)
+Now your application (backend) works. But you still need js+html. And since this is 2015, you don't just write html anymore, you have to use a shitload of libs :)
 
 Install npm if you don't have it already. For example on Debian-based linux run:
 ```
@@ -264,7 +264,7 @@ Next, go to `src/main/web` and type `npm install`. This will download all needed
 automatically open in the browser and from now on on every change in you webapp the browser will automatically refresh
 (no need to hit cmd-R all the time!).
 
-Easy, right? Writing HTML in 2014 is simple... nooooot! :D
+Easy, right? Writing HTML in 2015 is simple... nooooot! :D
 
 ### Production mode
 
