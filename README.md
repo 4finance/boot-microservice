@@ -42,6 +42,13 @@ java -jar boot-microservice.jar runnerArgs
 
 Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 
+### From IntelliJ IDEA
+
+Run Application class with the following VM args:
+-DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -DENCRYPT_KEY="secretEncryptKey" -Dspring.profiles.active=dev
+
+For details check runner script.
+
 ### From Docker
 
 #### Development
