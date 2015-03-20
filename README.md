@@ -40,8 +40,7 @@ java -jar boot-microservice.jar runnerArgs
 
 ### From gradle
 
-You can also run it directly using gradle with bootRun task and the same arguments as in
-runner script.
+Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 
 ### From Docker
 
