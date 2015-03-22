@@ -45,7 +45,10 @@ Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 ### From IntelliJ IDEA
 
 Run Application class with the following VM args:
+
+```
 -DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -DENCRYPT_KEY="secretEncryptKey" -Dspring.profiles.active=dev
+```
 
 For details check runner script.
 
@@ -62,13 +65,18 @@ Running:
 will create `/build/docker/Dockerfile`. You can use this file to create [Docker](https://www.docker.com/) image:
 
 ```
-sudo docker build -t boot-microservice build/docker
+docker build -t boot-microservice build/docker
 ```
 
 Self-sufficient Docker image with our sample microservice can be started as follows:
 
 ```
-docker run -e spring.profiles.active=dev -p 8080:8095 boot-microservice
+docker run \
+    -e spring.profiles.active=dev \
+    -e APP_ENV=prod \
+    -e ENCRYPT_KEY=secretEncryptKey \
+    -p 8080:8095 \
+    boot-microservice
 ```
 
 Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in-memory embedded ZooKeeper and stubs) and we re-map 8095 port to 8080 on host machine.
@@ -78,8 +86,8 @@ Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in
 If you want to run microservice with real service discovery via ZooKeeper and Graphite, first prepare Docker images for that:
 
 ```
-docker run --name zookeeper            jplock/zookeeper
-docker run --name graphite  -p 8081:80 kamon/grafana_graphite
+docker run --name zookeeper jplock/zookeeper
+docker run --name graphite -p 8081:80 kamon/grafana_graphite
 ```
 
 After the first time these containers can be executed with `docker start -a zookeeper` and `docker start -a graphite` shorthands. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper/Graphite instances:
