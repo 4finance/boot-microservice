@@ -3,8 +3,6 @@ buildscript {
         mavenLocal()
         jcenter()
         mavenCentral()
-        maven { url "http://repo.spring.io/libs-snapshot" }
-        maven { url 'https://oss.sonatype.org/content/groups/public/' }
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE"
@@ -40,6 +38,12 @@ ext {
 
 group = projectGroupId
 version = currentVersion
+
+sourceSets.main.java.srcDirs = []
+sourceSets.main.groovy.srcDirs += ["src/main/java"]
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 configurations {
     all {
@@ -84,9 +88,6 @@ task guiTest(type: Test) {
 repositories {
     mavenLocal()
     jcenter()
-    maven {
-        url 'https://oss.sonatype.org/content/groups/public/'
-    }
 }
 
 dependencies {
