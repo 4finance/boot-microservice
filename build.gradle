@@ -43,7 +43,6 @@ sourceSets.main.java.srcDirs = []
 sourceSets.main.groovy.srcDirs += ["src/main/java"]
 
 sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
 
 configurations {
     all {
