@@ -101,7 +101,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
-    compile 'com.jayway.jsonpath:json-path-assert:1.2.0'
+    compile 'com.jayway.jsonpath:json-path-assert:2.0.0'
     compile 'org.yaml:snakeyaml'
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
