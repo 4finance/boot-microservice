@@ -53,7 +53,23 @@ Running:
 ./gradlew docker
 ```
 
-will create `/build/docker/Dockerfile`. You can use this file to create [Docker](https://www.docker.com/) image:
+will create `/build/docker/Dockerfile`.
+
+##### Docker Compose
+
+You can build and run it using [docker-compose.yml](https://docs.docker.com/compose/) file in project root:
+```
+docker-compose up -d
+```
+
+Run this command to see an output:
+```
+docker-compose logs
+```
+
+##### Docker only
+
+You can use Dockerfile to create [Docker](https://www.docker.com/) image:
 
 ```
 sudo docker build -t boot-microservice build/docker
