@@ -9,6 +9,7 @@ buildscript {
         classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
+        classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.2.2'
 
         if (project.hasProperty("coverage")) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
@@ -22,6 +23,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.ofg.uptodate'
 apply plugin: 'docker'
 apply plugin: 'accurest'
+apply plugin: 'com.blogspot.toomuchcoding.testprofiler'
 
 ext {
     versionPrefix = "CD"
@@ -140,6 +142,17 @@ task docker(type: Docker) {
     addFile("${libsDir}/${project.name}-${currentVersion}.jar", "/${project.name}/${project.name}.jar")
     exposePort(8095)
     entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
+}
+
+testprofiler {
+    minTestThreshold = 100
+
+    buildBreaker {
+        maxTestThreshold = project.hasProperty('maxTestThreshold') ? project.property('maxTestThreshold') : 30_000
+        ifTestsExceedMaxThreshold {
+            breakBuild()
+        }
+    }
 }
 
 if (project.hasProperty("coverage")) {
