@@ -47,7 +47,7 @@ Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 Run Application class with the following VM args:
 
 ```
--DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -DENCRYPT_KEY="secretEncryptKey" -Dspring.profiles.active=dev
+-DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -Dencrypt.key="secretEncryptKey" -Dspring.profiles.active=dev
 ```
 
 For details check runner script.
