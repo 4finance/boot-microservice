@@ -1,9 +1,14 @@
 import org.openqa.selenium.Dimension
 import org.openqa.selenium.firefox.FirefoxDriver
 
-//baseUrl in this file has precedence over -Dgeb.build.baseUrl, so set it only if system property is not defined
-if (!System.getProperty("geb.build.baseUrl")) {
-    baseUrl="http://localhost:8095"
+String smokeTestAppUrlProp = System.getProperty("smokeTestAppUrl")
+if (smokeTestAppUrlProp) {
+    baseUrl = smokeTestAppUrlProp
+} else {
+    //baseUrl in this file has precedence over -Dgeb.build.baseUrl, so set it only if system property is not defined
+    if (!System.getProperty("geb.build.baseUrl")) {
+        baseUrl = "http://localhost:8095"
+    }
 }
 
 driver = {

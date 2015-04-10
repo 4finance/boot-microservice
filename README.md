@@ -42,6 +42,16 @@ java -jar boot-microservice.jar runnerArgs
 
 Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
 
+### From IntelliJ IDEA
+
+Run Application class with the following VM args:
+
+```
+-DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -Dencrypt.key="secretEncryptKey" -Dspring.profiles.active=dev
+```
+
+For details check runner script.
+
 ### From Docker
 
 #### Development
@@ -55,13 +65,18 @@ Running:
 will create `/build/docker/Dockerfile`. You can use this file to create [Docker](https://www.docker.com/) image:
 
 ```
-sudo docker build -t boot-microservice build/docker
+docker build -t boot-microservice build/docker
 ```
 
 Self-sufficient Docker image with our sample microservice can be started as follows:
 
 ```
-docker run -e spring.profiles.active=dev -p 8080:8095 boot-microservice
+docker run \
+    -e spring.profiles.active=dev \
+    -e APP_ENV=prod \
+    -e ENCRYPT_KEY=secretEncryptKey \
+    -p 8080:8095 \
+    boot-microservice
 ```
 
 Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in-memory embedded ZooKeeper and stubs) and we re-map 8095 port to 8080 on host machine.
@@ -71,8 +86,8 @@ Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in
 If you want to run microservice with real service discovery via ZooKeeper and Graphite, first prepare Docker images for that:
 
 ```
-docker run --name zookeeper            jplock/zookeeper
-docker run --name graphite  -p 8081:80 kamon/grafana_graphite
+docker run --name zookeeper jplock/zookeeper
+docker run --name graphite -p 8081:80 kamon/grafana_graphite
 ```
 
 After the first time these containers can be executed with `docker start -a zookeeper` and `docker start -a graphite` shorthands. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper/Graphite instances:
@@ -100,7 +115,7 @@ Your microservice (assuming it exposes 8080 port) will be visible outside under 
 
 Below you can find description of the most crucial parts of the application's production code.
 
-##### Application
+##### Application 
 
 contains Spring Boot autoconfiguration and contains *main* method
 
@@ -114,11 +129,11 @@ If you want only certain modules of the system just check out [4finance's Micro 
 
 ### Tests
 
-Below you can find description of the most crucial parts of the application's test code.
+Below you can find description of the most crucial parts of the application's test code. 
 
 ##### MicroserviceIntegrationSpec
 
-extends *com.ofg.infrastructure.base.IntegrationSpec* Spock *Specification* class that initializes Spring web-context.
+extends *com.ofg.infrastructure.base.IntegrationSpec* Spock *Specification* class that initializes Spring web-context. 
 
 ##### MicroserviceMvcIntegrationSpec
 
@@ -126,16 +141,16 @@ extends *com.ofg.infrastructure.base.MvcIntegrationSpec* Spock *Specification* c
 
 ##### MicroserviceMvcWiremockSpec
 
-extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specification* class that extends the *MvcIntegrationSpec* spec. Additionally it provides
+extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specification* class that extends the *MvcIntegrationSpec* spec. Additionally it provides 
 [WireMock](http://wiremock.org/) related fields and methods.
 
 ## Consumer Driven Contracts
 
-you may wonder - how on earth does the collaborator *collerator* respond to with 200 when you post him at /1 ?! It's all about
-[Consumer Driven Contracts](http://martinfowler.com/articles/consumerDrivenContracts.html) and our implementation called
+you may wonder - how on earth does the collaborator *collerator* respond to with 200 when you post him at /1 ?! It's all about 
+[Consumer Driven Contracts](http://martinfowler.com/articles/consumerDrivenContracts.html) and our implementation called 
 [stub-runner-spring](https://github.com/4finance/stub-runner-spring/wiki/How-to-use-it).
 
-What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the
+What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the 
 [stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
 tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/repository/mappings/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
 
@@ -148,7 +163,7 @@ Twitter places analyzer, searches through tweets for places. Then analyzers send
 INPUT
 -----------------
 
-Hit *PUT* at:
+Hit *PUT* at: 
 
 ```
 /api/{pairId}
@@ -236,7 +251,7 @@ Before first use, build your whole application with `gradle build`. It will down
 Then run you application (for example from Idea, just run main in `com.ofg.twitter.Application` specifying
 the correct -Dspring.profiles.active).
 
-Now your application (backend) works. But you still need js+html. And since this is 2014, you don't just write html anymore, you have to use a shitload of libs :)
+Now your application (backend) works. But you still need js+html. And since this is 2015, you don't just write html anymore, you have to use a shitload of libs :)
 
 Install npm if you don't have it already. For example on Debian-based linux run:
 ```
@@ -257,7 +272,7 @@ Next, go to `src/main/web` and type `npm install`. This will download all needed
 automatically open in the browser and from now on on every change in you webapp the browser will automatically refresh
 (no need to hit cmd-R all the time!).
 
-Easy, right? Writing HTML in 2014 is simple... nooooot! :D
+Easy, right? Writing HTML in 2015 is simple... nooooot! :D
 
 ### Production mode
 
@@ -288,3 +303,4 @@ Just add whatever you wish. If you don't like exposing every service explicitly,
 ### Cleaning npm and bower deps
 
  Type `gradle cleanGUIDeps`
+ 
