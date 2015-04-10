@@ -150,7 +150,7 @@ testprofiler {
     buildBreaker {
         maxTestThreshold = project.hasProperty('maxTestThreshold') ? project.property('maxTestThreshold') : 30_000
         ifTestsExceedMaxThreshold {
-            breakBuild()
+            displayWarning()
         }
     }
 }
