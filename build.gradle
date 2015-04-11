@@ -6,10 +6,10 @@ buildscript {
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE"
-        classpath 'com.ofg:uptodate-gradle-plugin:1.1.0'
+        classpath 'com.ofg:uptodate-gradle-plugin:1.5.1'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
-        classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.2.2'
+        classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.3.1'
 
         if (project.hasProperty("coverage")) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
@@ -101,14 +101,14 @@ dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapper"
     compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
     compile 'com.google.guava:guava:18.0'
-    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
     compile 'com.jayway.jsonpath:json-path-assert:2.0.0'
     compile 'org.yaml:snakeyaml'
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
-    compile 'net.sf.ehcache:ehcache:2.9.1'
+    compile 'net.sf.ehcache:ehcache:2.10.0'
     compile "com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.1'
@@ -162,7 +162,7 @@ if (project.hasProperty("coverage")) {
     apply plugin: 'com.github.kt3k.coveralls'
 
     jacoco {
-        toolVersion = "0.7.0.201403182114"
+        toolVersion = '0.7.4.201502262128'
     }
 
     jacocoTestReport {
