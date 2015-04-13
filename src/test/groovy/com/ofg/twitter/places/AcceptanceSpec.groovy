@@ -3,6 +3,7 @@ package com.ofg.twitter.places
 import com.ofg.base.MicroserviceMvcWiremockSpec
 import org.hamcrest.CoreMatchers
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.MvcResult
@@ -32,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
 
     @Autowired ColleratorClientStub colleratorClientStub
+    @Value('${acceptance-tests.timeout:8}') Integer acceptanceTestTimeout
 
     static final String ROOT_PATH = '/api'
     static final Long PAIR_ID = 1
@@ -54,8 +56,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     andExpect(status().isOk()).
                     andExpect(header().string("correlationId", not(isEmptyString())))
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
+            await().atMost(acceptanceTestTimeout, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(acceptanceTestTimeout, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                         [{
                                                                             "pair_id" : 1,
                                                                             "tweet_id" : "492967299297845248",
@@ -88,8 +90,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     andExpect(status().isOk()).
                     andExpect(header().string("correlationId", not(isEmptyString())))
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
+            await().atMost(acceptanceTestTimeout, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(acceptanceTestTimeout, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                             [{
                                                                                     "pair_id" : 1,
                                                                                     "tweet_id" : "492961315070439424",
