@@ -54,8 +54,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     andExpect(status().isOk()).
                     andExpect(header().string("correlationId", not(isEmptyString())))
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
+            await().atMost(8, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(8, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                         [{
                                                                             "pair_id" : 1,
                                                                             "tweet_id" : "492967299297845248",
@@ -88,8 +88,8 @@ class AcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     andExpect(status().isOk()).
                     andExpect(header().string("correlationId", not(isEmptyString())))
         then: "user's location (place) will be extracted from that section"
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
-            await().atMost(2, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
+            await().atMost(8, SECONDS).untilAtomic(colleratorClientStub.savedPairId, CoreMatchers.<Long>equalTo(PAIR_ID))
+            await().atMost(8, SECONDS).untilAtomic(colleratorClientStub.savedPlaces, equalsReferenceJson('''
                                                                             [{
                                                                                     "pair_id" : 1,
                                                                                     "tweet_id" : "492961315070439424",
