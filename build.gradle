@@ -65,7 +65,7 @@ project.gradle.projectsEvaluated {
 }
 
 test {
-    jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
+    jvmArgs = project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"} + ['-Xmx512m']
     testLogging {
         exceptionFormat = 'full'
     }
