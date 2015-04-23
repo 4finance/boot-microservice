@@ -117,7 +117,7 @@ dependencies {
     runtime 'com.h2database:h2'
 
     testCompile 'com.jayway.awaitility:awaitility:1.6.3'
-    testCompile('com.github.tomakehurst:wiremock:1.54') {
+    compile('com.github.tomakehurst:wiremock:1.55') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
     testCompile "org.springframework.boot:spring-boot-starter-test"
