@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE"
         classpath 'com.ofg:uptodate-gradle-plugin:1.5.1'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
@@ -117,7 +117,7 @@ dependencies {
     runtime 'com.h2database:h2'
 
     testCompile 'com.jayway.awaitility:awaitility:1.6.3'
-    compile('com.github.tomakehurst:wiremock:1.55') {
+    compile('com.github.tomakehurst:wiremock:1.56') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
     testCompile "org.springframework.boot:spring-boot-starter-test"
