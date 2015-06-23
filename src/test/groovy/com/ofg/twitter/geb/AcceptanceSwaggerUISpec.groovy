@@ -13,13 +13,12 @@ class AcceptanceSwaggerUISpec extends BaseBootGebSpec {
             at SwaggerUIHomePage
     }
 
-
     def "Endpoint microservice-configuration-controller is visible"() {
         when:
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor {metricsMvcEndpointText.displayed}
+            waitFor { metricsMvcEndpointText.displayed }
             metricsMvcEndpointText.displayed
         when:
             showMicroservice.click()
@@ -32,7 +31,7 @@ class AcceptanceSwaggerUISpec extends BaseBootGebSpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor {healthMvcEndpointText.displayed}
+            waitFor { healthMvcEndpointText.displayed }
             healthMvcEndpointText.displayed
             showHealthMVCEndpoints.displayed
     }
@@ -43,7 +42,7 @@ class AcceptanceSwaggerUISpec extends BaseBootGebSpec {
         then:
             at SwaggerUIHomePage
         when:
-            waitFor {showPairIdEndpoints.displayed}
+            waitFor { showPairIdEndpoints.displayed }
             showPairIdEndpoints.click()
         then:
             waitFor { pairIdPutText.displayed }

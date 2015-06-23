@@ -14,7 +14,7 @@ class HealthEndpointUISpec extends BaseBootGebSpec {
         then:
             at SwaggerUIHomePage
         when:
-            waitFor {showHealthMVCEndpoints.displayed}
+            waitFor { showHealthMVCEndpoints.displayed }
             showHealthMVCEndpoints.click()
         then:
             waitFor { healthEndpointsTable.displayed }
