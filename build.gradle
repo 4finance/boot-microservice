@@ -1,3 +1,7 @@
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'maven-publish'
+
 buildscript {
     repositories {
         mavenLocal()
@@ -17,29 +21,13 @@ buildscript {
     }
 }
 
-apply plugin: 'groovy'
-apply plugin: 'spring-boot'
-apply plugin: 'maven-publish'
-apply plugin: 'com.ofg.uptodate'
-apply plugin: 'docker'
-apply plugin: 'accurest'
-apply plugin: 'com.blogspot.toomuchcoding.testprofiler'
-
 ext {
     versionPrefix = "CD"
-    buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "000"
-    currentVersion = "${versionPrefix}-${buildNrLoc}"
-    projectGroupId = 'com.ofg'
-
-    contractsDir = file("${project.rootDir}/repository/mappings/com/ofg/twitter-places-analyzer")
-    wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
-    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'mappings/')
-
-    //microInfraSpring and versions of other dependencies were moved to gradle.properties
+    buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "CD-000"
 }
 
-group = projectGroupId
-version = currentVersion
+group = mavenProjectGroupId
+version = buildNrLoc
 
 sourceSets.main.java.srcDirs = []
 sourceSets.main.groovy.srcDirs += ["src/main/java"]
@@ -62,28 +50,6 @@ configurations {
 
 project.gradle.projectsEvaluated {
     applicationDefaultJvmArgs = project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
-}
-
-test {
-    jvmArgs = project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"} + ['-Xmx512m']
-    testLogging {
-        exceptionFormat = 'full'
-    }
-    exclude '**/*UISpec.*'
-}
-
-task guiTest(type: Test) {
-    jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
-    testLogging {
-        exceptionFormat = 'full'
-    }
-    include '**/*UISpec.*'
-
-    reports.html {
-        destination = file("${reporting.baseDir}/guiTests")
-    }
-    group = "Verification"
-    description = "Runs the acceptance GUI tests with Geb."
 }
 
 repositories {
@@ -134,144 +100,12 @@ dependencies {
     testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
 }
 
-task docker(type: Docker) {
-    dependsOn 'build'
-    dryRun true
-    setEnvironment('CONFIG_FOLDER', '/properties')
-    addFile("properties", "/properties")
-    addFile("${libsDir}/${project.name}-${currentVersion}.jar", "/${project.name}/${project.name}.jar")
-    exposePort(8095)
-    entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
-}
-
-testprofiler {
-    minTestThreshold = 100
-
-    buildBreaker {
-        maxTestThreshold = project.hasProperty('maxTestThreshold') ? project.property('maxTestThreshold') : 30_000
-        ifTestsExceedMaxThreshold {
-            displayWarning()
-        }
-    }
-}
-
-if (project.hasProperty("coverage")) {
-    apply plugin: 'codenarc'
-    apply plugin: 'jacoco'
-    apply plugin: 'sonar-runner'
-    apply plugin: 'com.github.kt3k.coveralls'
-
-    jacoco {
-        toolVersion = '0.7.4.201502262128'
-    }
-
-    jacocoTestReport {
-        reports {
-            xml.enabled = true // coveralls plugin depends on xml format report
-            html.enabled = true
-        }
-    }
-
-    codenarc {
-        configFile = file('config/codenarc/rules.groovy')
-        maxPriority1Violations = 0
-        maxPriority2Violations = 6
-        maxPriority3Violations = 10
-        reportFormat = 'xml'
-        ignoreFailures = true
-    }
-
-    dependencies {
-        codenarc 'org.codenarc:CodeNarc:0.21'
-    }
-
-    test {
-        jacoco {
-            excludes = ['*Configuration']
-        }
-    }
-
-    sonarRunner {
-        sonarProperties {
-            //TODO: fill this
-            property "sonar.host.url", ""
-            property "sonar.junit.reportsPath", "build/test-results"
-        }
-    }
-}
-
-accurest {
-    baseClassForTests = 'com.ofg.twitter.places.accurest.BaseMockMvcSpec'
-    basePackageForTests = 'accurest'
-    contractsDslDir = contractsDir
-    generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest")
-    stubsOutputDir = wiremockStubsOutputDir
-}
-
-test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36
-
-task addHashFile << {
-    String gitCmd = "git log --pretty=format:'%H' -n 1"
-    def proc = gitCmd.execute()
-    proc.waitFor()
-    new File("commitHash.txt").withWriter { it << proc.in.text }
-}
-
-jar {
-    dependsOn addHashFile
-    from "commitHash.txt"
-}
-
-task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
-    baseName = "${project.name}-stubs"
-    from wiremockStubsOutputDirRoot
-    from "commitHash.txt"
-}
-
-bootRepackage {
-    withJarTask = "jar"
-}
-
-//Make sure that fat jar is built before uploading
-project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
-
-artifacts {
-    archives stubsJar
-}
-
-publishing {
-    repositories {
-        maven {
-            url getProperty('mavenRepoUrl')
-            credentials {
-                username getProperty('mavenUser')
-                password getProperty('mavenPassword')
-            }
-        }
-    }
-    publications {
-        stubs(MavenPublication) {
-            artifactId "${project.name}-stubs"
-            artifact stubsJar
-        }
-        mavenJava(MavenPublication) {
-            from components.java
-            pom.withXml {
-                //Remove dependencies - everything is embedded in JAR created by Spring Boot
-                asNode().dependencies.replaceNode{ null }
-            }
-        }
-    }
-}
-
-task uploadArchives(dependsOn: 'publish') {
-    group "publishing"
-    description "DEPRECATED - Publishes produced archives - DEPRECATED - use 'publish' task"
-    doFirst {
-        logger.warn("DEPRECATION WARNING. Task 'uploadArchives' is deprecated. Use 'publish' task instead.")
-    }
-}
-
 wrapper {
     gradleVersion '2.2.1'
 }
+
+
+apply from: 'gradle/cli.gradle'
+apply from: 'gradle/test.gradle'
+apply from: 'gradle/misc.gradle'
+apply from: 'gradle/release.gradle'
