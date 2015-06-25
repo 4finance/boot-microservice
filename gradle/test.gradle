@@ -33,7 +33,7 @@ task guiTest(type: Test) {
 if (project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
     apply plugin: 'jacoco'
-    apply plugin: 'sonar-runner'
+    apply plugin: 'org.sonarqube'
     apply plugin: 'com.github.kt3k.coveralls'
 
     jacoco {
@@ -66,11 +66,9 @@ if (project.hasProperty("coverage")) {
         }
     }
 
-    sonarRunner {
-        sonarProperties {
-            //TODO: fill this
-            property "sonar.host.url", ""
-            property "sonar.junit.reportsPath", "build/test-results"
+    sonarqube {
+        properties {
+            property "sonar.groovy.jacoco.reportPath", "$buildDir/jacoco/test.exec" //only for projects using Groovy in production code
         }
     }
 }
