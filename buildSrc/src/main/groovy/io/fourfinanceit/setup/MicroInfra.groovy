@@ -2,6 +2,7 @@ package io.fourfinanceit.setup
 
 import groovy.transform.Immutable
 import groovy.transform.ToString
+import org.gradle.api.Project
 
 @Immutable
 @ToString(ignoreNulls = true, includeNames = true)

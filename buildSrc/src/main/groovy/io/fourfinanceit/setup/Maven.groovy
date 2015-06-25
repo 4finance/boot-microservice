@@ -1,20 +1,33 @@
 package io.fourfinanceit.setup
+
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
-import groovy.transform.Immutable
 import groovy.transform.ToString
+import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 
-@Immutable
 @ToString(ignoreNulls = true, includeNames = true)
 class Maven {
-    String mavenUser
-    String mavenPassword
-    String mavenRepoUrl
-    String mavenProjectGroupId
-    String mavenArtifactId
+    public static final String DEFAULT_PACKAGE = 'com.ofg'
+    final Project project
+    final String mavenUser
+    final String mavenPassword
+    final String mavenRepoUrl
+    final String mavenProjectGroupId
+    final String mavenArtifactId
+    final PackageMover packageMover
 
-    void process(Project project, Properties props) {
+    Maven(Project project, String mavenUser, String mavenPassword, String mavenRepoUrl, String mavenProjectGroupId, String mavenArtifactId) {
+        this.project = project
+        this.mavenUser = mavenUser
+        this.mavenPassword = mavenPassword
+        this.mavenRepoUrl = mavenRepoUrl
+        this.mavenProjectGroupId = mavenProjectGroupId
+        this.mavenArtifactId = mavenArtifactId
+        this.packageMover = new PackageMover(project)
+    }
+
+    void process(Properties props) {
         props.put('mavenUser', mavenUser)
         props.put('mavenPassword', mavenPassword)
         props.put('mavenRepoUrl', mavenRepoUrl)
@@ -22,11 +35,21 @@ class Maven {
         props.put('mavenArtifactId', mavenArtifactId)
         updateSettingsGradle(project)
         updateMicroserviceJson(project)
+        changeAccurestRootPathToIncludeNewPackage()
+    }
+
+    private void changeAccurestRootPathToIncludeNewPackage() {
+        if( mavenArtifactId != DEFAULT_PACKAGE) {
+            File rootFolder = project.file("repository/mappings")
+            File newFolder = new File(rootFolder, mavenArtifactId.replaceAll('\\.', '/'))
+            packageMover.moveDirectoriesToNewPackage("repository/mappings/com/ofg", newFolder)
+            FileUtils.deleteDirectory(project.file("repository/mappings/com"))
+        }
     }
 
     private void updateSettingsGradle(Project project) {
         File settingsGradle = project.file('settings.gradle')
-        settingsGradle.text = "rootProject.name='$mavenArtifactId'"
+        settingsGradle.text = "rootProject.name = '$mavenArtifactId'"
     }
 
     private void updateMicroserviceJson(Project project) {

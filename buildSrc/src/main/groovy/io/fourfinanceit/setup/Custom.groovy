@@ -1,16 +1,23 @@
 package io.fourfinanceit.setup
-
 import groovy.io.FileType
-import groovy.transform.Immutable
-import org.apache.commons.io.FileUtils
+import groovy.transform.CompileStatic
 import org.gradle.api.Project
 
-@Immutable
+@CompileStatic
 class Custom {
-    String rootPackage
-    boolean changed
+    final Project project
+    final PackageMover packageMover
+    final String rootPackage
+    final boolean changed
 
-    void process(Project project, Accurest accurest) {
+    Custom(Project project, String rootPackage, boolean changed) {
+        this.project = project
+        this.rootPackage = rootPackage
+        this.changed = changed
+        this.packageMover = new PackageMover(project)
+    }
+
+    void process(Accurest accurest) {
         if (!changed) {
             return
         }
@@ -18,32 +25,18 @@ class Custom {
         movePackages(folders, project, accurest)
     }
 
-    private void movePackages(ArrayList<String> folders, Project project, Accurest accurest) {
-        folders.collect { String folder ->
+    private void movePackages(List<String> folders, Project project, Accurest accurest) {
+        folders.each { String folder ->
             File rootFolder = project.file("src/$folder/groovy/")
             File newFolder = new File(rootFolder, rootPackage.replaceAll('\\.', '/'))
-            changePackagesInFiles(project, folder)
-            moveDirectoriesToNewPackage(project, folder, newFolder)
+            packageMover.changePackagesInFiles("src/$folder/groovy/com/ofg", 'com.ofg.twitter', "${rootPackage}.twitter")
+            packageMover.moveDirectoriesToNewPackage("src/$folder/groovy/com/ofg", newFolder)
         }
-        movePackagesInAccurestContracts(project, accurest)
+        movePackagesInAccurestContracts(accurest)
     }
 
-    private movePackagesInAccurestContracts(Project project, Accurest accurest) {
-        project.file(accurest.accurestRoot).eachFileRecurse(FileType.FILES) { File file ->
-            file.text = file.text.replaceAll('com.ofg.twitter', "${rootPackage}.twitter")
-        }
-    }
-
-    private changePackagesInFiles(Project project, String folder) {
-        project.file("src/$folder/groovy/com/ofg").eachFileRecurse(FileType.FILES) { File file ->
-            file.text = file.text.replaceAll('com.ofg.twitter', "${rootPackage}.twitter")
-        }
-    }
-
-    private void moveDirectoriesToNewPackage(Project project, String folder, File newFolder) {
-        project.file("src/$folder/groovy/com/ofg").listFiles({ File pathname -> pathname.isDirectory() } as FileFilter).each {
-            FileUtils.moveDirectoryToDirectory(it, newFolder, true)
-        }
+    private movePackagesInAccurestContracts(Accurest accurest) {
+        packageMover.changePackagesInFiles(accurest.accurestRoot, 'com.ofg.twitter', "${rootPackage}.twitter")
     }
 
 }
