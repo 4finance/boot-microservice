@@ -12,7 +12,7 @@ class MicroserviceControllerUISpec extends BaseBootGebSpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor {metricsMvcEndpointText.displayed}
+            waitFor { metricsMvcEndpointText.displayed }
     }
 
     def "'Try it put' button is visible for GET operation"() {
