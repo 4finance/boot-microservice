@@ -62,7 +62,23 @@ Running:
 ./gradlew docker
 ```
 
-will create `/build/docker/Dockerfile`. You can use this file to create [Docker](https://www.docker.com/) image:
+will create `/build/docker/Dockerfile`.
+
+##### Docker Compose
+
+You can build and run it using [docker-compose.yml](https://docs.docker.com/compose/) file in project root:
+```
+docker-compose up -d
+```
+
+Run this command to see an output:
+```
+docker-compose logs
+```
+
+##### Docker only
+
+You can use Dockerfile to create [Docker](https://www.docker.com/) image:
 
 ```
 docker build -t boot-microservice build/docker
@@ -115,7 +131,7 @@ Your microservice (assuming it exposes 8080 port) will be visible outside under 
 
 Below you can find description of the most crucial parts of the application's production code.
 
-##### Application 
+##### Application
 
 contains Spring Boot autoconfiguration and contains *main* method
 
@@ -129,11 +145,11 @@ If you want only certain modules of the system just check out [4finance's Micro 
 
 ### Tests
 
-Below you can find description of the most crucial parts of the application's test code. 
+Below you can find description of the most crucial parts of the application's test code.
 
 ##### MicroserviceIntegrationSpec
 
-extends *com.ofg.infrastructure.base.IntegrationSpec* Spock *Specification* class that initializes Spring web-context. 
+extends *com.ofg.infrastructure.base.IntegrationSpec* Spock *Specification* class that initializes Spring web-context.
 
 ##### MicroserviceMvcIntegrationSpec
 
@@ -141,16 +157,16 @@ extends *com.ofg.infrastructure.base.MvcIntegrationSpec* Spock *Specification* c
 
 ##### MicroserviceMvcWiremockSpec
 
-extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specification* class that extends the *MvcIntegrationSpec* spec. Additionally it provides 
+extends *com.ofg.infrastructure.base.MvcWiremockIntegrationSpec* Spock *Specification* class that extends the *MvcIntegrationSpec* spec. Additionally it provides
 [WireMock](http://wiremock.org/) related fields and methods.
 
 ## Consumer Driven Contracts
 
-you may wonder - how on earth does the collaborator *collerator* respond to with 200 when you post him at /1 ?! It's all about 
-[Consumer Driven Contracts](http://martinfowler.com/articles/consumerDrivenContracts.html) and our implementation called 
+you may wonder - how on earth does the collaborator *collerator* respond to with 200 when you post him at /1 ?! It's all about
+[Consumer Driven Contracts](http://martinfowler.com/articles/consumerDrivenContracts.html) and our implementation called
 [stub-runner-spring](https://github.com/4finance/stub-runner-spring/wiki/How-to-use-it).
 
-What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the 
+What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the
 [stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
 tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/repository/mappings/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
 
@@ -163,7 +179,7 @@ Twitter places analyzer, searches through tweets for places. Then analyzers send
 INPUT
 -----------------
 
-Hit *PUT* at: 
+Hit *PUT* at:
 
 ```
 /api/{pairId}
@@ -303,4 +319,4 @@ Just add whatever you wish. If you don't like exposing every service explicitly,
 ### Cleaning npm and bower deps
 
  Type `gradle cleanGUIDeps`
- 
+
