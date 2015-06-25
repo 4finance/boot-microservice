@@ -20,6 +20,16 @@ There is a version with web application connected with backend side. You can fin
 You can remove all the caching related libraries, annotations and **com.ofg.twitter** packages.
 Next adjust all the properties and then you have an empty project - you're now ready to go.
 
+### boot-microservice CLI
+
+You can run 
+
+```
+./gradlew setup
+```
+
+and follow the instructions that will help you set up your new microservice in no time!
+
 ## How can I run it?
 
 ### From script
