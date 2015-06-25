@@ -1,0 +1,57 @@
+import io.fourfinanceit.setup.Accurest
+import io.fourfinanceit.setup.Custom
+import io.fourfinanceit.setup.Maven
+import io.fourfinanceit.setup.MicroInfra
+import io.fourfinanceit.setup.Options
+
+task setup << {
+    println file('src/main/resources/banner.txt').text
+    Console console = System.console()
+    if (console) {
+        Options options = new Options(maven(project, console),
+                custom(project, console),
+                accurest(project, console),
+                microInfra(project, console))
+        logger.info "Running setup with [$options]"
+        options.process(project)
+    } else {
+        logger.error "Cannot get console."
+        throw new Options.ConsoleNotPresentException()
+    }
+}
+
+Maven maven(Project project, Console console) {
+    console.println(">>> Maven configuration <<<")
+    console.println(">>> Please put your maven user in a prop called: [mavenUser] and maven password in a prop called: [mavenPassword] in your [gradle.properties] <<<")
+    console.println(">>> Current values are mavenUser: [$mavenUser], mavenPassword: [$mavenPassword] <<<")
+    String passedMavenRepoUrl = console.readLine("> Please enter the Nexus URL. Current [${mavenRepoUrl}]: ") ?: mavenRepoUrl
+    String passedMavenProjectGroupId = console.readLine("> Please enter your Maven Group Id. Current [${mavenProjectGroupId}]: ") ?: mavenProjectGroupId
+    String passedMavenArtifactId = console.readLine("> Please enter your Maven Artifact Id. We will rename your project with this name (note that you'll have to rerun gradle to see the difference). Current [${project.name}]: ") ?: project.name
+    return new Maven(project, mavenUser, mavenPassword, passedMavenRepoUrl, passedMavenProjectGroupId, passedMavenArtifactId)
+}
+
+Custom custom(Project project, Console console) {
+    console.println("\n>>> Custom configuration <<<")
+    String rootPackage = console.readLine("\n> Please enter the root packages that you want to have for your project. Current [${mavenProjectGroupId}]: ") ?: mavenProjectGroupId
+    return new Custom(project, rootPackage, rootPackage != mavenProjectGroupId)
+}
+
+Accurest accurest(Project project, Console console) {
+    console.println("\n>>> Accurest configuration <<<")
+    String passedAccurestRoot = console.readLine("\n> Please enter your relative path to the Accurest contracts. Current [${accurestRoot}]: ") ?: accurestRoot
+    String passedAccurestBaseClass = console.readLine("> Please enter your base class for your Accurest tests. Note! If you have changed the current directory structure you have to reflect that in the FQN name of your base class. Current [${accurestBaseClass}]: ") ?: accurestBaseClass
+    return new Accurest(project, passedAccurestRoot, passedAccurestBaseClass, passedAccurestRoot != accurestRoot)
+}
+
+MicroInfra microInfra(Project project, Console console) {
+    console.println("\n>>> MicroInfra configuration <<<")
+    String passedMicroInfraGraphiteHost = console.readLine("\n> Please enter the URL to Graphite. Current [${microInfraGraphiteHost}]: ") ?: microInfraGraphiteHost
+    String passedMicroInfraMetricsPathApp = console.readLine("> Please enter the name of your app to present in Graphite. Current [${project.name}]: ") ?: project.name
+    String passedMicroInfraStubrunnerStubsRepositoryRoot = console.readLine("> Please enter the URL of your Nexus where the stubs should be taken from. Current [${mavenRepoUrl}]: ") ?: mavenRepoUrl
+    boolean passedMicroInfraStubrunnerUseMicroserviceDefinitions = console.readLine("> Please state whether you want to use the approach with having stubs in separate jars. Current [${microInfraStubrunnerUseMicroserviceDefinitions}]: ") ?: microInfraStubrunnerUseMicroserviceDefinitions
+    return new MicroInfra(
+            passedMicroInfraGraphiteHost,
+            passedMicroInfraMetricsPathApp,
+            passedMicroInfraStubrunnerStubsRepositoryRoot,
+            passedMicroInfraStubrunnerUseMicroserviceDefinitions)
+}

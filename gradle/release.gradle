@@ -1,0 +1,66 @@
+task addHashFile << {
+    String gitCmd = "git log --pretty=format:'%H' -n 1"
+    def proc = gitCmd.execute()
+    proc.waitFor()
+    new File("commitHash.txt").withWriter { it << proc.in.text }
+}
+
+jar {
+    dependsOn addHashFile
+    from "commitHash.txt"
+}
+
+task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
+    baseName = "${project.name}-stubs"
+    from wiremockStubsOutputDirRoot
+    from "commitHash.txt"
+}
+
+bootRepackage {
+    withJarTask = "jar"
+}
+
+//Make sure that fat jar is built before uploading
+project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
+
+artifacts {
+    archives stubsJar
+}
+
+publishing {
+    repositories {
+        maven {
+            url getProp('mavenRepoUrl')
+            credentials {
+                username getProp('mavenUser')
+                password getProp('mavenPassword')
+            }
+        }
+    }
+    publications {
+        stubs(MavenPublication) {
+            artifactId "${project.name}-stubs"
+            artifact stubsJar
+        }
+        mavenJava(MavenPublication) {
+            artifactId "${project.name}"
+            from components.java
+            pom.withXml {
+                //Remove dependencies - everything is embedded in JAR created by Spring Boot
+                asNode().dependencies.replaceNode{ null }
+            }
+        }
+    }
+}
+
+task uploadArchives(dependsOn: 'publish') {
+    group "publishing"
+    description "DEPRECATED - Publishes produced archives - DEPRECATED - use 'publish' task"
+    doFirst {
+        logger.warn("DEPRECATION WARNING. Task 'uploadArchives' is deprecated. Use 'publish' task instead.")
+    }
+}
+
+String getProp(String propName) {
+    return hasProperty(propName) ? (getProperty(propName) ?: System.properties[propName]) : System.properties[propName]
+}

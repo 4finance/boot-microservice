@@ -1,0 +1,11 @@
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.yaml:snakeyaml:1.14'
+}
