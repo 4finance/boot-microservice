@@ -25,7 +25,7 @@ Next adjust all the properties and then you have an empty project - you're now r
 You can run 
 
 ```
-./gradlew setup --no-deamon
+./gradlew setup --no-daemon
 ```
 
 and follow the instructions that will help you set up your new microservice in no time!
