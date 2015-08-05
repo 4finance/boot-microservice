@@ -104,6 +104,15 @@ wrapper {
     gradleVersion '2.5'
 }
 
+task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
+	group = 'Application'
+	doFirst() {
+		main = project.mainClassName
+		classpath = sourceSets.main.runtimeClasspath
+		systemProperty 'APP_ENV', 'dev'
+		systemProperty 'spring.profiles.active', 'dev'
+	}
+}
 
 apply from: 'gradle/cli.gradle'
 apply from: 'gradle/test.gradle'
