@@ -74,16 +74,16 @@ dependencies {
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
-    compile 'net.sf.ehcache:ehcache:2.10.0'
+    compile 'net.sf.ehcache:ehcache:2.10.0.0.26'
     compile "com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.1'
-    runtime 'org.objenesis:objenesis:2.1'
+    runtime 'org.objenesis:objenesis:2.2'
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 
     testCompile 'com.jayway.awaitility:awaitility:1.6.3'
-    compile('com.github.tomakehurst:wiremock:1.56') {
+    compile('com.github.tomakehurst:wiremock:1.57') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
     testCompile "org.springframework.boot:spring-boot-starter-test"
@@ -101,7 +101,7 @@ dependencies {
 }
 
 wrapper {
-    gradleVersion '2.5'
+    gradleVersion '2.6'
 }
 
 task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
@@ -110,6 +110,7 @@ task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
 		main = project.mainClassName
 		classpath = sourceSets.main.runtimeClasspath
 		systemProperty 'APP_ENV', 'dev'
+		systemProperty 'CONFIG_FOLDER', 'properties'
 		systemProperty 'spring.profiles.active', 'dev'
 	}
 }

@@ -1,0 +1,3 @@
+stubrunner:
+  use-microservice-definitions: true
+  work-offline: true
