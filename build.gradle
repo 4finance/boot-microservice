@@ -24,12 +24,10 @@ buildscript {
 }
 
 ext {
-    versionPrefix = "CD"
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "CD-000"
 }
 
-group = mavenProjectGroupId
-version = buildNrLoc
+version = project.hasProperty('project.version') ? project.getProperty('project.version') : buildNrLoc
 
 sourceSets.main.java.srcDirs = []
 sourceSets.main.groovy.srcDirs += ["src/main/java"]
