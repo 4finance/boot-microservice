@@ -1,13 +1,6 @@
-task addHashFile << {
-    String gitCmd = "git log --pretty=format:'%H' -n 1"
-    def proc = gitCmd.execute()
-    proc.waitFor()
-    new File("commitHash.txt").withWriter { it << proc.in.text }
-}
-
 jar {
     dependsOn addHashFile
-    from "commitHash.txt"
+    from "git.properties"
 }
 
 task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
