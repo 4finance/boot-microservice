@@ -6,7 +6,7 @@ jar {
 task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
     baseName = "${project.name}-stubs"
     from wiremockStubsOutputDirRoot
-    from "commitHash.txt"
+    from "git.properties"
 }
 
 bootRepackage {
