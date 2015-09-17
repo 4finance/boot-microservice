@@ -69,7 +69,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
-    compile 'com.jayway.jsonpath:json-path-assert:0.9.1'
+    compile 'com.jayway.jsonpath:json-path-assert:2.0.0'
     compile 'org.yaml:snakeyaml'
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
@@ -82,7 +82,7 @@ dependencies {
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 
-    testCompile 'com.jayway.awaitility:awaitility:1.6.3'
+    testCompile 'com.jayway.awaitility:awaitility:1.6.4'
     compile('com.github.tomakehurst:wiremock:1.57') {
         exclude group: 'org.mortbay.jetty', module: 'servlet-api'
     }
@@ -101,7 +101,7 @@ dependencies {
 }
 
 wrapper {
-    gradleVersion '2.6'
+    gradleVersion '2.7'
 }
 
 task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
