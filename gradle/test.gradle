@@ -29,6 +29,9 @@ task guiTest(type: Test) {
     description = "Runs the acceptance GUI tests with Geb."
 }
 
+//TODO: smoke tests should be implemented as a task with a separate sourceSet (test-smoke)
+//please notice a known idea limitation relating to sourceSets: https://youtrack.jetbrains.com/issue/IDEA-138076
+task smokeTest(dependsOn: { guiTest })
 
 if (project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
