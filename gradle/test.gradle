@@ -1,6 +1,26 @@
 apply plugin: 'com.blogspot.toomuchcoding.testprofiler'
 apply plugin: 'accurest'
 
+configurations {
+    smokeTestCompile.extendsFrom testCompile
+    smokeTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    smokeTest {
+        groovy.srcDir file('src/test-smoke/groovy')
+        resources.srcDir file('src/test-smoke/resources')
+        compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.smokeTestCompile
+        runtimeClasspath = output + compileClasspath + configurations.smokeTestRuntime
+    }
+    //Delete when idea 15 comes: https://youtrack.jetbrains.com/issue/IDEA-138076
+    if(System.properties.'idea.active') {
+        main {
+            resources.srcDir file('src/test-smoke/resources')
+        }
+    }
+}
+
 ext {
     contractsDir = file("${project.rootDir}/$accurestRoot")
     wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
@@ -29,9 +49,11 @@ task guiTest(type: Test) {
     description = "Runs the acceptance GUI tests with Geb."
 }
 
-//TODO: smoke tests should be implemented as a task with a separate sourceSet (test-smoke)
-//please notice a known idea limitation relating to sourceSets: https://youtrack.jetbrains.com/issue/IDEA-138076
-task smokeTest(dependsOn: { guiTest })
+task smokeTest(type: Test) {
+    testClassesDir = sourceSets.smokeTest.output.classesDir
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl']
+}
 
 if (project.hasProperty("coverage")) {
     apply plugin: 'codenarc'
