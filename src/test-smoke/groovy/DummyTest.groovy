@@ -4,6 +4,6 @@ class DummyTest extends Specification {
 
     def "dummy test"() {
         expect:
-        true
+            true
     }
 }

@@ -53,6 +53,8 @@ task smokeTest(type: Test) {
     testClassesDir = sourceSets.smokeTest.output.classesDir
     classpath = sourceSets.smokeTest.runtimeClasspath
     systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl']
+    reports.html.destination = file("${reporting.baseDir}/smokeTest")
+    reports.junitXml.destination = file("${testResultsDir}/smokeTest")
 }
 
 if (project.hasProperty("coverage")) {
