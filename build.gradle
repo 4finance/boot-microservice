@@ -83,7 +83,7 @@ dependencies {
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 
-    testCompile 'com.jayway.awaitility:awaitility:1.6.4'
+    testCompile 'com.jayway.awaitility:awaitility:1.6.5'
     testCompile 'com.github.tomakehurst:wiremock:2.0.4-beta'
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
