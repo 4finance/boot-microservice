@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE'
-        classpath 'com.ofg:uptodate-gradle-plugin:1.6.1'
+        classpath 'com.ofg:uptodate-gradle-plugin:+'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
         classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.3.1'
@@ -75,7 +75,7 @@ dependencies {
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
     compile 'org.codehaus.gpars:gpars:1.2.1'
-    compile 'net.sf.ehcache:ehcache:2.10.0.0.26'
+    compile 'net.sf.ehcache:ehcache:2.10.1'
     compile "com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.1'
