@@ -3,7 +3,7 @@ jar {
     from "git.properties"
 }
 
-task stubsJar(type: Jar, dependsOn: ["generateWiremockClientStubs", "addHashFile"]) {
+task stubsJar(type: Jar, dependsOn: ["generateWireMockClientStubs", "addHashFile"]) {
     baseName = "${project.name}-stubs"
     from wiremockStubsOutputDirRoot
     from "git.properties"

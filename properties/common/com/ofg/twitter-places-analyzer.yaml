@@ -6,7 +6,7 @@ metrics.path:
 
 request.payload.logging.maxlength: 2000
 
-server.port: 8095
+server.port: 8099
 
 spring:
   datasource:
