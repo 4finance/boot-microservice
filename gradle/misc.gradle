@@ -1,0 +1,20 @@
+apply plugin: 'docker'
+apply plugin: 'com.ofg.uptodate'
+
+task docker(type: Docker) {
+    dependsOn 'build'
+    dryRun true
+    setEnvironment('CONFIG_FOLDER', '/properties')
+    addFile("properties", "/properties")
+    addFile("${libsDir}/${project.name}-${buildNrLoc}.jar", "/${project.name}/${project.name}.jar")
+    exposePort(8095)
+    entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
+}
+
+uptodate {
+
+    breakTheBuild {
+        enabled = true
+        includePatterns('micro-infra.*')
+    }
+}

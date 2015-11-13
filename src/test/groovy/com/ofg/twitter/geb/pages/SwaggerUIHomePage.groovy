@@ -13,9 +13,9 @@ class SwaggerUIHomePage extends Page {
         showHealthMVCEndpoints { $("a", id: "endpointListTogger_health-mvc-endpoint") }
         healthEndpointsTable(wait: true) { $("ul#health-mvc-endpoint_endpoint_list") }
         healthEndpointTraceText { $("#resource_health-mvc-endpoint li.trace span.path a") }
-        microserviceJsonText { $("a", text: "/microservice.json") }
+        microserviceJsonText { $("a", text: "/microserviceDescriptor") }
         microserviceGetTryButton {
-            $("ul#microservice-configuration-controller_endpoint_list .submit[value='Try it out!']")
+            $("li#microservice-configuration-controller_getMicroserviceConfiguration input.submit")
         }
         microserviceGetResponseBody {
             $("li#microservice-configuration-controller_getMicroserviceConfiguration pre.json")

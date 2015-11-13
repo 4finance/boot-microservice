@@ -9,7 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration
 
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = Application)
 @WebAppConfiguration
-@IntegrationTest("spring.profiles.active:dev")
+@IntegrationTest("spring.profiles.active:dev,springCloud")
 abstract class BaseBootGebSpec extends GebSpec {
 
     def setupSpec() {

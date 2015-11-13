@@ -1,0 +1,106 @@
+def webDir = new File(projectDir, "src/main/web")
+
+node {
+    // Version of node to use.
+    version = '0.10.29'
+
+    // Enabled the automatic download. False is the default (for now).
+    download = true
+
+    workDir = webDir
+}
+
+task installAllNpm(type: NpmTask) {
+    workingDir = webDir
+    args = ['install']
+}
+
+task bower(type: NodeTask) {
+    script = new File(webDir, 'node_modules/bower/bin/bower')
+    workingDir = webDir
+    args = ['--allow-root', 'install']
+}
+
+task grunt(type: NodeTask) {
+    script = new File(webDir, 'node_modules/grunt-cli/bin/grunt')
+    workingDir = webDir
+}
+
+task cleanGUIDeps << {
+    ['bower_components', 'node_modules'].each {
+        new File(webDir, it).deleteDir()
+    }
+}
+
+clean << {
+    new File(webDir, 'dist').deleteDir()
+}
+
+// run bower and grunt to build the web
+bower.dependsOn installAllNpm
+grunt.dependsOn bower
+jar.dependsOn grunt
+
+jar {
+    dependsOn addHashFile
+    from "git.properties"
+
+    from(fileTree("src/main/web/dist")) {
+        into "static"
+    }
+}
+
+task stubsJar(type: Jar, dependsOn: ["generateWireMockClientStubs", "addHashFile"]) {
+    baseName = "${project.name}-stubs"
+    from wiremockStubsOutputDirRoot
+    from "git.properties"
+}
+
+bootRepackage {
+    withJarTask = "jar"
+}
+
+//Make sure that fat jar is built before uploading
+project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
+
+artifacts {
+    archives stubsJar
+}
+
+publishing {
+    repositories {
+        maven {
+            url getProp('mavenRepoUrl')
+            credentials {
+                username getProp('mavenUser')
+                password getProp('mavenPassword')
+            }
+        }
+    }
+    publications {
+        stubs(MavenPublication) {
+            artifactId "${project.name}-stubs"
+            artifact stubsJar
+        }
+        mavenJava(MavenPublication) {
+            artifactId "${project.name}"
+            from components.java
+            pom.withXml {
+                //Remove dependencies - everything is embedded in JAR created by Spring Boot
+                asNode().dependencies.replaceNode{ null }
+            }
+        }
+    }
+}
+
+task uploadArchives(dependsOn: 'publish') {
+    group "publishing"
+    description "DEPRECATED - Publishes produced archives - DEPRECATED - use 'publish' task"
+    doFirst {
+        logger.warn("DEPRECATION WARNING. Task 'uploadArchives' is deprecated. Use 'publish' task instead.")
+    }
+}
+
+String getProp(String propName) {
+    return hasProperty(propName) ? (getProperty(propName) ?: System.properties[propName]) : System.properties[propName]
+}

@@ -1,5 +1,4 @@
 package com.ofg.twitter.place.extractor
-
 import com.codahale.metrics.Meter
 import com.codahale.metrics.MetricRegistry
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
@@ -15,8 +14,12 @@ import org.springframework.context.annotation.Import
 class PlaceExtractorConfiguration {
 
     @Bean
-    CityFinder cityFinder(ServiceRestClient serviceRestClient, @Value('${city.finding.service.url:http://api.openweathermap.org/data/2.5/weather}') String cityFindingServiceUrl) {
-        return new CityFinder(new WeatherClient(serviceRestClient, cityFindingServiceUrl))
+    CityFinder cityFinder(WeatherClient weatherClient) {
+        return new CityFinder(weatherClient)
+    }
+
+    @Bean WeatherClient weatherClient(ServiceRestClient serviceRestClient, @Value('${city.finding.service.url:http://api.openweathermap.org/data/2.5/weather}') String cityFindingServiceUrl) {
+        return new WeatherClient(serviceRestClient, cityFindingServiceUrl)
     }
     
     @Bean

@@ -1,0 +1,122 @@
+apply plugin: 'com.blogspot.toomuchcoding.testprofiler'
+apply plugin: 'accurest'
+
+configurations {
+    smokeTestCompile.extendsFrom testCompile
+    smokeTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    smokeTest {
+        groovy.srcDir file('src/test-smoke/groovy')
+        resources.srcDir file('src/test-smoke/resources')
+        compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.smokeTestCompile
+        runtimeClasspath = output + compileClasspath + configurations.smokeTestRuntime
+    }
+    //Delete when idea 15 comes: https://youtrack.jetbrains.com/issue/IDEA-138076
+    if(System.properties.'idea.active') {
+        main {
+            resources.srcDir file('src/test-smoke/resources')
+        }
+    }
+}
+
+ext {
+    contractsDir = file("${project.rootDir}/$accurestRoot")
+    wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
+    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'mappings/')
+}
+
+test {
+    jvmArgs = project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"} + ['-Xmx512m']
+    testLogging {
+        exceptionFormat = 'full'
+    }
+    exclude '**/*UISpec.*'
+}
+
+task guiTest(type: Test) {
+    jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
+    testLogging {
+        exceptionFormat = 'full'
+    }
+    include '**/*UISpec.*'
+
+    reports.html {
+        destination = file("${reporting.baseDir}/guiTests")
+    }
+    group = "Verification"
+    description = "Runs the acceptance GUI tests with Geb."
+}
+
+task smokeTest(type: Test) {
+    testClassesDir = sourceSets.smokeTest.output.classesDir
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl']
+    reports.html.destination = file("${reporting.baseDir}/smokeTest")
+    reports.junitXml.destination = file("${testResultsDir}/smokeTest")
+}
+
+if (project.hasProperty("coverage")) {
+    apply plugin: 'codenarc'
+    apply plugin: 'jacoco'
+    apply plugin: 'org.sonarqube'
+    apply plugin: 'com.github.kt3k.coveralls'
+
+    jacoco {
+        toolVersion = '0.7.4.201502262128'
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true // coveralls plugin depends on xml format report
+            html.enabled = true
+        }
+    }
+
+    codenarc {
+        configFile = file('config/codenarc/rules.groovy')
+        maxPriority1Violations = 0
+        maxPriority2Violations = 6
+        maxPriority3Violations = 10
+        reportFormat = 'xml'
+        ignoreFailures = true
+    }
+
+    dependencies {
+        codenarc 'org.codenarc:CodeNarc:0.21'
+    }
+
+    test {
+        jacoco {
+            excludes = ['*Configuration']
+        }
+    }
+
+    sonarqube {
+        properties {
+            property "sonar.groovy.jacoco.reportPath", "$buildDir/jacoco/test.exec" //only for projects using Groovy in production code
+        }
+    }
+}
+
+testprofiler {
+    minTestThreshold = 100
+
+    buildBreaker {
+        maxTestThreshold = project.hasProperty('maxTestThreshold') ? project.property('maxTestThreshold') : 30_000
+        ifTestsExceedMaxThreshold {
+            displayWarning()
+        }
+    }
+}
+
+accurest {
+    baseClassForTests = accurestBaseClass
+    basePackageForTests = 'accurest'
+    contractsDslDir = contractsDir
+    generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest-server-side-tests")
+    stubsOutputDir = wiremockStubsOutputDir
+}
+
+test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36

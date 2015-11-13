@@ -1,0 +1,19 @@
+spring.cloud.zookeeper.enabled: false
+spring.cloud.zookeeper.discovery.enabled: false
+ribbon.zookeeper.enabled: false
+spring.autoconfigure.exclude: org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration
+
+graphite.host: localhost
+
+spring:
+  application:
+    name: twitter-places-analyzer
+
+stubrunner:
+  use-microservice-definitions: true
+  stubs:
+    repository.root: "http://dl.bintray.com/4finance/micro"
+    group: com.ofg
+    module: stub-runner-examples
+
+acceptance-tests.timeout: 8

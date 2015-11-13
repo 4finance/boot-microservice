@@ -1,0 +1,11 @@
+spring.cloud.zookeeper.enabled: true
+spring.cloud.zookeeper.discovery.enabled: true
+ribbon.zookeeper.enabled: true
+spring.autoconfigure.exclude: ''
+
+spring.cloud.zookeeper.discovery.root: /pl
+spring.cloud.zookeeper:
+  prefix: com/ofg/
+  dependencies:
+    collerator:
+      path: twitter-places-collerator

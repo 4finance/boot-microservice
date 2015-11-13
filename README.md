@@ -20,6 +20,16 @@ There is a version with web application connected with backend side. You can fin
 You can remove all the caching related libraries, annotations and **com.ofg.twitter** packages.
 Next adjust all the properties and then you have an empty project - you're now ready to go.
 
+### boot-microservice CLI
+
+You can run
+
+```
+./gradlew setup --no-daemon
+```
+
+and follow the instructions that will help you set up your new microservice in no time!
+
 ## How can I run it?
 
 ### From script
@@ -40,8 +50,17 @@ java -jar boot-microservice.jar runnerArgs
 
 ### From gradle
 
-You can also run it directly using gradle with bootRun task and the same arguments as in
-runner script.
+Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
+
+### From IntelliJ IDEA
+
+Run Application class with the following VM args:
+
+```
+-DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -Dencrypt.key="secretEncryptKey" -Dspring.profiles.active=dev
+```
+
+For details check runner script.
 
 ### From Docker
 
@@ -72,13 +91,18 @@ docker-compose logs
 You can use Dockerfile to create [Docker](https://www.docker.com/) image:
 
 ```
-sudo docker build -t boot-microservice build/docker
+docker build -t boot-microservice build/docker
 ```
 
 Self-sufficient Docker image with our sample microservice can be started as follows:
 
 ```
-docker run -e spring.profiles.active=dev -p 8080:8095 boot-microservice
+docker run \
+    -e spring.profiles.active=dev \
+    -e APP_ENV=prod \
+    -e ENCRYPT_KEY=secretEncryptKey \
+    -p 8080:8095 \
+    boot-microservice
 ```
 
 Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in-memory embedded ZooKeeper and stubs) and we re-map 8095 port to 8080 on host machine.
@@ -88,8 +112,8 @@ Test with `curl localhost:8080/ping`. Notice that we run it in `dev` profile (in
 If you want to run microservice with real service discovery via ZooKeeper and Graphite, first prepare Docker images for that:
 
 ```
-docker run --name zookeeper            jplock/zookeeper
-docker run --name graphite  -p 8081:80 kamon/grafana_graphite
+docker run --name zookeeper jplock/zookeeper
+docker run --name graphite -p 8081:80 kamon/grafana_graphite
 ```
 
 After the first time these containers can be executed with `docker start -a zookeeper` and `docker start -a graphite` shorthands. Now you can run arbitrary number of microservices and they will all register themselves in ZooKeeper/Graphite instances:
@@ -253,7 +277,7 @@ Before first use, build your whole application with `gradle build`. It will down
 Then run you application (for example from Idea, just run main in `com.ofg.twitter.Application` specifying
 the correct -Dspring.profiles.active).
 
-Now your application (backend) works. But you still need js+html. And since this is 2014, you don't just write html anymore, you have to use a shitload of libs :)
+Now your application (backend) works. But you still need js+html. And since this is 2015, you don't just write html anymore, you have to use a shitload of libs :)
 
 Install npm if you don't have it already. For example on Debian-based linux run:
 ```
@@ -274,7 +298,7 @@ Next, go to `src/main/web` and type `npm install`. This will download all needed
 automatically open in the browser and from now on on every change in you webapp the browser will automatically refresh
 (no need to hit cmd-R all the time!).
 
-Easy, right? Writing HTML in 2014 is simple... nooooot! :D
+Easy, right? Writing HTML in 2015 is simple... nooooot! :D
 
 ### Production mode
 
@@ -305,3 +329,4 @@ Just add whatever you wish. If you don't like exposing every service explicitly,
 ### Cleaning npm and bower deps
 
  Type `gradle cleanGUIDeps`
+
