@@ -2,9 +2,11 @@ package com.ofg.twitter.geb
 
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import groovy.json.JsonSlurper
+import spock.lang.Ignore
 import spock.lang.Stepwise
 
 @Stepwise
+@Ignore("Ignored until https://github.com/4finance/micro-infra-spring/issues/532 gets resolved")
 class MicroserviceControllerUISpec extends BaseBootGebSpec {
 
     def "Microservice controller is visible on Swagger Page"() {

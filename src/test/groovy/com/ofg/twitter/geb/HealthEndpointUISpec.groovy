@@ -1,11 +1,13 @@
 package com.ofg.twitter.geb
 
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
+import spock.lang.Ignore
 import spock.lang.Stepwise
 import spock.lang.Unroll
 
 @Stepwise
 @Unroll
+@Ignore("Ignored until https://github.com/4finance/micro-infra-spring/issues/532 gets resolved")
 class HealthEndpointUISpec extends BaseBootGebSpec {
 
     def "Setup step"() {
