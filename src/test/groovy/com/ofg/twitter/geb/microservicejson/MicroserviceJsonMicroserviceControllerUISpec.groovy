@@ -1,5 +1,6 @@
-package com.ofg.twitter.geb
+package com.ofg.twitter.geb.microservicejson
 
+import com.ofg.twitter.geb.MicroserviceControllerUISpec
 import groovy.json.JsonSlurper
 import org.springframework.boot.test.IntegrationTest
 import spock.lang.Ignore
