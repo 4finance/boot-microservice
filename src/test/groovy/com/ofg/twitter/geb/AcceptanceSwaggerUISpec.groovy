@@ -3,7 +3,7 @@ import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import spock.lang.Stepwise
 
 @Stepwise
-abstract class AcceptanceSwaggerUISpec extends BaseBootGebSpec {
+abstract class AcceptanceSwaggerUISpec extends BaseBootGebUISpec {
 
     def "SwaggerUI home page should be visible"() {
         when:

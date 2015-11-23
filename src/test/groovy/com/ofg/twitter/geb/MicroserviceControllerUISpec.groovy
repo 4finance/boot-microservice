@@ -4,7 +4,7 @@ import groovy.json.JsonSlurper
 import spock.lang.Stepwise
 
 @Stepwise
-abstract class MicroserviceControllerUISpec extends BaseBootGebSpec {
+abstract class MicroserviceControllerUISpec extends BaseBootGebUISpec {
 
     def "Microservice controller is visible on Swagger Page"() {
         when:

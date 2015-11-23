@@ -7,7 +7,7 @@ if (smokeTestAppUrlProp) {
 } else {
     //baseUrl in this file has precedence over -Dgeb.build.baseUrl, so set it only if system property is not defined
     if (!System.getProperty("geb.build.baseUrl")) {
-        baseUrl = "http://127.0.1.1:8095"
+        baseUrl = "http://localhost:8095"
     }
 }
 
