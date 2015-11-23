@@ -5,7 +5,7 @@ import spock.lang.Unroll
 
 @Stepwise
 @Unroll
-abstract class HealthEndpointUISpec extends BaseBootGebSpec {
+abstract class SwaggerHealthEndpointUISpec extends BaseBootGebSpec {
 
     def "Setup step"() {
         when:
