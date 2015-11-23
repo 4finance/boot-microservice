@@ -15,10 +15,11 @@ abstract class HealthEndpointPageUISpec extends BaseBootGebUISpec {
     
     def "Check server status"(){
         given:
-            String text = statusJson.text()
+            at HealthEndpointPage
         when:
-            def json = new JsonSlurper().parseText(text)
+            String text = statusJson.text()
         then:
+            def json = new JsonSlurper().parseText(text)
             json.status == "UP"
             json.diskSpace.status == "UP"
             json.db.status == "UP"
