@@ -106,7 +106,7 @@ dependencies {
 }
 
 wrapper {
-    gradleVersion '2.7'
+    gradleVersion '2.9'
 }
 
 task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
