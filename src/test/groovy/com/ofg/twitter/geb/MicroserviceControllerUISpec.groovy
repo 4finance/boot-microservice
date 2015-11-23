@@ -1,13 +1,10 @@
 package com.ofg.twitter.geb
-
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import groovy.json.JsonSlurper
-import spock.lang.Ignore
 import spock.lang.Stepwise
 
 @Stepwise
-@Ignore("Ignored until https://github.com/4finance/micro-infra-spring/issues/532 gets resolved")
-class MicroserviceControllerUISpec extends BaseBootGebSpec {
+abstract class MicroserviceControllerUISpec extends BaseBootGebSpec {
 
     def "Microservice controller is visible on Swagger Page"() {
         when:
@@ -37,10 +34,11 @@ class MicroserviceControllerUISpec extends BaseBootGebSpec {
             microserviceGetResponseCode.displayed
             microserviceGetResponseCode.text() == '200'
         and:
-            def inputFile = getClass().getResource("/microservice.json")
-            def inputJSON = new JsonSlurper().parseText(inputFile.text)
+            def inputJSON = inputJson()
             def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
             inputJSON == outputJSON
     }
+
+    abstract protected def inputJson()
 
 }
