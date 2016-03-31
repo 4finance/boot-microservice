@@ -5,8 +5,6 @@ import com.ofg.twitter.place.model.Tweet
 import groovy.transform.PackageScope
 import groovy.util.logging.Slf4j
 import groovyx.gpars.GParsPool
-import org.springframework.cloud.sleuth.Span
-import org.springframework.cloud.sleuth.Tracer
 
 import java.util.concurrent.ConcurrentHashMap
 
@@ -16,22 +14,21 @@ class PlacesExtractor {
 
     private final List<PlaceExtractor> placeExtractors
     private final Meter analyzedTweetsMeter
-    private final Tracer trace
+//    private final Tracer trace
 
-    PlacesExtractor(List<PlaceExtractor> placeExtractors, Meter analyzedTweetsMeter, Tracer trace) {
+    PlacesExtractor(List<PlaceExtractor> placeExtractors, Meter analyzedTweetsMeter) {
         this.placeExtractors = placeExtractors
         this.analyzedTweetsMeter = analyzedTweetsMeter
-        this.trace = trace
+//        this.trace = trace
     }
 
     Map<String, Optional<Place>> extractPlacesFrom(List<Tweet> tweets) {
         Map<String, Optional<Place>> foundPlaces = new ConcurrentHashMap<>()
-        Span parentSpan = trace.createSpan(Thread.currentThread().name)
         GParsPool.withPool {
             tweets.eachParallel { tweet ->
-                Span span = trace.createSpan(Thread.currentThread().name, parentSpan)
-                foundPlaces << appendExtractedTweet(tweet)
-                trace.close(span)
+//                trace.wrap {
+                    foundPlaces << appendExtractedTweet(tweet)
+//                }
             }
         }
         analyzedTweetsMeter.mark(foundPlaces.size())

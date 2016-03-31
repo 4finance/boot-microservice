@@ -3,7 +3,6 @@ package com.ofg.twitter.place.extractor
 import com.codahale.metrics.Meter
 import com.jayway.awaitility.Awaitility
 import com.ofg.twitter.place.model.Tweet
-import org.springframework.cloud.sleuth.Tracer
 import spock.lang.Specification
 
 import static com.jayway.awaitility.Duration.ONE_SECOND
@@ -14,7 +13,7 @@ class PlacesExtractorSpec extends Specification {
     def 'should extract places from two'() {
         given:
             List<PlaceExtractor>  placeExtractors = [new ByTweetIdPlacesExtractor()]
-            PlacesExtractor placesExtractor = new PlacesExtractor(placeExtractors, Stub(Meter), Stub(Tracer))
+            PlacesExtractor placesExtractor = new PlacesExtractor(placeExtractors, Stub(Meter))
             String tweets = '[{"id_str" : "1" }, {"id_str" : "2" }, {"id_str" : "3" }]'
         when:
             Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(parseTweets(tweets))
