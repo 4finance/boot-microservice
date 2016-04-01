@@ -63,4 +63,3 @@ if (activeProfiles && activeProfiles.contains(PRODUCTION)) {
 } else {
     logger("com.ofg", DEBUG)
 }
-

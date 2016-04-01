@@ -7,6 +7,7 @@ import groovy.util.logging.Slf4j
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
+import io.fourfinance.activity_tracker.activity.TrackUserActivity
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
@@ -39,6 +40,7 @@ class PairIdController {
             produces = TWITTER_PLACES_ANALYZER_JSON_VERSION_1)
     @ApiOperation(value = "Async collecting and propagating of tweets for a given pairId",
             notes = "This will asynchronously call tweet collecting, place extracting and their propagation to Collerators")
+    @TrackUserActivity("get places from tweets")
     Callable<Void> getPlacesFromTweets(@PathVariable @NotNull @ApiParam(defaultValue = "0") long pairId, @RequestBody @NotNull List<Tweet> tweets) {
         return {
             propagationWorker.collectAndPropagate(pairId, tweets)
