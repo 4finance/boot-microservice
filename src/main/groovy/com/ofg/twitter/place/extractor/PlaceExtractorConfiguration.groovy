@@ -1,11 +1,12 @@
 package com.ofg.twitter.place.extractor
+
 import com.codahale.metrics.Meter
 import com.codahale.metrics.MetricRegistry
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import com.ofg.twitter.place.extractor.metrics.ExtractorMetricsConfiguration
 import com.ofg.twitter.place.extractor.metrics.MatchProbabilityMetrics
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.cloud.sleuth.Trace
+import org.springframework.cloud.sleuth.Tracer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
@@ -25,7 +26,7 @@ class PlaceExtractorConfiguration {
     
     @Bean
     PlacesExtractor placesExtractor(CityFinder cityFinder, MatchProbabilityMetrics matchProbabilityMetrics,
-                                    MetricRegistry metricRegistry, Trace trace) {
+                                    MetricRegistry metricRegistry, Tracer trace) {
         Meter analyzedTweetsMeter = metricRegistry.meter('twitter.places.analyzed.tweets')
         List<PlaceExtractor> placeExtractors = [ new PlaceSectionExtractor(matchProbabilityMetrics),
                                                  new CoordinatesPlaceExtractor(cityFinder, matchProbabilityMetrics) ]
