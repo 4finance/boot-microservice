@@ -104,7 +104,7 @@ dependencies {
     testCompile "org.spockframework:spock-spring"
     testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
     testCompile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
-    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:2.52.0"
     testCompile "com.jayway.restassured:rest-assured:$restAssuredVersion"
     testCompile "com.jayway.restassured:spring-mock-mvc:$restAssuredVersion"
     testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
