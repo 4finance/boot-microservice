@@ -27,20 +27,20 @@ abstract class SwaggerHealthEndpointUISpec extends BaseBootGebUISpec {
 
         where:
             httpOperation || path
-            "get"         || "/health"
-            "delete"      || "/health"
-            "head"        || "/health"
-            "options"     || "/health"
-            "post"        || "/health"
-            "patch"       || "/health"
-            "put"         || "/health"
-            "trace"       || "/health"
+            "get"         || "[/health, /health.json]"
+            "delete"      || "[/health, /health.json]"
+            "head"        || "[/health, /health.json]"
+            "options"     || "[/health, /health.json]"
+            "post"        || "[/health, /health.json]"
+            "patch"       || "[/health, /health.json]"
+            "put"         || "[/health, /health.json]"
+            "trace"       || "[/health, /health.json]"
 
     }
 
     String getTextfromHealthOperation(String http_operation) {
-        waitFor { $("#resource_health-mvc-endpoint li.$http_operation span.path a").displayed }
-        return $("#resource_health-mvc-endpoint li.$http_operation span.path a").text()
+        waitFor { $("#resource_health-mvc-endpoint li.$http_operation span.path a")*.displayed }
+        return $("#resource_health-mvc-endpoint li.$http_operation span.path a")*.text()
     }
 
 }
