@@ -14,3 +14,7 @@ stubrunner.stubs:
   module: stub-runner-examples
 
 acceptance-tests.timeout: 8
+
+spring.cloud.zookeeper:
+  maxRetries: 5
+  maxSleepMs: 300
