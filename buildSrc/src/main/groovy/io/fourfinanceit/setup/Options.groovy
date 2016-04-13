@@ -1,8 +1,6 @@
 package io.fourfinanceit.setup
 
 import groovy.transform.CompileStatic
-import groovy.transform.Immutable
-import groovy.transform.InheritConstructors
 import groovy.transform.ToString
 import org.gradle.api.Project
 import org.yaml.snakeyaml.Yaml
@@ -51,6 +49,4 @@ class Options {
         new Yaml().dump(appPropsEntries, appProps.newWriter())
     }
 
-    @InheritConstructors
-    static class ConsoleNotPresentException extends RuntimeException {}
 }
