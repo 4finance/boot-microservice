@@ -3,6 +3,7 @@ import io.fourfinanceit.setup.Custom
 import io.fourfinanceit.setup.Maven
 import io.fourfinanceit.setup.MicroInfra
 import io.fourfinanceit.setup.Options
+import io.fourfinanceit.setup.ConsoleNotPresentException
 
 task setup << {
     println file('src/main/resources/banner.txt').text
@@ -16,7 +17,7 @@ task setup << {
         options.process(project)
     } else {
         logger.error "Cannot get console."
-        throw new Options.ConsoleNotPresentException()
+        throw new ConsoleNotPresentException()
     }
 }
 
