@@ -33,7 +33,7 @@ ext {
 }
 
 group = mavenProjectGroupId
-version = project.hasProperty('project.version') ? project.getProperty('project.version') : buildNrLoc
+version = project.hasProperty('currentVersion') ? project.getProperty('currentVersion') : buildNrLoc
 
 sourceSets.main.java.srcDirs = []
 sourceSets.main.groovy.srcDirs += ["src/main/java"]
