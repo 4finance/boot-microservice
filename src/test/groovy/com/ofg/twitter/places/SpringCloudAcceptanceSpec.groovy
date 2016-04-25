@@ -1,5 +1,6 @@
 package com.ofg.twitter.places
 
+import com.ofg.twitter.config.LoadBalancedRestTemplateConfiguration
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 
