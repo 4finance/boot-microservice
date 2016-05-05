@@ -35,6 +35,7 @@ class PlacesExtractor {
             }
         }
         analyzedTweetsMeter.mark(foundPlaces.size())
+        trace.close(parentSpan)
         return foundPlaces
     }
 

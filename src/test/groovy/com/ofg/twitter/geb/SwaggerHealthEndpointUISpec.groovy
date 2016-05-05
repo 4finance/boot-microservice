@@ -17,30 +17,26 @@ abstract class SwaggerHealthEndpointUISpec extends BaseBootGebUISpec {
             showHealthMVCEndpoints.click()
         then:
             waitFor { healthEndpointsTable.displayed }
-            waitFor { healthEndpointTraceText.displayed }
     }
 
     def "Check visibility of operations and their paths for 'health-mvc-endpoint' #httpOperation"() {
-
         expect:
-            getTextfromHealthOperation(httpOperation) == path
+            waitFor { $("#health-mvc-endpoint_endpoint_list li.$httpOperation span.path a")*.displayed }
+            getTextfromHealthOperation(httpOperation).contains path
 
         where:
             httpOperation || path
-            "get"         || "[/health, /health.json]"
-            "delete"      || "[/health, /health.json]"
-            "head"        || "[/health, /health.json]"
-            "options"     || "[/health, /health.json]"
-            "post"        || "[/health, /health.json]"
-            "patch"       || "[/health, /health.json]"
-            "put"         || "[/health, /health.json]"
-            "trace"       || "[/health, /health.json]"
-
+            "get"         || "/health"
+            "delete"      || "/health"
+            "head"        || "/health"
+            "options"     || "/health"
+            "post"        || "/health"
+            "patch"       || "/health"
+            "put"         || "/health"
     }
 
     String getTextfromHealthOperation(String http_operation) {
-        waitFor { $("#resource_health-mvc-endpoint li.$http_operation span.path a")*.displayed }
-        return $("#resource_health-mvc-endpoint li.$http_operation span.path a")*.text()
+        return $("#health-mvc-endpoint_endpoint_list li.$http_operation span.path a")*.text()
     }
 
 }
