@@ -1,6 +1,7 @@
 spring.cloud.zookeeper.enabled: true
 spring.cloud.zookeeper.discovery.enabled: true
 ribbon.zookeeper.enabled: true
+spring.cloud.zookeeper.dependency.resttemplate.enabled: false
 spring.autoconfigure.exclude: ''
 
 spring:

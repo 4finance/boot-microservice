@@ -1,10 +1,11 @@
 package com.ofg.twitter.config
 
+import com.ofg.infrastructure.discovery.ServiceAlias
 import groovy.transform.CompileStatic
 
 @CompileStatic
 class Collaborators {
 
-    public static final String COLLERATOR_DEPENDENCY_NAME = 'collerator'
+    public static final ServiceAlias COLLERATOR_DEPENDENCY_NAME = new ServiceAlias('collerator')
 
 }
