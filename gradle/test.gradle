@@ -117,6 +117,7 @@ accurest {
     contractsDslDir = contractsDir
     generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest-server-side-tests")
     stubsOutputDir = wiremockStubsOutputDir
+    targetFramework = 'Spock'
 }
 
 test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36
