@@ -23,7 +23,7 @@ int rollingFileMaxHistory = logbackConfig.getRollingMaxHistory()
 
 println """Starting logback
 To set your own log file, start it with
-  java -Dlogback.configurationFile=/path/to/my-logback.groovy
+  java -Dlogging.config=/path/to/my-logback.groovy
 ScanTime is set to $scanTime
 Logging to $whereToLog
 with pattern $logPattern
