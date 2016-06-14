@@ -5,6 +5,8 @@ import ch.qos.logback.core.rolling.TimeBasedRollingPolicy
 import ch.qos.logback.core.status.OnConsoleStatusListener
 import com.ofg.infrastructure.property.LogbackConfiguration
 
+import static ch.qos.logback.classic.Level.DEBUG
+import static ch.qos.logback.classic.Level.INFO
 import static com.ofg.config.BasicProfiles.PRODUCTION
 import static org.springframework.core.env.AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME
 
@@ -53,8 +55,12 @@ appender(console, ConsoleAppender) {
 }
 
 root(INFO, whereToLog)
-if (System.getProperty(ACTIVE_PROFILES_PROPERTY_NAME) == PRODUCTION) {
+
+String activeProfiles = System.getProperty(ACTIVE_PROFILES_PROPERTY_NAME)
+
+if (activeProfiles && activeProfiles.contains(PRODUCTION)) {
     logger("com.ofg", INFO)
 } else {
     logger("com.ofg", DEBUG)
 }
+
