@@ -63,10 +63,6 @@ if (project.hasProperty("coverage")) {
     apply plugin: 'org.sonarqube'
     apply plugin: 'com.github.kt3k.coveralls'
 
-    jacoco {
-        toolVersion = '0.7.4.201502262128'
-    }
-
     jacocoTestReport {
         reports {
             xml.enabled = true // coveralls plugin depends on xml format report
@@ -81,10 +77,6 @@ if (project.hasProperty("coverage")) {
         maxPriority3Violations = 10
         reportFormat = 'xml'
         ignoreFailures = true
-    }
-
-    dependencies {
-        codenarc 'org.codenarc:CodeNarc:0.21'
     }
 
     test {
