@@ -40,10 +40,10 @@ class Maven {
 
     private void changeAccurestRootPathToIncludeNewPackage() {
         if( mavenArtifactId != DEFAULT_PACKAGE) {
-            File rootFolder = project.file("repository/mappings")
+            File rootFolder = project.file("src/test/resources/accurest")
             File newFolder = new File(rootFolder, mavenArtifactId.replaceAll('\\.', '/'))
-            packageMover.moveDirectoriesToNewPackage("repository/mappings/com/ofg", newFolder)
-            FileUtils.deleteDirectory(project.file("repository/mappings/com"))
+            packageMover.moveDirectoriesToNewPackage("src/test/resources/accurest/com/ofg", newFolder)
+            FileUtils.deleteDirectory(project.file("src/test/resources/accurest/com"))
         }
     }
 

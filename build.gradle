@@ -66,7 +66,6 @@ dependencies {
     runtime 'com.h2database:h2'
 
     testCompile 'com.jayway.awaitility:awaitility:1.7.0'
-    testCompile 'com.github.tomakehurst:wiremock'
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "com.ofg:micro-infra-spring-test:$microInfraSpringVersion"
 
@@ -78,7 +77,9 @@ dependencies {
     testCompile "org.seleniumhq.selenium:selenium-htmlunit-driver:2.52.0"
     testCompile "com.jayway.restassured:rest-assured:$restAssuredVersion"
     testCompile "com.jayway.restassured:spring-mock-mvc:$restAssuredVersion"
-    testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
+
+    // for easier contract devlopment - ide auto-completion support
+    testCompileOnly "io.codearte.accurest:accurest-core:$accurestVersion"
 }
 
 task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {

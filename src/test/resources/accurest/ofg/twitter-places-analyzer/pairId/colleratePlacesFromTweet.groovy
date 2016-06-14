@@ -1,4 +1,4 @@
-io.codearte.accurest.dsl.GroovyDsl.make {
+io.codearte.accurest.dsl.Accurest.make {
     request {
         method 'PUT'
         url '/api/12'
