@@ -79,7 +79,7 @@ dependencies {
     testCompile "com.jayway.restassured:spring-mock-mvc:$restAssuredVersion"
 
     // for easier contract devlopment - ide auto-completion support
-    testCompile "io.codearte.accurest:accurest-core:$accurestVersion"
+    testCompileOnly "io.codearte.accurest:accurest-core:$accurestVersion"
 }
 
 task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {

@@ -105,9 +105,7 @@ testprofiler {
 
 accurest {
     baseClassForTests = accurestBaseClass
-    basePackageForTests = 'accurest'
     contractsDslDir = contractsDir
-    generatedTestSourcesDir = file("${project.buildDir}/generated-sources/accurest-server-side-tests")
     stubsOutputDir = wiremockStubsOutputDir
     targetFramework = 'Spock'
 }

@@ -31,6 +31,6 @@ class Accurest {
     }
 
     private void migrateRootAccurestPackage(Project project) {
-        FileUtils.moveDirectoryToDirectory(project.file("repository/mappings"), project.file(accurestRoot), true)
+        FileUtils.moveDirectoryToDirectory(project.file("src/test/resources/accurest"), project.file(accurestRoot), true)
     }
 }

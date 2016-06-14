@@ -178,7 +178,7 @@ you may wonder - how on earth does the collaborator *collerator* respond to with
 
 What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the
 [stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
-tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/repository/mappings/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
+tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/src/test/resources/accurest/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
 
 The paths to the repo, the module name and artifactId are here - [twitter-places-analyzer.yaml](properties/common/com/ofg/twitter-places-analyzer.yaml).
 
