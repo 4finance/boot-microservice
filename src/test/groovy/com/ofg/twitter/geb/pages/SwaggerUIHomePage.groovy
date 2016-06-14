@@ -14,19 +14,18 @@ class SwaggerUIHomePage extends Page {
         healthEndpointsTable(wait: true) { $("#health-mvc-endpoint_endpoint_list") }
         healthEndpointTraceText { $("health-mvc-endpoint_endpoint_list") }
         microserviceJsonText { $("a", text: "/microserviceDescriptor") }
+        microserviceDescriptorText { $("a", text: "/microserviceDescriptor") }
         microserviceGetTryButton {
-            $("li#microservice-configuration-controller_getMicroserviceConfiguration input.submit")
+            $("#microservice-configuration-controller_getMicroserviceConfigurationUsingGET_content > form > div.sandbox_header > input")
         }
         microserviceGetResponseBody {
-            $("li#microservice-configuration-controller_getMicroserviceConfiguration pre.json")
+            $("#microservice-configuration-controller_getMicroserviceConfigurationUsingGET_content > div.response > div.block.response_body.json > pre > code")
         }
         microserviceGetResponseCode {
-            $("li#microservice-configuration-controller_getMicroserviceConfiguration div.response_code pre")
+            $("#microservice-configuration-controller_getMicroserviceConfigurationUsingGET_content > div.response > div.block.response_code > pre")
         }
         showPairIdEndpoints { $("#endpointListTogger_pair-id-controller") }
         pairIdEndpoints { $("#pair-id-controller_endpoint_list") }
         pairIdPutText { $("ul#pair-id-controller_endpoint_list span.path a") }
     }
-
-
 }
