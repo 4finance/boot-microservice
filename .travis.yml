@@ -1,5 +1,5 @@
 language: groovy
-sudo: false
+sudo: true
 jdk:
 - oraclejdk8
 
