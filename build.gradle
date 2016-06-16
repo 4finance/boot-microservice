@@ -59,6 +59,8 @@ dependencies {
     compile 'org.codehaus.gpars:gpars:1.2.1'
     compile 'net.sf.ehcache:ehcache'
     compile "com.ofg:micro-infra-spring-boot-starter:$microInfraSpringVersion"
+    compile "com.ofg:activity-tracker:$microInfraSpringVersion"
+    compile "com.ofg:activity-tracker-boot-starter:$microInfraSpringVersion"
 
     runtime 'cglib:cglib-nodep:3.2.0'
     runtime 'org.objenesis:objenesis:2.2'
