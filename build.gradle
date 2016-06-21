@@ -52,7 +52,7 @@ dependencies {
     compile 'com.google.guava:guava:19.0'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
-    compile 'com.jayway.jsonpath:json-path-assert:2.0.0'
+    compile 'com.jayway.jsonpath:json-path-assert:2.2.0'
     compile 'org.yaml:snakeyaml'
     compile 'org.hibernate:hibernate-validator'
     compile "org.aspectj:aspectjrt"
@@ -62,8 +62,8 @@ dependencies {
     compile "com.ofg:activity-tracker:$microInfraSpringVersion"
     compile "com.ofg:activity-tracker-boot-starter:$microInfraSpringVersion"
 
-    runtime 'cglib:cglib-nodep:3.2.0'
-    runtime 'org.objenesis:objenesis:2.2'
+    runtime 'cglib:cglib-nodep:3.2.3'
+    runtime 'org.objenesis:objenesis:2.4'
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 
