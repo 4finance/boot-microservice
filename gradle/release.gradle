@@ -4,7 +4,8 @@ jar {
 }
 
 task stubsJar(type: Jar, dependsOn: ["generateWireMockClientStubs", "addHashFile"]) {
-    baseName = "${project.name}-stubs"
+    baseName = "${project.name}"
+    classifier = "stubs"
     from wiremockStubsOutputDirRoot
     from "git.properties"
 }
@@ -32,7 +33,7 @@ publishing {
     }
     publications {
         stubs(MavenPublication) {
-            artifactId "${project.name}-stubs"
+            artifactId "${project.name}"
             artifact stubsJar
         }
         mavenJava(MavenPublication) {
