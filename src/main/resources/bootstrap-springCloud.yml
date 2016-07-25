@@ -10,7 +10,7 @@ spring:
 
 spring.cloud.zookeeper.discovery.root: /pl
 spring.cloud.zookeeper:
-  prefix: com/ofg/
+  prefix:
   dependencies:
     collerator:
-      path: twitter-places-collerator
+      path:  com/ofg/twitter-places-collerator
