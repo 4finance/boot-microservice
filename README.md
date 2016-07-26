@@ -177,10 +177,11 @@ you may wonder - how on earth does the collaborator *collerator* respond to with
 [stub-runner-spring](https://github.com/4finance/stub-runner-spring/wiki/How-to-use-it).
 
 What happens under the hood is that the stubs are downloaded from 4finance Bintray account. A jar of the
-[stub-runner-examples](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
-tests are ran against it. The stub is in fact here [twitter-places-collerator stub](https://github.com/4finance/stub-runner-examples/blob/master/src/test/resources/accurest/com/ofg/twitter-places-collerator/findPlaceByPairId.json)!
+[twitter-places-collerator](https://github.com/4finance/stub-runner-examples) is downloaded and unpacked to a temporary folder and all the
+tests are ran against it. The stubs is in fact here [twitter-places-collerator stubs](https://github.com/4finance/boot-microservice/blob/master/src/test/resources/accurest/)!
 
-The paths to the repo, the module name and artifactId are here - [twitter-places-analyzer.yaml](properties/common/com/ofg/twitter-places-analyzer.yaml).
+The paths to the repo is here - [twitter-places-analyzer.yaml](properties/common/com/ofg/twitter-places-analyzer.yaml).
+GroupId and module is resolved from microservice path. Classifier is taken as default ```stubs```
 
 ## Sample business requirement
 
