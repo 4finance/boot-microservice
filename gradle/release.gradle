@@ -32,12 +32,9 @@ publishing {
         }
     }
     publications {
-        stubs(MavenPublication) {
-            artifactId "${project.name}"
-            artifact stubsJar
-        }
         mavenJava(MavenPublication) {
             artifactId "${project.name}"
+            artifact stubsJar
             from components.java
             pom.withXml {
                 //Remove dependencies - everything is embedded in JAR created by Spring Boot
