@@ -4,7 +4,7 @@ import com.ofg.twitter.geb.MicroserviceControllerUISpec
 import org.springframework.boot.test.IntegrationTest
 import spock.lang.Ignore
 
-@IntegrationTest("spring.profiles.active:dev,springCloud")
+@IntegrationTest("spring.profiles.active:dev")
 @Ignore("Still there are some issues with ids of page components")
 class SpringCloudMicroserviceControllerUISpec extends MicroserviceControllerUISpec {
 
