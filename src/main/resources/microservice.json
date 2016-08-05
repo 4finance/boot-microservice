@@ -1,0 +1,11 @@
+{
+    "pl": {
+        "this": "com/ofg/twitter-places-analyzer",
+        "dependencies": {
+            "collerator": {
+                "path": "com/ofg/twitter-places-collerator",
+                "stubs": "com.ofg:twitter-places-collerator:stubs"
+            }
+        }
+    }
+}

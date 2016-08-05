@@ -1,19 +1,14 @@
-spring.cloud.zookeeper.enabled: true
-spring.cloud.zookeeper.discovery.enabled: true
-ribbon.zookeeper.enabled: true
-spring.cloud.zookeeper.dependency.resttemplate.enabled: false
-spring.autoconfigure.exclude: ''
+spring.cloud.zookeeper.enabled: false
+spring.cloud.zookeeper.discovery.enabled: false
+ribbon.zookeeper.enabled: false
+spring.zipkin.enabled: false
+spring.autoconfigure.exclude: org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration
 
-spring:
-  application:
-    name: com/ofg/twitter-places-analyzer
+graphite.host: localhost
 
-spring.cloud.zookeeper:
-  discovery.root: /pl
-  prefix:
-  dependencies:
-    collerator:
-      path:  com/ofg/twitter-places-collerator
+#spring:
+#  application:
+#    name: twitter-places-analyzer
 
 stubrunner:
   use-microservice-definitions: true
