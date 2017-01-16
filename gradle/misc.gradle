@@ -14,7 +14,7 @@ task docker(type: Docker) {
 uptodate {
 
     breakTheBuild {
-        enabled = true
+        enabled = false
         includePatterns('micro-infra.*')
     }
 }
