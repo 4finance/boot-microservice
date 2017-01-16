@@ -1,5 +1,5 @@
 apply plugin: 'docker'
-//apply plugin: 'com.toomuchcoding.uptodate'
+apply plugin: 'com.toomuchcoding.uptodate'
 
 task docker(type: Docker) {
     dependsOn 'build'
@@ -11,10 +11,10 @@ task docker(type: Docker) {
     entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
 }
 
-//uptodate {
-//
-//    breakTheBuild {
-//        enabled = true
-//        includePatterns('micro-infra.*')
-//    }
-//}
+uptodate {
+
+    breakTheBuild {
+        enabled = true
+        includePatterns('micro-infra.*')
+    }
+}
