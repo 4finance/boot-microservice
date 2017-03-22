@@ -1,8 +1,3 @@
-apply plugin: 'groovy'
-apply plugin: 'spring-boot'
-apply plugin: 'maven-publish'
-apply plugin: "com.gorylenko.gradle-git-properties"
-
 buildscript {
     repositories {
         mavenLocal()
@@ -11,7 +6,7 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.5.RELEASE'
         classpath 'com.toomuchcoding:uptodate-gradle-plugin:+'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:$accurestVersion"
@@ -24,6 +19,11 @@ buildscript {
         }
     }
 }
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'maven-publish'
+apply plugin: "com.gorylenko.gradle-git-properties"
 
 ext {
     buildNrLoc = project.hasProperty('buildNr') ? "${buildNr}" : "CD-000"
