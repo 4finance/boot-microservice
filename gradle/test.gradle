@@ -37,6 +37,8 @@ test {
 
 task guiTest(type: Test) {
     jvmArgs project.gradle.startParameter.systemPropertiesArgs.entrySet().collect{"-D${it.key}=${it.value}"}
+    jvmArgs '-Xmx1g'
+
     testLogging {
         exceptionFormat = 'full'
     }
