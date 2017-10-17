@@ -1,7 +1,7 @@
 package com.ofg.twitter.places
 
-import org.springframework.test.context.ContextConfiguration
+import org.springframework.boot.test.context.SpringBootTest
 
-@ContextConfiguration(classes = ColleratorClientStubConfiguration)
+@SpringBootTest(classes = ColleratorClientStubConfiguration)
 class AcceptanceSpec extends AbstractAcceptanceSpec {
 }

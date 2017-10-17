@@ -2,9 +2,8 @@ package com.ofg.base
 
 import com.ofg.infrastructure.base.IntegrationSpec
 import com.ofg.twitter.Application
-import org.springframework.boot.test.SpringApplicationContextLoader
-import org.springframework.test.context.ContextConfiguration
+import org.springframework.boot.test.context.SpringBootTest
 
-@ContextConfiguration(classes = [Application], loader = SpringApplicationContextLoader)
+@SpringBootTest(classes = [Application])
 class MicroserviceIntegrationSpec extends IntegrationSpec {
 }

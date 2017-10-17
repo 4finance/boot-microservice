@@ -1,9 +1,9 @@
 package com.ofg.twitter.places
 
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
 
-@ContextConfiguration(classes = [ColleratorClientStubConfiguration])
+@SpringBootTest(classes = [ColleratorClientStubConfiguration])
 @ActiveProfiles('springCloud')
 class SpringCloudAcceptanceSpec extends AbstractAcceptanceSpec {
 
