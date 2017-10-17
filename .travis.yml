@@ -4,7 +4,7 @@ jdk:
 - oraclejdk8
 
 addons:
-  firefox: "46.0.1"
+  firefox: "47.0.2"
 
 before_install:
   - "export DISPLAY=:99.0"

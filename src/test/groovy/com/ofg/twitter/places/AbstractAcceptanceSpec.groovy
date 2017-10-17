@@ -35,7 +35,7 @@ abstract class AbstractAcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).
                     content("[$tweet]")).
                     andExpect(request().asyncStarted()).
-                    andReturn();
+                    andReturn()
         and:
             mvcResult.getAsyncResult(SECONDS.toMillis(2))   //Wait for a result eagerly to not fail on print() which has wait(0)
         and:
@@ -68,7 +68,7 @@ abstract class AbstractAcceptanceSpec extends MicroserviceMvcWiremockSpec {
                     contentType(TWITTER_PLACES_ANALYZER_MICROSERVICE_V1).
                     content("[$tweet]")).
                     andExpect(request().asyncStarted()).
-                    andReturn();
+                    andReturn()
         and:
             mvcResult.getAsyncResult(SECONDS.toMillis(2))
         and:
@@ -82,13 +82,7 @@ abstract class AbstractAcceptanceSpec extends MicroserviceMvcWiremockSpec {
                                                                             [{
                                                                                     "pair_id" : 1,
                                                                                     "tweet_id" : "492961315070439424",
-                                                                                    "place" :
-                                                                                    {
-                                                                                        "name":"Tappahannock",
-                                                                                        "country_code": "US"
-                                                                                    },
-                                                                                    "probability" : "2",
-                                                                                    "origin" : "twitter_coordinates_section"
+                                                                                    
                                                                                 }]
                                                                             '''))
     }
