@@ -1,9 +1,11 @@
 package com.ofg.twitter.geb.springcloud
 
 import com.ofg.twitter.geb.SwaggerHealthEndpointUISpec
-import org.springframework.boot.test.IntegrationTest
+import org.springframework.boot.test.context.SpringBootTest
 
-@IntegrationTest("spring.profiles.active:dev,springCloud")
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
+
+@SpringBootTest(properties = "spring.profiles.active:dev,springCloud", webEnvironment = DEFINED_PORT)
 class SpringCloudSwaggerHealthEndpointUISpec extends SwaggerHealthEndpointUISpec {
 
 }

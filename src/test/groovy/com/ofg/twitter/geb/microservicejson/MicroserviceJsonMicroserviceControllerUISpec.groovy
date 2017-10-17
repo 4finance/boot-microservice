@@ -2,9 +2,11 @@ package com.ofg.twitter.geb.microservicejson
 
 import com.ofg.twitter.geb.MicroserviceControllerUISpec
 import groovy.json.JsonSlurper
-import org.springframework.boot.test.IntegrationTest
+import org.springframework.boot.test.context.SpringBootTest
 
-@IntegrationTest("spring.profiles.active:dev")
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
+
+@SpringBootTest(properties = "spring.profiles.active:dev", webEnvironment = DEFINED_PORT)
 class MicroserviceJsonMicroserviceControllerUISpec extends MicroserviceControllerUISpec {
 
     @Override
