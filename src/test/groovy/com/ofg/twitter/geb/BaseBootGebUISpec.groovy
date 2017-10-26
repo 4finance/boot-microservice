@@ -13,8 +13,8 @@ abstract class BaseBootGebUISpec extends GebSpec {
     def setupSpec() {
         System.setProperty("APP_ENV", "dev")
         new AvailablePortScanner(9000, 9100).tryToExecuteWithFreePort { int port ->
-            System.setProperty("server.port", String.valueOf(port))
-            System.setProperty("geb.build.baseUrl", "http://localhost:${String.valueOf(port)}")
+            System.setProperty("server.port", port.toString())
+            System.setProperty("geb.build.baseUrl", "http://localhost:${port.toString()}")
         }
         System.setProperty("CONFIG_FOLDER", "properties")
         System.setProperty("encrypt.key", "secretEncryptKey")
