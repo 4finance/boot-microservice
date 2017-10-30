@@ -12,14 +12,18 @@ import spock.lang.Stepwise
 @Stepwise
 @ContextConfiguration(classes = Application)
 abstract class HealthEndpointPageSpec extends Specification {
-    
+
     @LocalServerPort
     int port
-    
+
+    def setupSpec() {
+        System.setProperty("APP_ENV", "dev")
+    }
+
     def setup() {
         RestAssured.port = port
     }
-    
+
     def "Check server status"() {
         when:
             Response response = RestAssured.given().get('/health')
@@ -29,7 +33,7 @@ abstract class HealthEndpointPageSpec extends Specification {
             json.status == "UP"
             json.diskSpace.status == "UP"
             json.db.status == "UP"
-            json.hystrix.status == "UP"        
+            json.hystrix.status == "UP"
     }
 
 }
