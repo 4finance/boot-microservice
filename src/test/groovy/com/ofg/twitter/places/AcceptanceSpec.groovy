@@ -2,6 +2,8 @@ package com.ofg.twitter.places
 
 import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest(classes = ColleratorClientStubConfiguration)
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
+
+@SpringBootTest(classes = ColleratorClientStubConfiguration, webEnvironment = RANDOM_PORT)
 class AcceptanceSpec extends AbstractAcceptanceSpec {
 }
