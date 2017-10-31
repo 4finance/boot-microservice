@@ -5,7 +5,7 @@ import io.fourfinanceit.setup.MicroInfra
 import io.fourfinanceit.setup.Options
 import io.fourfinanceit.setup.ConsoleNotPresentException
 
-task setup << {
+task setup doLast {
     println file('src/main/resources/banner.txt').text
     Console console = System.console()
     if (console) {

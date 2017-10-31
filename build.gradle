@@ -99,7 +99,7 @@ task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask) {
 	}
 }
 
-task addHashFile << {
+task addHashFile doLast {
     ext.repo = org.ajoberstar.grgit.Grgit.open(project.file('.'))
     def headCommit = repo.head()
     ext.gitBranch = repo.branch.current.name
