@@ -19,5 +19,4 @@ spring.cloud.zookeeper:
   maxRetries: 5
   maxSleepMs: 300
   
-endpoints.health.sensitive: false
 management.security.enabled: false

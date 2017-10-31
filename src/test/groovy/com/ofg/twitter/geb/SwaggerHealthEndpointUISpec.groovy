@@ -27,12 +27,7 @@ abstract class SwaggerHealthEndpointUISpec extends BaseBootGebUISpec {
         where:
             httpOperation || path
             "get"         || "/health"
-            "delete"      || "/health"
-            "head"        || "/health"
-            "options"     || "/health"
-            "post"        || "/health"
-            "patch"       || "/health"
-            "put"         || "/health"
+            "get"         || "/health.json"
     }
 
     String getTextfromHealthOperation(String http_operation) {
