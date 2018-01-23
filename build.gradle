@@ -6,7 +6,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE'
         classpath 'com.toomuchcoding:uptodate-gradle-plugin:+'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:${accurestVersion}"
@@ -82,12 +82,27 @@ dependencies {
     testCompileOnly "io.codearte.accurest:accurest-core:${accurestVersion}"
 }
 
-task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask, group: 'Application') {
-    doFirst() {
-        main = project.mainClassName
-        classpath = sourceSets.main.runtimeClasspath
-        systemProperty 'APP_ENV', 'dev'
-        systemProperty 'CONFIG_FOLDER', 'properties'
-        systemProperty 'spring.profiles.active', 'dev,springCloud'
+bootRun {
+    description = "Starts application with dev profile, use task rule 'bootRun<Profiles>' to change profile"
+
+    systemProperty 'CONFIG_FOLDER', environment['CONFIG_FOLDER']
+    systemProperty 'APP_ENV', environment['APP_ENV'] ?: 'dev'
+    systemProperty 'server.port', findProperty('server.port') ?: defaultApplicationPort
+    systemProperty 'spring.profiles.active', findProperty('spring.profiles.active') ?: 'dev,springCloud'
+    systemProperties System.properties as Map<String, ?> // Allows to pass command-line properties (using -D switch)
+
+    doFirst {
+        if (!systemProperties['CONFIG_FOLDER']) {
+            logger.error('CONFIG_FOLDER system variable not defined. Please set it in the system or pass via -D switch.')
+        }
+    }
+}
+
+tasks.addRule("Pattern: bootRun<Profiles>: Starts application with given comma separated profiles, eg. 'bootRunProd', 'bootRunProd,smokeTests'") { String taskName ->
+    if (taskName.startsWith('bootRun')) {
+        task(taskName) {
+            bootRun.systemProperty 'spring.profiles.active', (taskName - 'bootRun').uncapitalize()
+            finalizedBy bootRun
+        }
     }
 }

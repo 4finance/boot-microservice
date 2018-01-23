@@ -44,7 +44,7 @@ task smokeTest(type: Test, group: 'Verification') {
     testClassesDirs = sourceSets.smokeTest.output.classesDirs
     classpath = sourceSets.smokeTest.runtimeClasspath
     outputs.upToDateWhen { false }
-    systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl'] ?: "http://localhost:${findProperty('server.port') ?: 8080}"
+    systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl'] ?: "http://localhost:${findProperty('server.port') ?: defaultApplicationPort}"
     reports.html.setDestination(file("${reporting.baseDir}/smokeTest"))
     reports.junitXml.setDestination(file("${testResultsDir}/smokeTest"))
 }

@@ -32,25 +32,12 @@ and follow the instructions that will help you set up your new microservice in n
 
 ## How can I run it?
 
-### From script
-
-Execute [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
-
-### From jar
-
-To run it just
-
-* create a jar - `./gradlew clean build`
-* go to `build/libs` to find the fat jar
-* execute `java -jar` with the same arguments as in runner script
+### From command line
 
 ```
-java -jar boot-microservice.jar runnerArgs
+./gradlew bootRun<Profile>
 ```
-
-### From gradle
-
-Please check [run.sh](scripts/run.sh) or [run.bat](scripts/run.bat) script.
+Where `<Profiles>` is a comma separated list of profiles, eg. `bootRunProd`, `bootRunProd,smokeTests`. If no profile provided then `dev' and 'springCloud` are set as default. There's also possible to pass any property using `-D` switch.
 
 ### From IntelliJ IDEA
 
@@ -60,7 +47,17 @@ Run Application class with the following VM args:
 -DAPP_ENV="prod" -DCONFIG_FOLDER="properties" -Dencrypt.key="secretEncryptKey" -Dspring.profiles.active=dev
 ```
 
-For details check runner script.
+### From jar
+
+To run it just
+
+* create a jar - `./gradlew clean build`
+* go to `build/libs` to find the fat jar
+* execute `java -jar` with the same arguments as running from IntelliJ IDEA
+
+```
+java -jar boot-microservice.jar runnerArgs
+```
 
 ### From Docker
 
