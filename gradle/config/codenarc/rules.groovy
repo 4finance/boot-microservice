@@ -12,6 +12,4 @@ ruleset {
 
     ConfusingTernary(priority:3)
 
-
 }
-

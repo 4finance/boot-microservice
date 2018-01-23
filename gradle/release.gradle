@@ -1,21 +1,23 @@
+apply plugin: 'maven-publish'
+
 jar {
     dependsOn addHashFile
-    from "git.properties"
+    from 'git.properties'
 }
 
-task stubsJar(type: Jar, dependsOn: ["generateWireMockClientStubs", "addHashFile"]) {
-    baseName = "${project.name}"
-    classifier = "stubs"
+task stubsJar(type: Jar, dependsOn: ['generateWireMockClientStubs', 'addHashFile']) {
+    baseName = project.name
+    classifier = 'stubs'
     from wiremockStubsOutputDirRoot
-    from "git.properties"
+    from 'git.properties'
 }
 
 bootRepackage {
-    withJarTask = "jar"
+    withJarTask = 'jar'
 }
 
 //Make sure that fat jar is built before uploading
-project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn { bootRepackage }
+project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn bootRepackage
 
 artifacts {
     archives stubsJar
@@ -24,34 +26,23 @@ artifacts {
 publishing {
     repositories {
         maven {
-            url getProp('mavenRepoUrl')
+            url getProperty('mavenRepoUrl')
             credentials {
-                username getProp('mavenUser')
-                password getProp('mavenPassword')
+                username getProperty('mavenUser')
+                password getProperty('mavenPassword')
             }
         }
     }
     publications {
         mavenJava(MavenPublication) {
-            artifactId "${project.name}"
+            artifactId project.name
             artifact stubsJar
             from components.java
             pom.withXml {
                 //Remove dependencies - everything is embedded in JAR created by Spring Boot
+                asNode().dependencyManagement.replaceNode { null }
                 asNode().dependencies.replaceNode{ null }
             }
         }
     }
-}
-
-task uploadArchives(dependsOn: 'publish') {
-    group "publishing"
-    description "DEPRECATED - Publishes produced archives - DEPRECATED - use 'publish' task"
-    doFirst {
-        logger.warn("DEPRECATION WARNING. Task 'uploadArchives' is deprecated. Use 'publish' task instead.")
-    }
-}
-
-String getProp(String propName) {
-    return hasProperty(propName) ? (getProperty(propName) ?: System.properties[propName]) : System.properties[propName]
 }

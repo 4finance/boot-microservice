@@ -5,14 +5,13 @@ task docker(type: Docker) {
     dependsOn 'build'
     dryRun true
     setEnvironment('CONFIG_FOLDER', '/properties')
-    addFile("properties", "/properties")
-    addFile("${libsDir}/${project.name}-${buildNrLoc}.jar", "/${project.name}/${project.name}.jar")
+    addFile('properties', '/properties')
+    addFile("${libsDir}/${project.name}-${project.version}.jar", "/${project.name}/${project.name}.jar")
     exposePort(8095)
     entryPoint(['java', '-jar', "/${project.name}/${project.name}.jar"])
 }
 
 uptodate {
-
     breakTheBuild {
         enabled = false
         includePatterns('micro-infra.*')
