@@ -14,7 +14,7 @@ buildscript {
         classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.20'
 
         if (project.hasProperty('coverage')) {
-            classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
+            classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
             classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
         }
     }
