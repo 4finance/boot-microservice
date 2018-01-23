@@ -1,15 +1,16 @@
 apply plugin: 'maven-publish'
+apply plugin: 'com.gorylenko.gradle-git-properties'
 
-jar {
-    dependsOn addHashFile
-    from 'git.properties'
+gitProperties {
+    dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    keys = ['git.commit.id', 'git.commit.time']
 }
 
-task stubsJar(type: Jar, dependsOn: ['generateWireMockClientStubs', 'addHashFile']) {
+task stubsJar(type: Jar, dependsOn: [generateWireMockClientStubs, generateGitProperties]) {
     baseName = project.name
     classifier = 'stubs'
     from wiremockStubsOutputDirRoot
-    from 'git.properties'
+    from generateGitProperties
 }
 
 bootRepackage {

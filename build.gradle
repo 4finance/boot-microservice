@@ -11,7 +11,7 @@ buildscript {
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "io.codearte.accurest:accurest-gradle-plugin:${accurestVersion}"
         classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.3.1'
-        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.16'
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.20'
 
         if (project.hasProperty('coverage')) {
             classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2'
@@ -22,7 +22,6 @@ buildscript {
 
 apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'com.gorylenko.gradle-git-properties'
 
 ext['selenium.version'] = seleniumVersion
 
@@ -30,6 +29,11 @@ group = mavenProjectGroupId
 version = findProperty('currentVersion') ?: 'LOCAL'
 
 sourceCompatibility = '1.8'
+
+apply from: 'gradle/cli.gradle'
+apply from: 'gradle/test.gradle'
+apply from: 'gradle/misc.gradle'
+apply from: 'gradle/release.gradle'
 
 repositories {
     mavenLocal()
@@ -87,24 +91,3 @@ task bootRunDev(type: org.springframework.boot.gradle.run.BootRunTask, group: 'A
         systemProperty 'spring.profiles.active', 'dev,springCloud'
     }
 }
-
-task addHashFile doLast {
-    ext.repo = org.ajoberstar.grgit.Grgit.open(project.file('.'))
-    def headCommit = repo.head()
-    ext.gitBranch = repo.branch.current.name
-    ext.gitCommitId = headCommit.abbreviatedId
-    ext.gitCommitTime = new Date(headCommit.time * 1000L).format("yyyy-MM-dd'T'HH:mm:ssZ")
-
-    File resourcesMainDir = new File(project.buildDir, 'resources/main')
-    resourcesMainDir.mkdirs()
-    File gitPropertiesFile = new File(resourcesMainDir, 'git.properties')
-    gitPropertiesFile.text = """git.branch=${gitBranch}
-git.commit.id=${gitCommitId}
-git.commit.time=${gitCommitTime}
-"""
-}
-
-apply from: 'gradle/cli.gradle'
-apply from: 'gradle/test.gradle'
-apply from: 'gradle/misc.gradle'
-apply from: 'gradle/release.gradle'
