@@ -1,14 +1,25 @@
-.idea
+# Build, run, etc.
+build/
+.gradle/
+logs/
+
+# Intellij IDEA
+.idea/
+out/
 *.iml
-build
-/bin
-.gradle
-.poject
+*.iws
+*.ipr
+
+# Eclipse
+bin/
+dist/
+.project
 .settings
 .classpath
+
+# MacOS Specific
+.DS_Store
+
+# Other
 commitHash.txt
-logs
-.log
-.zip
-/out
 *~
