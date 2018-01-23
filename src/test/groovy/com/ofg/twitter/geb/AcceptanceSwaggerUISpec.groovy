@@ -1,4 +1,5 @@
 package com.ofg.twitter.geb
+
 import com.ofg.twitter.geb.pages.SwaggerUIHomePage
 import spock.lang.Stepwise
 
@@ -12,41 +13,39 @@ abstract class AcceptanceSwaggerUISpec extends BaseBootGebUISpec {
             at SwaggerUIHomePage
     }
 
-    def "Endpoint microservice-configuration-controller is visible"() {
+    def "Endpoint 'microservice-configuration-controller' is visible"() {
         when:
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor { metricsMvcEndpointText.displayed }
-            metricsMvcEndpointText.displayed
+            waitFor { microserviceController.displayed }
+            microserviceControllerOperationsToggle.displayed
         when:
-            showMicroservice.click()
+            microserviceControllerOperationsToggle.click()
         then:
-            microserviceJsonText.displayed
+            waitFor { microserviceDescriptorGetOperationToggle.displayed }
     }
 
-    def "Endpoint health-mvc-endpoint is visible"() {
+    def "Endpoint 'health-mvc-endpoint' is visible"() {
         when:
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor { healthMvcEndpointText.displayed }
-            healthMvcEndpointText.displayed
-            showHealthMVCEndpoints.displayed
+            waitFor { healthMvcEndpoint.displayed }
+            healthMvcEndpointOperationsToggle.displayed
     }
 
-    def "Endpoint 'pairid' is visible"() {
+    def "Endpoint 'pair-id-controller' is visible"() {
         when:
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
+            waitFor { pairIdController.displayed }
+            pairIdControllerOperationsToggle.displayed
         when:
-            waitFor { showPairIdEndpoints.displayed }
-            showPairIdEndpoints.click()
+            pairIdControllerOperationsToggle.click()
         then:
-            waitFor { pairIdPutText.displayed }
-            pairIdPutText.text() == "/api/{pairId}"
-
+            waitFor { pairIdPutOperationToggle.displayed }
     }
 
 }

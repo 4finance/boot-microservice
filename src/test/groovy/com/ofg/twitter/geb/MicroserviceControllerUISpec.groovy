@@ -12,38 +12,46 @@ abstract class MicroserviceControllerUISpec extends BaseBootGebUISpec {
             to SwaggerUIHomePage
         then:
             at SwaggerUIHomePage
-            waitFor { metricsMvcEndpointText.displayed }
+            waitFor { microserviceController.displayed }
     }
 
-    def "'Try it out' button is visible for GET operation"() {
+    def "'Try it out' button is visible for GET '/microserviceDescriptor' operation"() {
         when:
             to SwaggerUIHomePage
-            showMicroservice.click()
         then:
-            microserviceDescriptorText.displayed
+            at SwaggerUIHomePage
+            waitFor { microserviceController.displayed }
         when:
-            microserviceDescriptorText.click()
+            microserviceControllerOperationsToggle.click()
         then:
-            waitFor { microserviceGetTryButton.displayed }
-            microserviceGetTryButton.displayed
+            waitFor { microserviceDescriptorGetOperationToggle.displayed }
+        when:
+            microserviceDescriptorGetOperationToggle.click()
+        then:
+            waitFor { microserviceDescriptorGetOperationTryButton.displayed }
+            microserviceDescriptorGetOperationTryButton.displayed
     }
 
     def "Try it out and Check respond body and code"() {
         when:
             to SwaggerUIHomePage
-            waitFor { showMicroservice.displayed }
-            showMicroservice.click()
-            waitFor { microserviceDescriptorText.displayed }
-            microserviceDescriptorText.click()
-            waitFor { microserviceGetTryButton.displayed }
-            microserviceGetTryButton.click()
         then:
-            waitFor { microserviceGetResponseCode.displayed }
-            microserviceGetResponseCode.displayed
-            microserviceGetResponseCode.text() == '200'
+            at SwaggerUIHomePage
+            waitFor { microserviceController.displayed }
+        when:
+            waitFor { microserviceControllerOperationsToggle.displayed }
+            microserviceControllerOperationsToggle.click()
+            waitFor { microserviceDescriptorGetOperationToggle.displayed }
+            microserviceDescriptorGetOperationToggle.click()
+            waitFor { microserviceDescriptorGetOperationTryButton.displayed }
+            microserviceDescriptorGetOperationTryButton.click()
+        then:
+            waitFor { microserviceDescriptorGetOperationResponseCode.displayed }
+            microserviceDescriptorGetOperationResponseCode.displayed
+            microserviceDescriptorGetOperationResponseCode.text() == '200'
         and:
             def inputJSON = inputJson()
-            def outputJSON = new JsonSlurper().parseText(microserviceGetResponseBody.text())
+            def outputJSON = new JsonSlurper().parseText(microserviceDescriptorGetOperationResponseBody.text())
             inputJSON == outputJSON
     }
 
