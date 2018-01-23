@@ -42,19 +42,18 @@ task guiTest(type: Test) {
     }
     include '**/*UISpec.*'
 
-    reports.html {
-        destination = file("${reporting.baseDir}/guiTests")
-    }
+    reports.html.setDestination(file("${reporting.baseDir}/guiTests"))
+
     group = "Verification"
     description = "Runs the acceptance GUI tests with Geb."
 }
 
 task smokeTest(type: Test) {
-    testClassesDir = sourceSets.smokeTest.output.classesDir
+    testClassesDirs = sourceSets.smokeTest.output.classesDirs
     classpath = sourceSets.smokeTest.runtimeClasspath
     systemProperties['smokeTestAppUrl'] = System.properties['smokeTestAppUrl']
-    reports.html.destination = file("${reporting.baseDir}/smokeTest")
-    reports.junitXml.destination = file("${testResultsDir}/smokeTest")
+    reports.html.setDestination(file("${reporting.baseDir}/smokeTest"))
+    reports.junitXml.setDestination(file("${testResultsDir}/smokeTest"))
 }
 
 if (project.hasProperty("coverage")) {
