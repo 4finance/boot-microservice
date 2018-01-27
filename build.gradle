@@ -1,3 +1,8 @@
+wrapper {
+    gradleVersion = '4.5'
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 buildscript {
     repositories {
         mavenLocal()
