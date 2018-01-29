@@ -18,7 +18,7 @@ abstract class SwaggerHealthEndpointUISpec extends BaseBootGebUISpec {
             healthMvcEndpointOperationsToggle.click()
         then:
             waitFor { healthMvcEndpointOperationsContainer.displayed }
-            healthMvcEndpointOperationToggleTemplate(operationToggleText).displayed
+            waitFor { healthMvcEndpointOperationToggleTemplate(operationToggleText).displayed }
         where:
             operationToggleText << ['/health', '/health.json']
     }

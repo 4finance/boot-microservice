@@ -4,7 +4,13 @@ import geb.Page
 
 class SwaggerUIHomePage extends Page {
     static url = '/swagger-ui.html'
-    static at = { title == 'Swagger UI' }
+
+    static at = {
+        if (swaggerUi3) {
+            waitFor {  $('div', id: 'swagger-ui').children() }
+        }
+        title == 'Swagger UI'
+    }
 
     static content = {
 
