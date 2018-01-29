@@ -24,7 +24,7 @@ driver = {
     } else {
         webDriver = configureForFirefox47_0_1orEarlier()
     }
-    webDriver.manage().window().setSize(new Dimension(1600,1200))
+    webDriver.manage().window().maximize()
     return webDriver
 }
 
