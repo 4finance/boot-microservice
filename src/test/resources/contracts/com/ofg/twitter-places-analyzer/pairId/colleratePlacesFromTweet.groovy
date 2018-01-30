@@ -1,4 +1,4 @@
-io.codearte.accurest.dsl.Accurest.make {
+org.springframework.cloud.contract.spec.Contract.make {
     request {
         method 'PUT'
         url '/api/12'

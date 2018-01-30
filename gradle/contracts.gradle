@@ -1,0 +1,22 @@
+apply plugin: 'spring-cloud-contract'
+
+contracts {
+    contractsDslDir = file("${project.rootDir}/${contractsRoot}")
+    baseClassForTests = contractsBaseClass
+    targetFramework = 'SPOCK'
+    disableStubPublication = true
+}
+
+// Enhancing verifierStubsJar task created by spring-cloud-contract-gradle-plugin
+verifierStubsJar {
+    dependsOn generateGitProperties
+    from generateGitProperties
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact source: verifierStubsJar
+        }
+    }
+}

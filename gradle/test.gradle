@@ -1,5 +1,4 @@
 apply plugin: 'com.blogspot.toomuchcoding.testprofiler'
-apply plugin: 'accurest'
 
 configurations {
     smokeTestCompile.extendsFrom testCompile
@@ -13,12 +12,6 @@ sourceSets {
         compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.smokeTestCompile
         runtimeClasspath = output + compileClasspath + configurations.smokeTestRuntime
     }
-}
-
-ext {
-    contractsDir = file("${project.rootDir}/$accurestRoot")
-    wiremockStubsOutputDirRoot = file("${project.buildDir}/production/${project.name}-stubs/")
-    wiremockStubsOutputDir = new File(wiremockStubsOutputDirRoot, 'mappings/')
 }
 
 test {
@@ -94,12 +87,3 @@ testprofiler {
         }
     }
 }
-
-accurest {
-    baseClassForTests = accurestBaseClass
-    contractsDslDir = contractsDir
-    stubsOutputDir = wiremockStubsOutputDir
-    targetFramework = 'Spock'
-}
-
-test.dependsOn { generateAccurest } //See: https://github.com/Codearte/accurest/issues/36
