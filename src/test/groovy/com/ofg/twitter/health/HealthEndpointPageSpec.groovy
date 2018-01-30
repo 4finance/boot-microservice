@@ -1,9 +1,9 @@
 package com.ofg.twitter.health
 
-import com.jayway.restassured.RestAssured
-import com.jayway.restassured.response.Response
 import com.ofg.twitter.Application
 import groovy.json.JsonSlurper
+import io.restassured.RestAssured
+import io.restassured.response.Response
 import org.springframework.boot.context.embedded.LocalServerPort
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification

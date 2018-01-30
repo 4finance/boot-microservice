@@ -1,4 +1,5 @@
 apply plugin: 'docker'
+apply plugin: 'idea'
 apply plugin: 'com.toomuchcoding.uptodate'
 
 task docker(type: Docker) {
@@ -16,4 +17,11 @@ uptodate {
         enabled = false
         includePatterns('micro-infra.*')
     }
+}
+
+idea.module {
+    inheritOutputDirs = false
+    downloadJavadoc = true
+    downloadSources = true
+    excludeDirs += files('logs', '.idea')
 }

@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MvcResult
 
-import static com.jayway.awaitility.Awaitility.await
 import static com.ofg.infrastructure.base.dsl.Matchers.equalsReferenceJson
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_COORDINATES
 import static com.ofg.twitter.tweets.Tweets.TWEET_WITH_PLACE
 import static java.util.concurrent.TimeUnit.SECONDS
+import static org.awaitility.Awaitility.await
 import static org.hamcrest.core.IsNot.not
 import static org.hamcrest.text.IsEmptyString.isEmptyString
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch

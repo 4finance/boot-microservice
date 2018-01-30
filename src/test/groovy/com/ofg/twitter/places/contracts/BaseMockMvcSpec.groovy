@@ -1,8 +1,8 @@
-package com.ofg.twitter.places.accurest
+package com.ofg.twitter.places.contracts
 
-import com.jayway.restassured.module.mockmvc.RestAssuredMockMvc
 import com.ofg.twitter.place.PairIdController
 import com.ofg.twitter.place.extractor.PropagationWorker
+import io.restassured.module.mockmvc.RestAssuredMockMvc
 import spock.lang.Specification
 
 abstract class BaseMockMvcSpec extends Specification {

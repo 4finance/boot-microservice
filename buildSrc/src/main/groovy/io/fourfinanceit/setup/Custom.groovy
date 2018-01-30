@@ -1,5 +1,5 @@
 package io.fourfinanceit.setup
-import groovy.io.FileType
+
 import groovy.transform.CompileStatic
 import org.gradle.api.Project
 
@@ -17,26 +17,26 @@ class Custom {
         this.packageMover = new PackageMover(project)
     }
 
-    void process(Accurest accurest) {
+    void process(Contracts contracts) {
         if (!changed) {
             return
         }
         List folders = ['main', 'test']
-        movePackages(folders, project, accurest)
+        movePackages(folders, project, contracts)
     }
 
-    private void movePackages(List<String> folders, Project project, Accurest accurest) {
+    private void movePackages(List<String> folders, Project project, Contracts contracts) {
         folders.each { String folder ->
             File rootFolder = project.file("src/$folder/groovy/")
             File newFolder = new File(rootFolder, rootPackage.replaceAll('\\.', '/'))
             packageMover.changePackagesInFiles("src/$folder/groovy/com/ofg", 'com.ofg.twitter', "${rootPackage}.twitter")
             packageMover.moveDirectoriesToNewPackage("src/$folder/groovy/com/ofg", newFolder)
         }
-        movePackagesInAccurestContracts(accurest)
+        movePackagesInContracts(contracts)
     }
 
-    private movePackagesInAccurestContracts(Accurest accurest) {
-        packageMover.changePackagesInFiles(accurest.accurestRoot, 'com.ofg.twitter', "${rootPackage}.twitter")
+    private movePackagesInContracts(Contracts contracts) {
+        packageMover.changePackagesInFiles(contracts.contractsRoot, 'com.ofg.twitter', "${rootPackage}.twitter")
     }
 
 }

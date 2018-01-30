@@ -1,13 +1,13 @@
 package com.ofg.twitter.place.extractor
 
 import com.codahale.metrics.Meter
-import com.jayway.awaitility.Awaitility
 import com.ofg.twitter.place.model.Tweet
+import org.awaitility.Awaitility
 import org.springframework.cloud.sleuth.Tracer
 import spock.lang.Specification
 
-import static com.jayway.awaitility.Duration.ONE_SECOND
 import static com.ofg.twitter.place.extractor.TweetParser.parseTweets
+import static org.awaitility.Duration.ONE_SECOND
 
 class PlacesExtractorSpec extends Specification {
 
@@ -19,7 +19,7 @@ class PlacesExtractorSpec extends Specification {
         when:
             Map<String, Optional<Place>> extractedPlaces = placesExtractor.extractPlacesFrom(parseTweets(tweets))
         then:
-            Awaitility.await().atMost(ONE_SECOND)until({
+            Awaitility.await().atMost(ONE_SECOND).untilAsserted({
                 assert extractedPlaces.size() == 3
                 assert !extractedPlaces[3]?.present
             })

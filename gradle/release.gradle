@@ -6,23 +6,12 @@ gitProperties {
     keys = ['git.commit.id', 'git.commit.time']
 }
 
-task stubsJar(type: Jar, dependsOn: [generateWireMockClientStubs, generateGitProperties]) {
-    baseName = project.name
-    classifier = 'stubs'
-    from wiremockStubsOutputDirRoot
-    from generateGitProperties
-}
-
 bootRepackage {
     withJarTask = 'jar'
 }
 
 //Make sure that fat jar is built before uploading
 project.tasks.findAll { it.name.startsWith('publish') || it.name == 'bintrayUpload' }*.dependsOn bootRepackage
-
-artifacts {
-    archives stubsJar
-}
 
 publishing {
     repositories {
@@ -37,7 +26,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId project.name
-            artifact stubsJar
             from components.java
             pom.withXml {
                 //Remove dependencies - everything is embedded in JAR created by Spring Boot

@@ -35,15 +35,15 @@ class Maven {
         props.put('mavenArtifactId', mavenArtifactId)
         updateSettingsGradle(project)
         updateMicroserviceJson(project)
-        changeAccurestRootPathToIncludeNewPackage()
+        changeContractsRootPathToIncludeNewPackage()
     }
 
-    private void changeAccurestRootPathToIncludeNewPackage() {
+    private void changeContractsRootPathToIncludeNewPackage() {
         if( mavenArtifactId != DEFAULT_PACKAGE) {
-            File rootFolder = project.file("src/test/resources/accurest")
+            File rootFolder = project.file("src/test/resources/contracts")
             File newFolder = new File(rootFolder, mavenArtifactId.replaceAll('\\.', '/'))
-            packageMover.moveDirectoriesToNewPackage("src/test/resources/accurest/com/ofg", newFolder)
-            FileUtils.deleteDirectory(project.file("src/test/resources/accurest/com"))
+            packageMover.moveDirectoriesToNewPackage("src/test/resources/contracts/com/ofg", newFolder)
+            FileUtils.deleteDirectory(project.file("src/test/resources/contracts/com"))
         }
     }
 

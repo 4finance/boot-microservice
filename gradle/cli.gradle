@@ -1,4 +1,4 @@
-import io.fourfinanceit.setup.Accurest
+import io.fourfinanceit.setup.Contracts
 import io.fourfinanceit.setup.Custom
 import io.fourfinanceit.setup.Maven
 import io.fourfinanceit.setup.MicroInfra
@@ -11,7 +11,7 @@ task setup doLast {
     if (console) {
         Options options = new Options(maven(project, console),
                 custom(project, console),
-                accurest(project, console),
+                contracts(project, console),
                 microInfra(project, console))
         logger.info "Running setup with [${options}]"
         options.process(project)
@@ -37,11 +37,11 @@ Custom custom(Project project, Console console) {
     return new Custom(project, rootPackage, rootPackage != mavenProjectGroupId)
 }
 
-Accurest accurest(Project project, Console console) {
-    console.println("\n>>> Accurest configuration <<<\n")
-    String passedAccurestRoot = console.readLine("> Please enter your relative path to the Accurest contracts. Current [${accurestRoot}]: ") ?: accurestRoot
-    String passedAccurestBaseClass = console.readLine("> Please enter your base class for your Accurest tests. Note! If you have changed the current directory structure you have to reflect that in the FQN name of your base class. Current [${accurestBaseClass}]: ") ?: accurestBaseClass
-    return new Accurest(project, passedAccurestRoot, passedAccurestBaseClass, passedAccurestRoot != accurestRoot)
+Contracts contracts(Project project, Console console) {
+    console.println("\n>>> Spring Cloud Contract configuration <<<\n")
+    String passedContractsRoot = console.readLine("> Please enter your relative path to the Contracts. Current [${contractsRoot}]: ") ?: contractsRoot
+    String passedContractsBaseClass = console.readLine("> Please enter your base class for your Contract tests. Note! If you have changed the current directory structure you have to reflect that in the FQN name of your base class. Current [${contractsBaseClass}]: ") ?: contractsBaseClass
+    return new Contracts(project, passedContractsRoot, passedContractsBaseClass, passedContractsRoot != contractsRoot)
 }
 
 MicroInfra microInfra(Project project, Console console) {
