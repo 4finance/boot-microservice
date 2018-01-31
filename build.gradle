@@ -11,8 +11,8 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE'
-        classpath 'com.toomuchcoding:uptodate-gradle-plugin:+'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE'
+        classpath 'com.ofg:uptodate-gradle-plugin:1.6.3'
         classpath 'se.transmode.gradle:gradle-docker:1.2'
         classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springCloudContractVersion}"
         classpath 'com.blogspot.toomuchcoding:gradle-test-profiler:0.3.1'
@@ -54,7 +54,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all'
     compile 'com.fasterxml.jackson.core:jackson-databind'
     compile 'com.google.guava:guava:20.0'
-    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.apache.commons:commons-lang3:3.7'
     compile 'org.apache.tomcat.embed:tomcat-embed-el'
     compile 'com.jayway.jsonpath:json-path-assert:2.4.0'
     compile 'org.yaml:snakeyaml'
@@ -65,8 +65,8 @@ dependencies {
     compile "com.ofg:micro-infra-spring-boot-starter:${microInfraSpringVersion}"
     compile "com.ofg:activity-tracker-boot-starter:${microInfraSpringVersion}"
 
-    runtime 'cglib:cglib-nodep:3.2.3'
-    runtime 'org.objenesis:objenesis:2.4'
+    runtime 'cglib:cglib-nodep:3.2.6'
+    runtime 'org.objenesis:objenesis:2.6'
     runtime 'org.aspectj:aspectjweaver'
     runtime 'com.h2database:h2'
 

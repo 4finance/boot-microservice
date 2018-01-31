@@ -4,6 +4,6 @@ repositories {
 }
 
 dependencies {
-    compile 'commons-io:commons-io:2.4'
-    compile 'org.yaml:snakeyaml:1.14'
+    compile 'commons-io:commons-io:2.6'
+    compile 'org.yaml:snakeyaml:1.19'
 }
