@@ -1,6 +1,6 @@
 apply plugin: 'docker'
 apply plugin: 'idea'
-apply plugin: 'com.toomuchcoding.uptodate'
+apply plugin: 'com.ofg.uptodate'
 
 task docker(type: Docker) {
     dependsOn 'build'
