@@ -1,5 +1,4 @@
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder
-import ch.qos.logback.core.ConsoleAppender
 import ch.qos.logback.core.rolling.RollingFileAppender
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy
 import ch.qos.logback.core.status.OnConsoleStatusListener
@@ -15,8 +14,7 @@ LogbackConfiguration logbackConfig = new LogbackConfiguration()
 //for more details about groovy conf, see http://logback.qos.ch/manual/groovy.html
 statusListener(OnConsoleStatusListener)
 String rollingFile = "FILE"
-String console = "CONSOLE"
-List whereToLog = [rollingFile, console]
+List whereToLog = [rollingFile]
 String logPattern = logbackConfig.getLogPattern()
 String scanTime = logbackConfig.getScanTime()
 String currentLogFile = logbackConfig.getLoggerFilename()
@@ -43,12 +41,6 @@ appender(rollingFile, RollingFileAppender) {
         fileNamePattern = rollingFileNamePattern
         maxHistory = rollingFileMaxHistory
     }
-    encoder(PatternLayoutEncoder) {
-        pattern = logPattern
-    }
-}
-
-appender(console, ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
         pattern = logPattern
     }
